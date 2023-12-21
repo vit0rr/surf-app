@@ -9,9 +9,9 @@ export const ImageGrid = function ({ title, items = [] }) {
 					<div className="uk-child-width-expand@s uk-grid" uk-grid="true">
 						{items.map((item, index) => {
 							return (
-								<div key={index} className={index == 0 ? 'uk-first-column' : ''}>
+								<a href="/" key={index} className={index == 0 ? 'uk-first-column' : ''}>
 									<div className="uk-card uk-card-default uk-card-body">
-										<div>
+										<div className="image-grid__item-image">
 											<img src={item.image} />
 										</div>
 										<div className="uk-padding">
@@ -19,7 +19,7 @@ export const ImageGrid = function ({ title, items = [] }) {
 											<p>{item.description}</p>
 										</div>
 									</div>
-								</div>
+								</a>
 							);
 						})}
 					</div>

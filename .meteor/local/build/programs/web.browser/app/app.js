@@ -24,7 +24,7 @@ var require = meteorInstall({"imports":{"ui":{"components":{"Banner.jsx":functio
     return /*#__PURE__*/React.createElement("section", {
       className: "banner uk-cover-container"
     }, /*#__PURE__*/React.createElement("div", {
-      "uk-slideshow": "animation: pull"
+      "uk-slideshow": "animation: pull; autoplay: true"
     }, /*#__PURE__*/React.createElement("ul", {
       className: "uk-slideshow-items"
     }, items.map((item, index) => {
@@ -40,9 +40,9 @@ var require = meteorInstall({"imports":{"ui":{"components":{"Banner.jsx":functio
         automute: "true",
         loop: "loop",
         playsInline: true
-      }), item.image && /*#__PURE__*/React.createElement("div", {
-        "data-src": src,
-        "uk-img": "loading: eager"
+      }), !item.video && /*#__PURE__*/React.createElement("img", {
+        src: item.src,
+        alt: item.title
       }), /*#__PURE__*/React.createElement("div", {
         className: "banner__content uk-container"
       }, item.subtitle && /*#__PURE__*/React.createElement("h4", null, item.subtitle), item.title && /*#__PURE__*/React.createElement("h3", {
@@ -51,7 +51,9 @@ var require = meteorInstall({"imports":{"ui":{"components":{"Banner.jsx":functio
         href: item.buttonUrl,
         className: "uk-button uk-button-danger"
       }, item.buttonText)));
-    }))));
+    })), /*#__PURE__*/React.createElement("ul", {
+      className: "uk-slideshow-nav uk-dotnav"
+    })));
   };
   _c = Banner;
   var _c;
@@ -145,12 +147,15 @@ var require = meteorInstall({"imports":{"ui":{"components":{"Banner.jsx":functio
       className: "uk-child-width-expand@s uk-grid",
       "uk-grid": "true"
     }, items.map((item, index) => {
-      return /*#__PURE__*/React.createElement("div", {
+      return /*#__PURE__*/React.createElement("a", {
+        href: "/",
         key: index,
         className: index == 0 ? 'uk-first-column' : ''
       }, /*#__PURE__*/React.createElement("div", {
         className: "uk-card uk-card-default uk-card-body"
-      }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("img", {
+      }, /*#__PURE__*/React.createElement("div", {
+        className: "image-grid__item-image"
+      }, /*#__PURE__*/React.createElement("img", {
         src: item.image
       })), /*#__PURE__*/React.createElement("div", {
         className: "uk-padding"
@@ -464,6 +469,13 @@ var require = meteorInstall({"imports":{"ui":{"components":{"Banner.jsx":functio
         description: "Texas isn't known for its surfing, but Waco Surf has changed the game.",
         buttonText: 'Watch Now',
         buttonUrl: 'https://www.youtube.com/watch?v=jfGuUD-inBM'
+      }, {
+        src: 'banner-image-1.png',
+        title: /*#__PURE__*/React.createElement("span", null, "The Rail Project: ", /*#__PURE__*/React.createElement("br", null), "Julian Wilson has ride of his life as he surf-skates in water"),
+        subtitle: 'VOD',
+        description: 'A new kind of skate park.',
+        buttonText: 'Watch Now',
+        buttonUrl: 'https://www.youtube.com/watch?v=y2CTZ5GtMUA'
       }]
     }), /*#__PURE__*/React.createElement(ImageGrid, {
       title: "What's Going Down",

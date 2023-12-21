@@ -708,25 +708,25 @@
       "where": "client",
       "type": "js",
       "cacheable": true,
-      "url": "/app/app.js?hash=0cb00a07c3f7a8f4cfdfa70e30ebf4a63350be0e",
+      "url": "/app/app.js?hash=a7e755384c85fa32dfc9531a092bd940bd8889db",
       "replaceable": true,
       "sourceMap": "app/app.js.map",
-      "sourceMapUrl": "/app/0cb00a07c3f7a8f4cfdfa70e30ebf4a63350be0e.map",
-      "size": 27109,
-      "hash": "0cb00a07c3f7a8f4cfdfa70e30ebf4a63350be0e",
-      "sri": "oA2hsph0iCuVdKzG+2FLfCoICVDkOKn6iOPPsbzkDRDUDRS9qVvWGS7nBWnXfeQkTB3tWgi7ew4eURCNWUGmHQ=="
+      "sourceMapUrl": "/app/a7e755384c85fa32dfc9531a092bd940bd8889db.map",
+      "size": 27689,
+      "hash": "a7e755384c85fa32dfc9531a092bd940bd8889db",
+      "sri": "WnUGqCqKu2R1RRLvr/qc2eLYkS8uRWzOg81YfL/6UuzYD66yXyOQqKPuz38rxWP45EYhI/OIrAV0TTgFa1oIAA=="
     },
     {
       "path": "merged-stylesheets.css",
       "where": "client",
       "type": "css",
       "cacheable": true,
-      "url": "/merged-stylesheets.css?hash=2d8b1797ed4f4817445bceafbe974d010924f7c7",
+      "url": "/merged-stylesheets.css?hash=817434209b16fd672a99cf7485cc7c0f56b3ee6c",
       "sourceMap": "merged-stylesheets.css.map",
-      "sourceMapUrl": "/2d8b1797ed4f4817445bceafbe974d010924f7c7.map",
-      "size": 396959,
-      "hash": "2d8b1797ed4f4817445bceafbe974d010924f7c7",
-      "sri": "Etj1E2PjB3w/j+n4U6oxIrUvfeA7zvUVA2E+6LdRFC65JgVaIyeSCqJIwA18H2O+XAacoHnlGD7PzR1T0uAGXw=="
+      "sourceMapUrl": "/817434209b16fd672a99cf7485cc7c0f56b3ee6c.map",
+      "size": 398422,
+      "hash": "817434209b16fd672a99cf7485cc7c0f56b3ee6c",
+      "sri": "KDTmNWWKdCOmUsFug6YWmA0SXnoM2ONSVte6FyinqJs5uRI5rayJMU3MG3s7Ptedja/3qoIA8472m/0D6pp58A=="
     },
     {
       "path": "packages/promise/promise.d.ts",
@@ -776,6 +776,16 @@
       "url": "/art-wave.jpg",
       "size": 74009,
       "hash": "5697c85c835126478229ad6ca651151890c6d726",
+      "sri": null
+    },
+    {
+      "path": "app/banner-image-1.png",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/banner-image-1.png",
+      "size": 553845,
+      "hash": "d4162a9917a51330911b8a403594ddcc8d254c52",
       "sri": null
     },
     {
@@ -991,5 +1001,5 @@
       "hash": "c4178ccf27875de05579329a3b18e881506d254c"
     }
   ],
-  "hmrVersion": 1703194645223
+  "hmrVersion": 1703197982148
 }

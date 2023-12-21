@@ -3,7 +3,7 @@ import React from 'react';
 export const Banner = function ({ items = [] }) {
 	return (
 		<section className="banner uk-cover-container">
-			<div uk-slideshow="animation: pull">
+			<div uk-slideshow="animation: pull; autoplay: true">
 				<ul className="uk-slideshow-items">
 					{items.map((item, index) => {
 						return (
@@ -21,7 +21,7 @@ export const Banner = function ({ items = [] }) {
 										playsInline={true}
 									></video>
 								)}
-								{item.image && <div data-src={src} uk-img="loading: eager"></div>}
+								{!item.video && <img src={item.src} alt={item.title} />}
 								<div className="banner__content uk-container">
 									{item.subtitle && <h4>{item.subtitle}</h4>}
 									{item.title && <h3 className="uk-text-bold">{item.title}</h3>}
@@ -35,6 +35,7 @@ export const Banner = function ({ items = [] }) {
 						);
 					})}
 				</ul>
+				<ul className="uk-slideshow-nav uk-dotnav"></ul>
 			</div>
 		</section>
 	);
