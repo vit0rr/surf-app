@@ -10,6 +10,8 @@ package-lock.json
 logs/**.log
 .env
 *.env
+.meteor
+.meteor/*
 
 #ignore Mac OS files
 **/.DS_Store
@@ -54,7 +56,6 @@ Thumbs.db
 # -------------------------
 
 # track these files, if they exist
-!.git
 !.gitignore
 !.github
 !.editorconfig
