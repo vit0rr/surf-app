@@ -1,0 +1,39 @@
+// Reset
+@import '_reset.scss';
+
+// Third Parts
+@import '_uikit.min.scss';
+
+// Global
+@import '_animate.scss';
+@import '_variables.scss';
+@import '_mixins.scss';
+@import '_functions.scss';
+
+// Elements
+
+// Blocks
+@import '_banner.scss';
+@import '_image-grid.scss';
+
+// Sections
+@import '_navbar.scss';
+@import '_footer.scss';
+
+// Pages
+@import '_page-home.scss';
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+main {
+}
+
+.uk-button-danger {
+  background-color: $red-500;
+}

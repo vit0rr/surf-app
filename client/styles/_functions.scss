@@ -1,0 +1,7 @@
+@function multiply($value, $factor) {
+	@return calc(#{$value} * #{$factor});
+}
+
+@function divide($value, $factor) {
+	@return calc(#{$value} / #{$factor});
+}

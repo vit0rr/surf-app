@@ -1,0 +1,62 @@
+.banner {
+	width: 100%;
+
+	.uk-slideshow-items {
+		aspect-ratio: auto !important;
+	}
+
+	video {
+		min-height: 320px;
+		object-fit: cover;
+	}
+
+	li {
+		position: relative;
+	}
+
+	&__content {
+		width: calc(100% - #{$gutter} - #{$gutter});
+		max-width: 1200px;
+		position: absolute;
+		bottom: $gutter;
+		left: 50%;
+		transform: translate(-50%);
+		z-index: 2;
+		padding: 0 $gutter;
+
+		@media (min-width: #{$md}) {
+			bottom: multiply($gutter, 2);
+		}
+
+		h4,
+		h3 {
+			margin: 0;
+			color: #fff;
+		}
+
+		h4 {
+			@media (max-width: #{$md}) {
+				font-size: 0.9rem;
+			}
+		}
+
+		h3 {
+			margin-bottom: $gutter;
+			line-height: 1.2;
+
+			@media (max-width: #{$md}) {
+				font-size: 1.1rem;
+			}
+
+			@media (min-width: #{$md}) {
+				margin-bottom: multiply($gutter, 2);
+			}
+		}
+
+		.uk-button {
+			@media (max-width: #{$md}) {
+				font-size: 0.7rem;
+			}
+		}
+	}
+}

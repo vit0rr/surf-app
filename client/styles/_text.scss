@@ -1,0 +1,21 @@
+.text {
+	&--info {
+		color: $notification-info-background-color;
+	}
+
+	&--success {
+		color: $notification-success-background-color;
+	}
+
+	&--warning {
+		color: $notification-warning-background-color;
+	}
+
+	&--error {
+		color: $notification-error-background-color;
+	}
+
+	&--green {
+		color: #198754;
+	}
+}

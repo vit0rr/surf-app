@@ -1,0 +1,152 @@
+.tabs {
+  @include flex(row, flex-start, flex-start, wrap);
+  border-bottom: 1px solid #8f8f8f;
+
+  &__header,
+  &__content {
+    width: 100%;
+  }
+
+  &__header {
+    @include flex(row, space-evenly, center, wrap);
+    .tab {
+      width: 50%;
+      border-bottom: 3px solid transparent;
+      background-color: transparent;
+      color: $product-font-color;
+      font-family: $AvenirBold;
+      font-size: clamp(12px, 4vw, 16px);
+      text-transform: uppercase;
+      text-align: center;
+      cursor: pointer;
+    }
+  }
+
+  &__scroller {
+    @include flex(row, space-evenly, center, wrap);
+    width: 100%;
+    height: 3px;
+    position: relative;
+
+    &::before {
+      content: '';
+      width: 100%;
+      height: 1px;
+      position: absolute;
+      top: 1.5px;
+      left: 0;
+      background-color: #000;
+    }
+
+    &-item {
+      width: 50%;
+      height: 3px;
+      position: relative;
+      z-index: 2;
+
+      &--active {
+        background-color: #000;
+      }
+    }
+
+    &-float {
+      width: 50%;
+      height: 3px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      background-color: $button-primary-background-color;
+      transition: all 200ms ease-in-out;
+    }
+  }
+
+  &__tab {
+    position: relative;
+    display: none;
+    padding: $gutter 0;
+
+    &--active {
+      display: block;
+    }
+
+    img {
+      width: 100%;
+    }
+
+    $list-gutter: 14px;
+
+    ul {
+      margin-left: $list-gutter;
+
+      li,
+      ol {
+        position: relative;
+        padding-left: $list-gutter;
+        font-size: 14px;
+
+        * {
+          font-size: inherit;
+        }
+
+        &::before {
+          content: '';
+          width: $list-gutter;
+          height: $list-gutter;
+          position: absolute;
+          top: divide($list-gutter, 3);
+          left: multiply($list-gutter, -1);
+          background-color: $button-primary-background-color;
+          border-radius: 100%;
+        }
+
+        & + li,
+        & + ol {
+          margin-top: divide($list-gutter, 2);
+        }
+      }
+    }
+
+    .tabs__sku {
+      display: block;
+      margin-top: 1rem;
+      padding-left: 27px;
+      color: #787a7b;
+      font-size: 12px;
+      font-family: $ChronicleTextG3-Roman;
+      line-height: 1rem;
+    }
+
+    table {
+      font-family: $Avenir;
+      color: #444444;
+
+      tr {
+        border-bottom: 1px solid;
+
+        &:first-of-type {
+          font-weight: bold;
+        }
+
+        td {
+          padding: 8px 5px;
+        }
+      }
+    }
+
+    h1 {
+      margin-bottom: $gutter;
+    }
+
+    blockquote {
+      padding: 32px;
+      font-family: $AvenirMedium;
+      color: #58595b;
+      background-color: #e9e8e3;
+
+      p {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
