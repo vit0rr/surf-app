@@ -24,7 +24,7 @@ var require = meteorInstall({"imports":{"ui":{"components":{"Banner.jsx":functio
     return /*#__PURE__*/React.createElement("section", {
       className: "banner uk-cover-container"
     }, /*#__PURE__*/React.createElement("div", {
-      "uk-slideshow": "animation: pull; autoplay: true"
+      "uk-slideshow": "animation: pull; autoplay: true; pause-on-hover: false"
     }, /*#__PURE__*/React.createElement("ul", {
       className: "uk-slideshow-items"
     }, items.map((item, index) => {
@@ -47,7 +47,7 @@ var require = meteorInstall({"imports":{"ui":{"components":{"Banner.jsx":functio
         className: "banner__content uk-container"
       }, item.subtitle && /*#__PURE__*/React.createElement("h4", null, item.subtitle), item.title && /*#__PURE__*/React.createElement("h3", {
         className: "uk-text-bold"
-      }, item.title), item.buttonText && item.buttonUrl && /*#__PURE__*/React.createElement("a", {
+      }, item.title), item.description && /*#__PURE__*/React.createElement("p", null, item.description), item.buttonText && item.buttonUrl && /*#__PURE__*/React.createElement("a", {
         href: item.buttonUrl,
         className: "uk-button uk-button-danger"
       }, item.buttonText)));
@@ -131,11 +131,20 @@ var require = meteorInstall({"imports":{"ui":{"components":{"Banner.jsx":functio
       React = v;
     }
   }, 0);
+  let handleize;
+  module1.link("../../../client/scripts/helpers.js", {
+    handleize(v) {
+      handleize = v;
+    }
+  }, 1);
   ___INIT_METEOR_FAST_REFRESH(module);
   const ImageGrid = function (_ref) {
     let {
-      title,
-      items = []
+      grid = 'uk-child-width-expand@s',
+      filter = false,
+      fillImage = false,
+      items = [],
+      title = ''
     } = _ref;
     return /*#__PURE__*/React.createElement("section", {
       className: "image-grid"
@@ -144,13 +153,22 @@ var require = meteorInstall({"imports":{"ui":{"components":{"Banner.jsx":functio
     }, title && /*#__PURE__*/React.createElement("h3", {
       className: "image-grid__title uk-text-bold"
     }, title), /*#__PURE__*/React.createElement("div", {
-      className: "uk-child-width-expand@s uk-grid",
-      "uk-grid": "true"
+      className: "uk-grid ".concat(grid).concat(filter && ' js-filter'),
+      "uk-grid": "masonry: true"
     }, items.map((item, index) => {
+      let className = '';
+      if (index == 0) className += ' uk-first-column';
+      if (fillImage) className += ' image_grid-item--fill-image';
+      if (filter && item.tag) className += ' tag-all tag-' + handleize(item.tag);
+      let date = null;
+      if (item.date) {
+        className += ' image_grid-item--date';
+        date = item.date.split('-');
+      }
       return /*#__PURE__*/React.createElement("a", {
         href: "/",
         key: index,
-        className: index == 0 ? 'uk-first-column' : ''
+        className: className
       }, /*#__PURE__*/React.createElement("div", {
         className: "uk-card uk-card-default uk-card-body"
       }, /*#__PURE__*/React.createElement("div", {
@@ -158,8 +176,19 @@ var require = meteorInstall({"imports":{"ui":{"components":{"Banner.jsx":functio
       }, /*#__PURE__*/React.createElement("img", {
         src: item.image
       })), /*#__PURE__*/React.createElement("div", {
-        className: "uk-padding"
-      }, /*#__PURE__*/React.createElement("h3", null, item.title), /*#__PURE__*/React.createElement("p", null, item.description))));
+        className: "uk-padding image-grid__item-body"
+      }, date && /*#__PURE__*/React.createElement("div", {
+        className: "image-grid__item-date"
+      }, /*#__PURE__*/React.createElement("div", {
+        className: "image-grid__item-date-day uk-text-bold uk-text-large"
+      }, date[1]), /*#__PURE__*/React.createElement("div", {
+        className: "image-grid__item-date-month-year uk-text-small"
+      }, date[0], " / ", date[2])), /*#__PURE__*/React.createElement("div", {
+        className: "image-grid__item-content"
+      }, /*#__PURE__*/React.createElement("h3", null, item.title), /*#__PURE__*/React.createElement("p", null, item.description), item.url && /*#__PURE__*/React.createElement("button", {
+        href: item.url,
+        className: "uk-button uk-button-danger uk-button-medium"
+      }, "View")))));
     }))));
   };
   _c = ImageGrid;
@@ -206,10 +235,11 @@ var require = meteorInstall({"imports":{"ui":{"components":{"Banner.jsx":functio
   }, 2);
   ___INIT_METEOR_FAST_REFRESH(module);
   var _s = $RefreshSig$();
-  const Navbar = () => {
+  const Navbar = props => {
     _s();
     const active = 'mobile-nav--active';
     let ref = useRef(null);
+    let _route = null;
     const toggleMenu = async function (event) {
       event.preventDefault();
       const target = ref.current;
@@ -219,8 +249,14 @@ var require = meteorInstall({"imports":{"ui":{"components":{"Banner.jsx":functio
       }
       target.classList.add(active);
     };
+    for (let route in props.routes) {
+      if (props.routes[route].active) _route = props.routes[route];
+    }
     return /*#__PURE__*/React.createElement(Fragment, null, /*#__PURE__*/React.createElement("header", {
-      "uk-sticky": "sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky; end: + *;"
+      "uk-sticky": "sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky; end: + *;",
+      style: {
+        backgroundColor: _route.background
+      }
     }, /*#__PURE__*/React.createElement("nav", {
       className: "uk-navbar-container"
     }, /*#__PURE__*/React.createElement("div", {
@@ -245,15 +281,11 @@ var require = meteorInstall({"imports":{"ui":{"components":{"Banner.jsx":functio
       className: "uk-navbar-center"
     }, /*#__PURE__*/React.createElement("ul", {
       className: "uk-navbar-nav"
-    }, /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("a", {
-      href: "#"
-    }, "Events")), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("a", {
-      href: "#"
-    }, "Leagues")), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("a", {
-      href: "#"
-    }, "Parks")), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("a", {
-      href: "#"
-    }, "Atheletes")))), /*#__PURE__*/React.createElement("div", {
+    }, Object.keys(props.routes).map((route, index) => /*#__PURE__*/React.createElement("li", {
+      key: index
+    }, /*#__PURE__*/React.createElement("a", {
+      onClick: () => props.setRoute(route)
+    }, route))))), /*#__PURE__*/React.createElement("div", {
       className: "uk-navbar-right"
     }, /*#__PURE__*/React.createElement("div", {
       className: "icon-container"
@@ -426,7 +458,196 @@ var require = meteorInstall({"imports":{"ui":{"components":{"Banner.jsx":functio
 }.call(this, module);
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-}},"routes":{"Home.jsx":function module(require,exports,module){
+},"Tabs.jsx":function module(require,exports,module){
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                  //
+// imports/ui/components/Tabs.jsx                                                                                   //
+//                                                                                                                  //
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                                    //
+!function (module1) {
+  module1.export({
+    Tabs: () => Tabs
+  });
+  let React;
+  module1.link("react", {
+    default(v) {
+      React = v;
+    }
+  }, 0);
+  let handleize;
+  module1.link("../../../client/scripts/helpers.js", {
+    handleize(v) {
+      handleize = v;
+    }
+  }, 1);
+  ___INIT_METEOR_FAST_REFRESH(module);
+  const Tabs = function (_ref) {
+    let {
+      tabs = []
+    } = _ref;
+    return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("ul", {
+      className: "tabs uk-tab"
+    }, /*#__PURE__*/React.createElement("li", {
+      className: "uk-box-shadow-small uk-active",
+      "uk-filter-control": ".tag-all"
+    }, /*#__PURE__*/React.createElement("a", null, "All")), tabs.map((tab, index) => {
+      return /*#__PURE__*/React.createElement("li", {
+        key: index,
+        className: "uk-box-shadow-small",
+        "uk-filter-control": ".tag-".concat(handleize(tab.title))
+      }, /*#__PURE__*/React.createElement("a", null, tab.title));
+    })));
+  };
+  _c = Tabs;
+  var _c;
+  $RefreshReg$(_c, "Tabs");
+}.call(this, module);
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+}},"routes":{"Events.jsx":function module(require,exports,module){
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                  //
+// imports/ui/routes/Events.jsx                                                                                     //
+//                                                                                                                  //
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                                    //
+!function (module1) {
+  module1.export({
+    Events: () => Events
+  });
+  let React, useState;
+  module1.link("react", {
+    default(v) {
+      React = v;
+    },
+    useState(v) {
+      useState = v;
+    }
+  }, 0);
+  let Tabs;
+  module1.link("../components/Tabs.jsx", {
+    Tabs(v) {
+      Tabs = v;
+    }
+  }, 1);
+  let ImageGrid;
+  module1.link("../components/ImageGrid.jsx", {
+    ImageGrid(v) {
+      ImageGrid = v;
+    }
+  }, 2);
+  ___INIT_METEOR_FAST_REFRESH(module);
+  var _s = $RefreshSig$();
+  const events = [{
+    tag: 'Park',
+    title: 'Jack Robinson narrates five minutes of Fijian fire',
+    description: 'Jack Robinson talks us through scoring incredible waves at Cloudbreak on his first-ever mission to Fiji.',
+    image: 'jack-robinson.png',
+    subtitle: '',
+    date: '07-12-2024',
+    url: '/a'
+  }, {
+    tag: 'Pipe',
+    title: 'Tahiti',
+    description: 'From the sheer terror of Teahupo’o to the relaxed family and ocean-based way of life, Tahiti offers something for everyone. Let No Contest give you a guided tour of these incredible islands.',
+    image: 'tahiti.png',
+    subtitle: '',
+    date: '07-26-2024',
+    url: '/b'
+  }, {
+    tag: 'Park',
+    title: 'Molly Picklum: What it Takes',
+    description: "Experience the highs and lows of the WSL World Tour and the mid-season cut, with Australian rookie Molly Picklum. Discover the headspace it requires to compete as one of the world's best surfers.",
+    image: 'what-it-takes.png',
+    subtitle: '',
+    date: '09-01-2024',
+    url: '/c'
+  }, {
+    tag: 'Big Wave',
+    title: 'Waco Surf Trip with the GoPro Surf Team',
+    description: "Texas isn't known for its surfing, but Waco Surf has changed the game.",
+    image: 'what-it-takes.png',
+    subtitle: '',
+    date: '09-23-2024',
+    url: '/d'
+  }, {
+    tag: 'Big Wave',
+    title: 'The Rail Project: Julian Wilson has ride of his life as he surf-skates in water',
+    description: 'A new kind of skate park.',
+    image: 'what-it-takes.png',
+    subtitle: '',
+    date: '10-25-2024',
+    url: '/e'
+  }];
+  const Events = function () {
+    _s();
+    const [search, setSearch] = useState();
+    const applySearch = function (value) {
+      if (!value || value == '') return events;
+      const _value = value.toLowerCase();
+      const _events = [...events].filter(event => {
+        const title = event.title.toLowerCase();
+        const subtitle = event.subtitle.toLowerCase();
+        const description = event.description.toLowerCase();
+        if (title && title.indexOf(value) > -1 || subtitle && subtitle.indexOf(value) > -1 || description && description.indexOf(value) > -1) {
+          return event;
+        }
+      });
+      return _events;
+    };
+    return /*#__PURE__*/React.createElement("main", {
+      className: "page-events",
+      "uk-filter": "target: .js-filter; animation: slide"
+    }, /*#__PURE__*/React.createElement("section", {
+      className: "page-events__search uk-container uk-padding-large"
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "uk-grid-small",
+      "uk-grid": "uk-grid"
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "uk-width-1-1"
+    }, /*#__PURE__*/React.createElement("form", {
+      className: "uk-search uk-search-default"
+    }, /*#__PURE__*/React.createElement("a", {
+      "uk-search-icon": "uk-search-icon"
+    }), /*#__PURE__*/React.createElement("input", {
+      className: "uk-search-input",
+      type: "search",
+      placeholder: "Search Events",
+      "aria-label": "Search Events",
+      onChange: event => setSearch(event.currentTarget.value)
+    })), /*#__PURE__*/React.createElement(Tabs, {
+      tabs: [{
+        title: 'Park'
+      }, {
+        title: 'Pipe'
+      }, {
+        title: 'Big Wave'
+      }, {
+        title: "Men's"
+      }, {
+        title: "Women's"
+      }, {
+        title: 'Coed'
+      }]
+    })))), /*#__PURE__*/React.createElement(ImageGrid, {
+      title: "Upcoming Events",
+      items: applySearch(search),
+      grid: "uk-child-width-1-2@s uk-child-width-1-3@m",
+      filter: true,
+      fillImage: true
+    }));
+  };
+  _s(Events, "KLrPbisl3Mlzlvtc6UZb5fIFlSg=");
+  _c = Events;
+  var _c;
+  $RefreshReg$(_c, "Events");
+}.call(this, module);
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+},"Home.jsx":function module(require,exports,module){
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //                                                                                                                  //
@@ -491,7 +712,8 @@ var require = meteorInstall({"imports":{"ui":{"components":{"Banner.jsx":functio
         title: 'Molly Picklum: What it Takes',
         description: "Experience the highs and lows of the WSL World Tour and the mid-season cut, with Australian rookie Molly Picklum. Discover the headspace it requires to compete as one of the world's best surfers.",
         image: 'what-it-takes.png'
-      }]
+      }],
+      grid: "uk-child-width-1-2@s uk-child-width-1-3@m uk-child-width-1-4@l"
     }));
   };
   _c = Home;
@@ -509,6 +731,12 @@ var require = meteorInstall({"imports":{"ui":{"components":{"Banner.jsx":functio
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                                                                                                                     //
 !function (module1) {
+  let _objectSpread;
+  module1.link("@babel/runtime/helpers/objectSpread2", {
+    default(v) {
+      _objectSpread = v;
+    }
+  }, 0);
   module1.export({
     App: () => App
   });
@@ -536,25 +764,54 @@ var require = meteorInstall({"imports":{"ui":{"components":{"Banner.jsx":functio
       Home = v;
     }
   }, 2);
+  let Events;
+  module1.link("/imports/ui/routes/Events", {
+    Events(v) {
+      Events = v;
+    }
+  }, 3);
   let Footer;
   module1.link("/imports/ui/components/Footer", {
     Footer(v) {
       Footer = v;
     }
-  }, 3);
+  }, 4);
   ___INIT_METEOR_FAST_REFRESH(module);
   var _s = $RefreshSig$();
   const App = () => {
     _s();
     const [routes, setRoutes] = useState({
-      home: true,
-      events: false,
-      leagues: false,
-      parks: false
+      home: {
+        background: 'transparent',
+        active: false
+      },
+      events: {
+        background: 'var(--blue-700)',
+        active: true
+      },
+      leagues: {
+        background: 'transparent',
+        active: false
+      },
+      parks: {
+        background: 'transparent',
+        active: false
+      }
     }, []);
-    return /*#__PURE__*/React.createElement(Fragment, null, /*#__PURE__*/React.createElement(Navbar, null), Home && /*#__PURE__*/React.createElement(Home, null), /*#__PURE__*/React.createElement(Footer, null));
+    const setRoute = function (route) {
+      const state = _objectSpread({}, routes);
+      for (let _route in state) {
+        state[_route].active = false;
+        if (_route == route) state[_route].active = true;
+      }
+      setRoutes(state);
+    };
+    return /*#__PURE__*/React.createElement(Fragment, null, /*#__PURE__*/React.createElement(Navbar, {
+      setRoute: setRoute,
+      routes: routes
+    }), routes.home.active && /*#__PURE__*/React.createElement(Home, null), routes.events.active && /*#__PURE__*/React.createElement(Events, null), /*#__PURE__*/React.createElement(Footer, null));
   };
-  _s(App, "weCC01dfh+tY9ZgC+W5WLQU6rCw=");
+  _s(App, "GefeW2ix87t/F8B6DC3XdbqmbBM=");
   _c = App;
   var _c;
   $RefreshReg$(_c, "App");
@@ -571,12 +828,16 @@ var require = meteorInstall({"imports":{"ui":{"components":{"Banner.jsx":functio
                                                                                                                     //
 !function (module1) {
   module1.export({
-    asyncTimeout: () => asyncTimeout
+    asyncTimeout: () => asyncTimeout,
+    handleize: () => handleize
   });
   ___INIT_METEOR_FAST_REFRESH(module);
   const asyncTimeout = function (ms) {
     console.log('Timeout for ' + ms);
     return new Promise(resolve => setTimeout(resolve, ms));
+  };
+  const handleize = function (str) {
+    return str.toLowerCase().replace(/[^\w\u00C0-\u024f]+/g, '-').replace(/^-+|-+$/g, '');
   };
 }.call(this, module);
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -628,7 +889,9 @@ var require = meteorInstall({"imports":{"ui":{"components":{"Banner.jsx":functio
     ".js",
     ".json",
     ".html",
+    ".ts",
     ".jsx",
+    ".mjs",
     ".scss"
   ]
 });

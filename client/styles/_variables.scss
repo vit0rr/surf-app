@@ -8,8 +8,11 @@ $xl: 1600px;
 $blue-100: #28a5f5;
 $blue-500: #1e87f0;
 $blue-700: #001c39;
+$gray-100: #999;
 $red-300: #f0506e;
 $red-500: #c12841;
+
+$border-radius: 100px;
 
 :root {
   --gutter: #{$gutter};
@@ -17,4 +20,9 @@ $red-500: #c12841;
   --md: #{$md};
   --lg: #{$lg};
   --xl: #{$xl};
+  --blue-100: #{$blue-100};
+  --blue-500: #{$blue-500};
+  --blue-700: #{$blue-700};
+  --red-300: #{$red-300};
+  --red-500: #{$red-500};
 }

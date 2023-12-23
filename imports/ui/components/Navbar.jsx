@@ -2,10 +2,10 @@ import React, { useRef, Fragment } from 'react';
 import { Footer } from './Footer.jsx';
 import { asyncTimeout } from '../../../client/scripts/helpers.js';
 
-export const Navbar = () => {
+export const Navbar = (props) => {
 	const active = 'mobile-nav--active';
-
 	let ref = useRef(null);
+	let _route = null;
 
 	const toggleMenu = async function (event) {
 		event.preventDefault();
@@ -20,9 +20,18 @@ export const Navbar = () => {
 		target.classList.add(active);
 	};
 
+	for (let route in props.routes) {
+		if (props.routes[route].active) _route = props.routes[route];
+	}
+
 	return (
 		<Fragment>
-			<header uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky; end: + *;">
+			<header
+				uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky; end: + *;"
+				style={{
+					backgroundColor: _route.background
+				}}
+			>
 				<nav className="uk-navbar-container">
 					<div className="uk-container">
 						<div uk-navbar="uk-navbar">
@@ -38,18 +47,11 @@ export const Navbar = () => {
 
 							<div className="uk-navbar-center">
 								<ul className="uk-navbar-nav">
-									<li>
-										<a href="#">Events</a>
-									</li>
-									<li>
-										<a href="#">Leagues</a>
-									</li>
-									<li>
-										<a href="#">Parks</a>
-									</li>
-									<li>
-										<a href="#">Atheletes</a>
-									</li>
+									{Object.keys(props.routes).map((route, index) => (
+										<li key={index}>
+											<a onClick={() => props.setRoute(route)}>{route}</a>
+										</li>
+									))}
 								</ul>
 							</div>
 

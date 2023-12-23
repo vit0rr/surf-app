@@ -58,6 +58,7 @@ export const Home = function () {
 						image: 'what-it-takes.png'
 					}
 				]}
+				grid="uk-child-width-1-2@s uk-child-width-1-3@m uk-child-width-1-4@l"
 			/>
 		</main>
 	);

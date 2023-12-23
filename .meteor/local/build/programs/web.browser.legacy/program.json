@@ -61,11 +61,11 @@
       "where": "client",
       "type": "js",
       "cacheable": true,
-      "url": "/packages/modules.js?hash=5fdd738b605a67bcd711ef6bcfaf03c9278a9735",
+      "url": "/packages/modules.js?hash=b3a2c29da154c15a4e817378b52454f354172ee1",
       "replaceable": false,
-      "size": 1387970,
-      "hash": "5fdd738b605a67bcd711ef6bcfaf03c9278a9735",
-      "sri": "LOGlc/kQhzNNhgvO9atR9gE3t5gdp8EON7I6Nrd5E81WtqXz4Jwn0hJHL2Q53whl2G4mneX3cEgyBZjVlU5Daw=="
+      "size": 1387993,
+      "hash": "b3a2c29da154c15a4e817378b52454f354172ee1",
+      "sri": "+ZMvldIhFtLzeOVz5YoUmPQya9NKkRw5XfMLRVKFt/muNVI53x626/WElDeY8UcscsX6dnB/yifusUXMy+6SZw=="
     },
     {
       "path": "packages/modern-browsers.js",
@@ -708,25 +708,25 @@
       "where": "client",
       "type": "js",
       "cacheable": true,
-      "url": "/app/app.js?hash=c0153b3e67d4192c73dd7affccb2c9e1185284fe",
+      "url": "/app/app.js?hash=6e3684c24b3f0769dc8ec87eb13b38c94cce67c6",
       "replaceable": true,
       "sourceMap": "app/app.js.map",
-      "sourceMapUrl": "/app/c0153b3e67d4192c73dd7affccb2c9e1185284fe.map",
-      "size": 29374,
-      "hash": "c0153b3e67d4192c73dd7affccb2c9e1185284fe",
-      "sri": "Dobj/dHJDLc9jmgs2R3pJITXdYXY5aco40Vuy1dwqul4LLYWwy16QQsASVAQ0k7AVy4vHnS/G4CdZk7cawbb/A=="
+      "sourceMapUrl": "/app/6e3684c24b3f0769dc8ec87eb13b38c94cce67c6.map",
+      "size": 39846,
+      "hash": "6e3684c24b3f0769dc8ec87eb13b38c94cce67c6",
+      "sri": "1dAVHyqaC4/lSJnaCqvDKqgmPHJGNU5UnpjsnCwXRi0nQsh9RMPpAryJbuRqP70DYfsgkPmExk2Md5pSDwnGBA=="
     },
     {
       "path": "merged-stylesheets.css",
       "where": "client",
       "type": "css",
       "cacheable": true,
-      "url": "/merged-stylesheets.css?hash=817434209b16fd672a99cf7485cc7c0f56b3ee6c",
+      "url": "/merged-stylesheets.css?hash=24c55ec810f193e25add491a2a658790ba14b19d",
       "sourceMap": "merged-stylesheets.css.map",
-      "sourceMapUrl": "/817434209b16fd672a99cf7485cc7c0f56b3ee6c.map",
-      "size": 398422,
-      "hash": "817434209b16fd672a99cf7485cc7c0f56b3ee6c",
-      "sri": "KDTmNWWKdCOmUsFug6YWmA0SXnoM2ONSVte6FyinqJs5uRI5rayJMU3MG3s7Ptedja/3qoIA8472m/0D6pp58A=="
+      "sourceMapUrl": "/24c55ec810f193e25add491a2a658790ba14b19d.map",
+      "size": 401863,
+      "hash": "24c55ec810f193e25add491a2a658790ba14b19d",
+      "sri": "NWJr9jhnplsPKIsuFAg8UfkuoISkEG/oi3kRMS9RUPIpnvC/ays3PpM+jaerRNIHEa6l14gUpB+rluEuxcgl5w=="
     },
     {
       "path": "packages/promise/promise.d.ts",
@@ -786,6 +786,16 @@
       "url": "/banner-image-1.png",
       "size": 553845,
       "hash": "d4162a9917a51330911b8a403594ddcc8d254c52",
+      "sri": null
+    },
+    {
+      "path": "app/banner-image-2.jpg",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/banner-image-2.jpg",
+      "size": 216424,
+      "hash": "7a720c24989477aab898e2543bd955c3f53d066b",
       "sri": null
     },
     {
@@ -1001,5 +1011,5 @@
       "hash": "c4178ccf27875de05579329a3b18e881506d254c"
     }
   ],
-  "hmrVersion": 1703197982286
+  "hmrVersion": 1703362530437
 }

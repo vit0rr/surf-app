@@ -1,0 +1,25 @@
+.page-events {
+	&__search {
+		.uk-width-1-1 {
+			text-align: center;
+		}
+	}
+
+	form {
+		text-align: center;
+
+		input {
+			border-radius: $border-radius;
+		}
+	}
+
+	form {
+		width: 100%;
+		max-width: $xs;
+		margin: 0 auto;
+	}
+
+	form {
+		margin-bottom: $gutter;
+	}
+}
