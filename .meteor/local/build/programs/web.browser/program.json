@@ -61,11 +61,11 @@
       "where": "client",
       "type": "js",
       "cacheable": true,
-      "url": "/packages/modules.js?hash=1d789c4b73872c2171003131cb9b3a988e771c96",
+      "url": "/packages/modules.js?hash=1da7f50ab096224cc5d6cf9898e9e933cadd5d03",
       "replaceable": false,
-      "size": 1351149,
-      "hash": "1d789c4b73872c2171003131cb9b3a988e771c96",
-      "sri": "BSeKK2vQJil6JUAg1dluIvAEVXYYcGpOK/rRSNf9LOWf1x2bEpr6ItYCjNqa295OAzhigE1C6MhnC+ywIt/+WQ=="
+      "size": 1351172,
+      "hash": "1da7f50ab096224cc5d6cf9898e9e933cadd5d03",
+      "sri": "EYxVzg92Jymn0vi/WVav4XssaGy+OxfGY/7EY4bFqxiALnUJ1jP/lqExWocuAV7s5iDYkYW01HSZDUHzt5gIGA=="
     },
     {
       "path": "packages/modern-browsers.js",
@@ -708,25 +708,25 @@
       "where": "client",
       "type": "js",
       "cacheable": true,
-      "url": "/app/app.js?hash=0cb00a07c3f7a8f4cfdfa70e30ebf4a63350be0e",
+      "url": "/app/app.js?hash=db6fa4efba1a4af57895a43363d246e2ecc57801",
       "replaceable": true,
       "sourceMap": "app/app.js.map",
-      "sourceMapUrl": "/app/0cb00a07c3f7a8f4cfdfa70e30ebf4a63350be0e.map",
-      "size": 27109,
-      "hash": "0cb00a07c3f7a8f4cfdfa70e30ebf4a63350be0e",
-      "sri": "oA2hsph0iCuVdKzG+2FLfCoICVDkOKn6iOPPsbzkDRDUDRS9qVvWGS7nBWnXfeQkTB3tWgi7ew4eURCNWUGmHQ=="
+      "sourceMapUrl": "/app/db6fa4efba1a4af57895a43363d246e2ecc57801.map",
+      "size": 37216,
+      "hash": "db6fa4efba1a4af57895a43363d246e2ecc57801",
+      "sri": "EG6Lblb0Nrv5fga59bVLubGoAK/9gtb3BaII5PuZ5nXnAMeVNx1C/CLRnwumghzsZLRSvPL0q2pivqJq2FwzRg=="
     },
     {
       "path": "merged-stylesheets.css",
       "where": "client",
       "type": "css",
       "cacheable": true,
-      "url": "/merged-stylesheets.css?hash=2d8b1797ed4f4817445bceafbe974d010924f7c7",
+      "url": "/merged-stylesheets.css?hash=24c55ec810f193e25add491a2a658790ba14b19d",
       "sourceMap": "merged-stylesheets.css.map",
-      "sourceMapUrl": "/2d8b1797ed4f4817445bceafbe974d010924f7c7.map",
-      "size": 396959,
-      "hash": "2d8b1797ed4f4817445bceafbe974d010924f7c7",
-      "sri": "Etj1E2PjB3w/j+n4U6oxIrUvfeA7zvUVA2E+6LdRFC65JgVaIyeSCqJIwA18H2O+XAacoHnlGD7PzR1T0uAGXw=="
+      "sourceMapUrl": "/24c55ec810f193e25add491a2a658790ba14b19d.map",
+      "size": 401863,
+      "hash": "24c55ec810f193e25add491a2a658790ba14b19d",
+      "sri": "NWJr9jhnplsPKIsuFAg8UfkuoISkEG/oi3kRMS9RUPIpnvC/ays3PpM+jaerRNIHEa6l14gUpB+rluEuxcgl5w=="
     },
     {
       "path": "packages/promise/promise.d.ts",
@@ -776,6 +776,26 @@
       "url": "/art-wave.jpg",
       "size": 74009,
       "hash": "5697c85c835126478229ad6ca651151890c6d726",
+      "sri": null
+    },
+    {
+      "path": "app/banner-image-1.png",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/banner-image-1.png",
+      "size": 553845,
+      "hash": "d4162a9917a51330911b8a403594ddcc8d254c52",
+      "sri": null
+    },
+    {
+      "path": "app/banner-image-2.jpg",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/banner-image-2.jpg",
+      "size": 216424,
+      "hash": "7a720c24989477aab898e2543bd955c3f53d066b",
       "sri": null
     },
     {
@@ -991,5 +1011,5 @@
       "hash": "c4178ccf27875de05579329a3b18e881506d254c"
     }
   ],
-  "hmrVersion": 1703194645223
+  "hmrVersion": 1703362530290
 }

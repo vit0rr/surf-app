@@ -84,7 +84,9 @@ Meteor.startup(() => Promise.asyncApply(() => {
   "extensions": [
     ".js",
     ".json",
-    ".jsx"
+    ".ts",
+    ".jsx",
+    ".mjs"
   ]
 });
 

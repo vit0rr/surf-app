@@ -15,6 +15,7 @@
 // Blocks
 @import '_banner.scss';
 @import '_image-grid.scss';
+@import '_tabs.scss';
 
 // Sections
 @import '_navbar.scss';
@@ -22,6 +23,7 @@
 
 // Pages
 @import '_page-home.scss';
+@import '_page-events.scss';
 
 * {
   box-sizing: border-box;

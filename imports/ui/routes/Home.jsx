@@ -20,6 +20,19 @@ export const Home = function () {
 						description: "Texas isn't known for its surfing, but Waco Surf has changed the game.",
 						buttonText: 'Watch Now',
 						buttonUrl: 'https://www.youtube.com/watch?v=jfGuUD-inBM'
+					},
+					{
+						src: 'banner-image-1.png',
+						title: (
+							<span>
+								The Rail Project: <br />
+								Julian Wilson has ride of his life as he surf-skates in water
+							</span>
+						),
+						subtitle: 'VOD',
+						description: 'A new kind of skate park.',
+						buttonText: 'Watch Now',
+						buttonUrl: 'https://www.youtube.com/watch?v=y2CTZ5GtMUA'
 					}
 				]}
 			/>
@@ -45,6 +58,7 @@ export const Home = function () {
 						image: 'what-it-takes.png'
 					}
 				]}
+				grid="uk-child-width-1-2@s uk-child-width-1-3@m uk-child-width-1-4@l"
 			/>
 		</main>
 	);
