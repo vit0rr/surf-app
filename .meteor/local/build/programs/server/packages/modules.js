@@ -278,7 +278,7 @@ module.exports = {
                                                                                                                        //
 module.exports = {
   "name": "@babel/runtime",
-  "version": "7.23.6",
+  "version": "7.23.8",
   "description": "babel's modular runtime helpers",
   "license": "MIT",
   "publishConfig": {
@@ -385,6 +385,15 @@ module.exports = {
       "./helpers/awaitAsyncGenerator.js"
     ],
     "./helpers/esm/awaitAsyncGenerator": "./helpers/esm/awaitAsyncGenerator.js",
+    "./helpers/callSuper": [
+      {
+        "node": "./helpers/callSuper.js",
+        "import": "./helpers/esm/callSuper.js",
+        "default": "./helpers/callSuper.js"
+      },
+      "./helpers/callSuper.js"
+    ],
+    "./helpers/esm/callSuper": "./helpers/esm/callSuper.js",
     "./helpers/checkInRHS": [
       {
         "node": "./helpers/checkInRHS.js",
@@ -394,6 +403,15 @@ module.exports = {
       "./helpers/checkInRHS.js"
     ],
     "./helpers/esm/checkInRHS": "./helpers/esm/checkInRHS.js",
+    "./helpers/construct": [
+      {
+        "node": "./helpers/construct.js",
+        "import": "./helpers/esm/construct.js",
+        "default": "./helpers/construct.js"
+      },
+      "./helpers/construct.js"
+    ],
+    "./helpers/esm/construct": "./helpers/esm/construct.js",
     "./helpers/defineAccessor": [
       {
         "node": "./helpers/defineAccessor.js",
@@ -430,6 +448,15 @@ module.exports = {
       "./helpers/interopRequireWildcard.js"
     ],
     "./helpers/esm/interopRequireWildcard": "./helpers/esm/interopRequireWildcard.js",
+    "./helpers/isNativeReflectConstruct": [
+      {
+        "node": "./helpers/isNativeReflectConstruct.js",
+        "import": "./helpers/esm/isNativeReflectConstruct.js",
+        "default": "./helpers/isNativeReflectConstruct.js"
+      },
+      "./helpers/isNativeReflectConstruct.js"
+    ],
+    "./helpers/esm/isNativeReflectConstruct": "./helpers/esm/isNativeReflectConstruct.js",
     "./helpers/iterableToArrayLimit": [
       {
         "node": "./helpers/iterableToArrayLimit.js",
@@ -655,24 +682,6 @@ module.exports = {
       "./helpers/setPrototypeOf.js"
     ],
     "./helpers/esm/setPrototypeOf": "./helpers/esm/setPrototypeOf.js",
-    "./helpers/isNativeReflectConstruct": [
-      {
-        "node": "./helpers/isNativeReflectConstruct.js",
-        "import": "./helpers/esm/isNativeReflectConstruct.js",
-        "default": "./helpers/isNativeReflectConstruct.js"
-      },
-      "./helpers/isNativeReflectConstruct.js"
-    ],
-    "./helpers/esm/isNativeReflectConstruct": "./helpers/esm/isNativeReflectConstruct.js",
-    "./helpers/construct": [
-      {
-        "node": "./helpers/construct.js",
-        "import": "./helpers/esm/construct.js",
-        "default": "./helpers/construct.js"
-      },
-      "./helpers/construct.js"
-    ],
-    "./helpers/esm/construct": "./helpers/esm/construct.js",
     "./helpers/isNativeFunction": [
       {
         "node": "./helpers/isNativeFunction.js",
