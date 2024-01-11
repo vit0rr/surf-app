@@ -1,0 +1,10 @@
+.transition {
+	&--event {
+		position: fixed;
+		top: 0;
+		left: 0;
+		z-index: 99;
+		object-fit: cover;
+		transition: all 250ms ease-in;
+	}
+}

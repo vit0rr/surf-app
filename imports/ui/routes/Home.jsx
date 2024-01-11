@@ -1,8 +1,11 @@
 import React from 'react';
 import { Banner } from '/imports/ui/components/Banner';
 import { ImageGrid } from '/imports/ui/components/ImageGrid';
+import data from '../../../client/scripts/data.js';
 
-export const Home = function () {
+export const Home = function (props) {
+	const events = data.events({ setRoute: props.setRoute }).slice(0, 3);
+
 	return (
 		<main className="page-home">
 			<Banner
@@ -38,26 +41,7 @@ export const Home = function () {
 			/>
 			<ImageGrid
 				title="What's Going Down"
-				items={[
-					{
-						title: 'Jack Robinson narrates five minutes of Fijian fire',
-						description:
-							'Jack Robinson talks us through scoring incredible waves at Cloudbreak on his first-ever mission to Fiji.',
-						image: 'jack-robinson.png'
-					},
-					{
-						title: 'Tahiti',
-						description:
-							'From the sheer terror of Teahupo’o to the relaxed family and ocean-based way of life, Tahiti offers something for everyone. Let No Contest give you a guided tour of these incredible islands.',
-						image: 'tahiti.png'
-					},
-					{
-						title: 'Molly Picklum: What it Takes',
-						description:
-							"Experience the highs and lows of the WSL World Tour and the mid-season cut, with Australian rookie Molly Picklum. Discover the headspace it requires to compete as one of the world's best surfers.",
-						image: 'what-it-takes.png'
-					}
-				]}
+				items={events}
 				grid="uk-child-width-1-2@s uk-child-width-1-3@m uk-child-width-1-4@l"
 			/>
 		</main>
