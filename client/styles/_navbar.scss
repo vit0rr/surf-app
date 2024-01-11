@@ -110,7 +110,7 @@ header {
 			}
 
 			&:hover::after {
-				background-color: $red-500;
+				background-color: $primary;
 			}
 		}
 	}
@@ -132,7 +132,7 @@ header {
 	top: 0;
 	left: 0;
 	z-index: 999;
-	background-color: $blue-700;
+	background-color: $secondary;
 	opacity: 0;
 	pointer-events: none;
 	transition: all 500ms ease-out;

@@ -1,0 +1,639 @@
+@mixin bg-texture {
+	background-image: url('./bg-texture-black-sand.jpeg');
+	background-blend-mode: screen;
+}
+
+.page-event {
+	width: 100%;
+	min-height: calc(100vh - 80px);
+	position: relative;
+	margin-top: -80px;
+	padding-top: 80px;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
+	overflow: hidden;
+
+	section {
+		width: 100%;
+	}
+
+	&__info,
+	&__date,
+	&__standings-title,
+	&__athlete-table,
+	&__park,
+	&__sponsors {
+		position: relative;
+		z-index: 2;
+	}
+
+	&__info,
+	&__standings-title,
+	&__athlete-table,
+	&__park-athlete {
+		max-width: $md;
+		margin: 0 auto;
+	}
+
+	&__bg {
+		height: 100%;
+		position: fixed;
+		top: 0;
+		left: 0;
+		z-index: 1;
+		overflow: hidden;
+		background-image: url('./event-bg-splash.png');
+		background-size: cover;
+		background-position: top center;
+		background-repeat: no-repeat;
+		pointer-events: none;
+
+		.page-event__bg-line {
+			width: 200vw;
+			height: 100px;
+			position: absolute;
+			bottom: 0%;
+			transform-origin: center center;
+
+			&-left {
+				transform: translate(-50%, -50%) rotate(30deg);
+				left: -15%;
+
+				@media (min-width: #{$md}) {
+					left: -10%;
+				}
+			}
+
+			&-right {
+				transform: translate(50%, -50%) rotate(-25deg);
+				right: 0%;
+			}
+
+			@media (min-width: #{$md}) {
+				height: 200px;
+				top: 65%;
+			}
+		}
+
+		&--background {
+			filter: grayscale(100%);
+			opacity: 0.25;
+		}
+
+		&--foreground {
+			&::before {
+				content: '';
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				top: 0;
+				left: 0;
+				background-image: url('./event-bg-grid.png');
+				background-size: cover;
+				background-position: top center;
+				background-repeat: no-repeat;
+			}
+		}
+	}
+
+	&__info {
+		@include flex(row, flex-start, center, wrap);
+
+		&-logo {
+			width: 25%;
+
+			@media (min-width: #{$md}) {
+				width: 160px;
+			}
+
+			img {
+				width: 100%;
+				height: auto;
+				display: block;
+			}
+		}
+
+		&-title {
+			max-width: calc(50% - #{$gutter});
+			margin-left: $gutter;
+
+			h1,
+			h2,
+			p {
+				margin: 0;
+			}
+
+			h1 {
+				letter-spacing: -1px;
+				font-size: clamp(14px, 4vw, 36px);
+
+				@media (min-width: #{$sm}) {
+					letter-spacing: -2px;
+				}
+			}
+		}
+
+		&-date {
+			max-width: calc(25% - #{$gutter});
+			margin-left: $gutter;
+			padding-left: $gutter;
+			border-left: 2px solid #000;
+
+			p {
+				margin: 0;
+				font-size: clamp(36px, 4vw, 48px);
+				color: $primary;
+			}
+		}
+
+		&--description {
+			@media (min-width: #{$md}) {
+				margin: 0 auto;
+			}
+
+			.uk-open,
+			div {
+				width: 100%;
+				max-width: 100%;
+			}
+
+			button {
+				cursor: pointer;
+				background-color: transparent;
+			}
+
+			p,
+			button {
+				line-height: 1.5;
+				font-size: 1rem;
+			}
+		}
+	}
+
+	&__standings-title {
+		@include flex(column, flex-start, flex-end);
+		width: 100%;
+		padding-bottom: 0;
+
+		button {
+			@include flex(column, flex-start, flex-end);
+			height: 40px;
+			margin: 0;
+			letter-spacing: -1px;
+			overflow: hidden;
+			background-color: transparent;
+
+			.icon-group {
+				width: 20px;
+				height: 40px;
+				position: relative;
+			}
+
+			.icon-up,
+			.icon-down {
+				position: absolute;
+				left: 0;
+			}
+
+			.icon-up {
+				top: 5px;
+			}
+
+			.icon-down {
+				bottom: 5px;
+			}
+
+			.standings-label {
+				margin-left: divide($gutter, 2);
+			}
+		}
+
+		.page-event__standings-tab {
+			@include flex(row, flex-start, center);
+			transition: all 200ms;
+		}
+	}
+
+	&__standings {
+		padding-bottom: multiply($gutter, 4);
+	}
+
+	&__athlete-table {
+		@include flex(column, flex-start, flex-start);
+		width: 100%;
+		opacity: 0;
+	}
+
+	// Athlete base styles
+	&__athlete {
+		@include flex(row, flex-start, stretch);
+		width: 100%;
+		text-decoration: none;
+		overflow: hidden;
+
+		&:visited,
+		&:focus,
+		&:hover {
+			text-decoration: none;
+		}
+
+		> div {
+			@include flex(row, center, center);
+			padding-top: $gutter;
+			padding-bottom: $gutter;
+			background-color: #000;
+			color: #fff;
+
+			h1,
+			h2,
+			h3,
+			h4,
+			h4,
+			h6,
+			p {
+				margin: 0;
+			}
+		}
+
+		&-name {
+			h1,
+			h2,
+			h3,
+			h4,
+			h4,
+			h6,
+			p {
+				color: #fff;
+			}
+		}
+
+		& + .page-event__athlete {
+			margin-top: $gutter;
+		}
+
+		&--heading + .page-event__athlete--heading {
+			margin-top: 0;
+		}
+	}
+
+	&__park {
+		padding-bottom: multiply($gutter, 8);
+		opacity: 0;
+
+		&-athlete {
+			width: 100%;
+			min-height: 55px;
+			position: relative;
+
+			&-run {
+				@include flex(row, flex-start, center);
+				width: fit-content;
+				max-width: calc(100% - #{$gutter});
+				position: absolute;
+				top: calc(100% - 20px);
+				left: $gutter;
+				z-index: 2;
+
+				@media (min-width: #{$md}) {
+					//left: multiply($gutter, 5);
+					top: calc(100% - 30px);
+					left: unset;
+					right: $gutter;
+				}
+
+				&::before {
+					content: '';
+					width: 50px;
+					height: 100%;
+					position: absolute;
+					top: 0;
+					left: multiply($gutter, -1);
+					z-index: 0;
+					transform: skew(-30deg);
+					background-color: #000;
+					color: transparent;
+				}
+			}
+
+			&-image {
+				width: 50px;
+				position: absolute;
+				top: 50%;
+				left: 0;
+				transform: translateY(-50%);
+				background-color: #fff;
+				border-radius: 100%;
+
+				@media (min-width: #{$md}) {
+					width: 75px;
+				}
+
+				img {
+					width: 100%;
+					height: auto;
+					display: block;
+					border-radius: 100%;
+				}
+			}
+
+			&-name,
+			&-current-run,
+			&-points {
+				min-width: 60px;
+				max-width: 60px;
+				padding: divide($gutter, 2);
+				padding-left: 0;
+				font-size: clamp(12px, 2vw, 24px);
+				color: #fff;
+				text-align: right;
+
+				@media (min-width: #{$md}) {
+					min-width: 120px;
+					max-width: 120px;
+					padding: $gutter;
+					padding-left: 0;
+				}
+			}
+
+			&-name {
+				width: 100%;
+				min-width: 0;
+				max-width: none;
+				padding-left: 75px;
+				text-align: left;
+
+				@media (min-width: #{$md}) {
+					width: 100%;
+					min-width: 0;
+					max-width: none;
+					padding-left: 100px;
+				}
+			}
+
+			&-current-run {
+				margin-left: auto;
+			}
+		}
+
+		&-map {
+			width: 100%;
+			max-width: $md;
+			position: relative;
+			margin: 0 auto;
+
+			img {
+				width: 100%;
+				height: auto;
+				position: relative;
+				z-index: 1;
+				display: block;
+				filter: drop-shadow(2px 4px 6px #000);
+			}
+
+			.line {
+				position: absolute;
+				z-index: 2;
+				transform: skew(-25deg);
+				border-top: 2px solid $primary;
+				border-left: 2px solid $primary;
+
+				div {
+					padding: 5px $gutter;
+					background-color: rgba(0, 0, 0, 0.75);
+
+					h6,
+					p {
+						margin: 0;
+					}
+
+					h6 {
+						font-size: 10px;
+					}
+
+					p {
+						font-size: clamp(8px, 2vw, 14px);
+						color: #fff;
+					}
+				}
+			}
+
+			[data-info] {
+				position: absolute;
+				bottom: calc(100% + 4px);
+				left: -10px;
+				transform: skew(25deg);
+
+				& + div {
+					visibility: hidden;
+					pointer-events: none;
+				}
+			}
+
+			.page-event__map-point {
+				width: 10px;
+				height: 10px;
+				position: absolute;
+				z-index: 2;
+				border-radius: 100%;
+			}
+		}
+	}
+
+	&__sponsors {
+		@include flex(row, space-between, center, wrap);
+		row-gap: $gutter;
+		padding-top: multiply($gutter, 4);
+		background-color: #000;
+
+		a {
+			width: calc(50% - #{$gutter} - #{$gutter});
+
+			@media (min-width: #{$sm}) {
+				width: calc(100% / 3 - #{$gutter} - #{$gutter});
+			}
+
+			@media (min-width: #{$md}) {
+				width: calc(100% / 6 - #{$gutter} - #{$gutter});
+			}
+		}
+
+		p {
+			margin: 0;
+			font-size: 10px;
+		}
+	}
+
+	// Key & Item overrides
+	.page-event__athlete-place,
+	.page-event__athlete-name,
+	.page-event__athlete-run,
+	.page-event__athlete-points,
+	.page-event__athlete-place *,
+	.page-event__athlete-name *,
+	.page-event__athlete-run *,
+	.page-event__athlete-points * {
+		font-size: clamp(12px, 2vw, 24px);
+	}
+
+	.page-event__athlete-name,
+	.page-event__athlete-run.page-event__athlete--heading,
+	.page-event__athlete-points.page-event__athlete--heading,
+	.page-event__athlete-name:not(.page-event__athlete--heading)::before,
+	.page-event__athlete-name:not(.page-event__athlete--heading)::after,
+	.page-event__park-athlete-run {
+		@include bg-texture;
+	}
+
+	.page-event__athlete-place {
+		min-width: 50px;
+		max-width: 50px;
+		position: relative;
+		z-index: 3;
+		display: flex;
+	}
+
+	.page-event__athlete-image {
+		min-width: 60px;
+		max-width: 60px;
+		background-color: $gray-600;
+
+		img {
+			width: 40px;
+			height: 40px;
+			object-fit: cover;
+			position: relative;
+			z-index: 2;
+			border-radius: 100%;
+			background-color: #fff;
+		}
+
+		@media (min-width: #{$sm}) {
+			min-width: 90px;
+			max-width: 90px;
+
+			img {
+				width: 70px;
+				height: 70px;
+			}
+		}
+	}
+
+	.page-event__athlete-run,
+	.page-event__athlete-points {
+		min-width: 60px;
+		max-width: 60px;
+		justify-content: flex-end;
+		padding-right: $gutter;
+
+		@media (min-width: #{$sm}) {
+			min-width: 90px;
+			max-width: 90px;
+		}
+
+		@media (min-width: #{$md}) {
+			min-width: 120px;
+			max-width: 120px;
+		}
+	}
+
+	.page-event__athlete-name {
+		@include flex(row, flex-start, center);
+		width: 100%;
+	}
+
+	.page-event__athlete-gender {
+		display: none;
+	}
+
+	// Key overrides
+	.page-event__athlete--heading {
+		color: #fff;
+
+		&-place,
+		&-image {
+			visibility: hidden;
+		}
+
+		&-name {
+			position: relative;
+
+			span {
+				position: relative;
+				z-index: 1;
+			}
+
+			&::before {
+				content: attr(data-name);
+				width: auto;
+				height: 100%;
+				position: absolute;
+				top: 0;
+				left: multiply($gutter, -2);
+				z-index: 0;
+				padding-left: multiply($gutter, 2);
+				padding-right: multiply($gutter, 3);
+				transform: skew(-30deg);
+				background-color: #000;
+				color: transparent;
+			}
+		}
+	}
+
+	// Item overrides
+	.page-event__athlete--item .page-event__athlete-image {
+		position: relative;
+
+		&::before,
+		&:after {
+			content: '';
+			width: 100%;
+			height: 50%;
+			position: absolute;
+			right: -40%;
+			z-index: 1;
+			background-color: $gray-600;
+		}
+
+		&::before {
+			top: 0;
+			transform: translateX(0%) skew(30deg);
+		}
+
+		&::after {
+			bottom: 0;
+			transform: translateX(0%) skew(-30deg);
+		}
+	}
+
+	.page-event__athlete--item .page-event__athlete-name {
+		position: relative;
+		padding-left: 40px;
+
+		&::before,
+		&:after {
+			content: '';
+			width: 100%;
+			height: 50%;
+			position: absolute;
+			right: multiply($gutter, -1);
+			z-index: 1;
+			background-color: inherit;
+		}
+
+		&::before {
+			top: 0;
+			transform: skew(30deg);
+		}
+
+		&::after {
+			bottom: 0;
+			transform: skew(-30deg);
+		}
+
+		h6 {
+			position: relative;
+			z-index: 2;
+		}
+	}
+}

@@ -24,13 +24,14 @@ export const Navbar = (props) => {
 		if (props.routes[route].active) _route = props.routes[route];
 	}
 
+	let backgroundColor = 'transparent';
+	if (_route && _route.background) backgroundColor = _route.background;
+
 	return (
 		<Fragment>
 			<header
 				uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky; end: + *;"
-				style={{
-					backgroundColor: _route.background
-				}}
+				style={{ backgroundColor }}
 			>
 				<nav className="uk-navbar-container">
 					<div className="uk-container">
@@ -47,11 +48,15 @@ export const Navbar = (props) => {
 
 							<div className="uk-navbar-center">
 								<ul className="uk-navbar-nav">
-									{Object.keys(props.routes).map((route, index) => (
-										<li key={index}>
-											<a onClick={() => props.setRoute(route)}>{route}</a>
-										</li>
-									))}
+									{Object.keys(props.routes).map((route, index) => {
+										if (!props.routes[route].hidden) {
+											return (
+												<li key={index}>
+													<a onClick={() => props.setRoute(route)}>{route}</a>
+												</li>
+											);
+										}
+									})}
 								</ul>
 							</div>
 
@@ -116,26 +121,17 @@ export const Navbar = (props) => {
 							{/* Nav Items */}
 							<div className="uk-width-1-1 uk-width-1-3@m">
 								<ul className="uk-nav">
-									<li className="uk-active">
-										<a className="uk-text-large" href="/">
-											Home
-										</a>
-									</li>
-									<li>
-										<a className="uk-text-large" href="">
-											Events
-										</a>
-									</li>
-									<li>
-										<a className="uk-text-large" href="">
-											Parks
-										</a>
-									</li>
-									<li>
-										<a className="uk-text-large" href="">
-											Atheletes
-										</a>
-									</li>
+									{Object.keys(props.routes).map((route, index) => {
+										if (!props.routes[route].hidden) {
+											return (
+												<li key={index}>
+													<a className="uk-text-uppercase" onClick={() => props.setRoute(route)}>
+														{route}
+													</a>
+												</li>
+											);
+										}
+									})}
 								</ul>
 							</div>
 
@@ -150,31 +146,31 @@ export const Navbar = (props) => {
 									<ul className="uk-slider-items uk-child-width-1-2 uk-child-width-1-3@s uk-child-width-1-4@m">
 										<li>
 											<img src="red-bull-magnitude.png" alt="" />
-											<div className="uk-position-center uk-panel">
+											<div className="uk-position-center uk-panel uk-padding-small">
 												<h6>Red Bull Magnitude</h6>
 											</div>
 										</li>
 										<li>
 											<img src="foam-wreckers.png" alt="" />
-											<div className="uk-position-center uk-panel">
+											<div className="uk-position-center uk-panel uk-padding-small">
 												<h6>Red Bull Foam Wreckers: Cocoa Beach, Florida</h6>
 											</div>
 										</li>
 										<li>
 											<img src="tudor.png" alt="" />
-											<div className="uk-position-center uk-panel">
+											<div className="uk-position-center uk-panel uk-padding-small">
 												<h6>TUDOR Nazaré Big Wave Challenge</h6>
 											</div>
 										</li>
 										<li>
 											<img src="us-open.png" alt="" />
-											<div className="uk-position-center uk-panel">
+											<div className="uk-position-center uk-panel uk-padding-small">
 												<h6>US Open of Surfing</h6>
 											</div>
 										</li>
 										<li>
 											<img src="foam-wreckers-new-york.png" alt="" />
-											<div className="uk-position-center uk-panel">
+											<div className="uk-position-center uk-panel uk-padding-small">
 												<h6>Red Bull Foam Wreckers: Rockaway Beach, New York</h6>
 											</div>
 										</li>

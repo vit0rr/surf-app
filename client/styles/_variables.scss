@@ -6,11 +6,23 @@ $lg: 1200px;
 $xl: 1600px;
 
 $blue-100: #28a5f5;
+$blue-200: #86bbd8;
 $blue-500: #1e87f0;
 $blue-700: #001c39;
+$blue-800: #061d2a;
 $gray-100: #999;
+$gray-600: #2d2e32;
+$gold-500: #c07a07;
 $red-300: #f0506e;
 $red-500: #c12841;
+$yellow-100: #f9e88b;
+$yellow-300: #f4d64b;
+$yellow-400: #f0ab0d;
+$yellow-800: #846038;
+$orange-500: #e59838;
+
+$primary: $red-500;
+$secondary: $blue-700;
 
 $border-radius: 100px;
 
@@ -20,9 +32,26 @@ $border-radius: 100px;
   --md: #{$md};
   --lg: #{$lg};
   --xl: #{$xl};
+
   --blue-100: #{$blue-100};
+  --blue-200: #{$blue-200};
   --blue-500: #{$blue-500};
   --blue-700: #{$blue-700};
+  --blue-800: #{$blue-800};
+  --gray-100: #{$gray-100};
+  --gray-600: #{$gray-600};
+  --gold-500: #{$gold-500};
   --red-300: #{$red-300};
   --red-500: #{$red-500};
+  --yellow-100: #{$yellow-100};
+  --yellow-300: #{$yellow-300};
+  --yellow-400: #{$yellow-400};
+  --yellow-800: #{$yellow-800};
+  --orange-500: #{$orange-500};
+
+  --primary: #{$primary};
+  --secondary: #{$secondary};
+
+  --animate-duration: 500ms !important;
+  --animate-delay: 500ms !important;
 }

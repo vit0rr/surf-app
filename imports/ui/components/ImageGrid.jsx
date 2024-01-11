@@ -6,7 +6,8 @@ export const ImageGrid = function ({
 	filter = false,
 	fillImage = false,
 	items = [],
-	title = ''
+	title = '',
+	setRoute = null
 }) {
 	return (
 		<section className="image-grid">
@@ -27,10 +28,14 @@ export const ImageGrid = function ({
 							}
 
 							return (
-								<a href="/" key={index} className={className}>
+								<a
+									key={item.id ? item.id : index}
+									className={className}
+									onClick={(event) => item.setRoute(event, item)}
+								>
 									<div className="uk-card uk-card-default uk-card-body">
 										<div className="image-grid__item-image">
-											<img src={item.image} />
+											<img data-image={item.id ? item.id : index} src={item.image} />
 										</div>
 										<div className="uk-padding image-grid__item-body">
 											{date && (

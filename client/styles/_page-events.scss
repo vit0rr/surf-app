@@ -22,4 +22,8 @@
 	form {
 		margin-bottom: $gutter;
 	}
+
+	.image-grid [uk-grid] {
+		min-height: 100dvh;
+	}
 }

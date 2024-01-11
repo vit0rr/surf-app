@@ -5,6 +5,7 @@
 	img,
 	video {
 		min-height: 320px;
+		height: 100dvh;
 	}
 
 	img,
@@ -97,7 +98,7 @@
 					position: absolute;
 					top: 0;
 					left: 0;
-					background-color: $red-500;
+					background-color: $primary;
 					-webkit-backdrop-filter: blur(0px);
 					backdrop-filter: blur(0px);
 				}

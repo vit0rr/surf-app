@@ -1,59 +1,11 @@
 import React, { useState } from 'react';
 import { Tabs } from '../components/Tabs.jsx';
 import { ImageGrid } from '../components/ImageGrid.jsx';
+import data from '../../../client/scripts/data.js';
 
-const events = [
-	{
-		tag: 'Park',
-		title: 'Jack Robinson narrates five minutes of Fijian fire',
-		description:
-			'Jack Robinson talks us through scoring incredible waves at Cloudbreak on his first-ever mission to Fiji.',
-		image: 'jack-robinson.png',
-		subtitle: '',
-		date: '07-12-2024',
-		url: '/a'
-	},
-	{
-		tag: 'Pipe',
-		title: 'Tahiti',
-		description:
-			'From the sheer terror of Teahupo’o to the relaxed family and ocean-based way of life, Tahiti offers something for everyone. Let No Contest give you a guided tour of these incredible islands.',
-		image: 'tahiti.png',
-		subtitle: '',
-		date: '07-26-2024',
-		url: '/b'
-	},
-	{
-		tag: 'Park',
-		title: 'Molly Picklum: What it Takes',
-		description:
-			"Experience the highs and lows of the WSL World Tour and the mid-season cut, with Australian rookie Molly Picklum. Discover the headspace it requires to compete as one of the world's best surfers.",
-		image: 'what-it-takes.png',
-		subtitle: '',
-		date: '09-01-2024',
-		url: '/c'
-	},
-	{
-		tag: 'Big Wave',
-		title: 'Waco Surf Trip with the GoPro Surf Team',
-		description: "Texas isn't known for its surfing, but Waco Surf has changed the game.",
-		image: 'what-it-takes.png',
-		subtitle: '',
-		date: '09-23-2024',
-		url: '/d'
-	},
-	{
-		tag: 'Big Wave',
-		title: 'The Rail Project: Julian Wilson has ride of his life as he surf-skates in water',
-		description: 'A new kind of skate park.',
-		image: 'what-it-takes.png',
-		subtitle: '',
-		date: '10-25-2024',
-		url: '/e'
-	}
-];
+export const Events = function (props) {
+	const events = data.events();
 
-export const Events = function () {
 	const [search, setSearch] = useState();
 
 	const applySearch = function (value) {
