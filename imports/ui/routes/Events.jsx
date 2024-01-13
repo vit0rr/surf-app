@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Tabs } from '../components/Tabs.jsx';
 import { ImageGrid } from '../components/ImageGrid.jsx';
-import data from '../../../client/scripts/data.js';
+import data from '../../../client/scripts/data';
 
 export const Events = function (props) {
 	const events = data.events();

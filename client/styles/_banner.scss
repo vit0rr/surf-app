@@ -36,6 +36,7 @@
 		}
 
 		h4 {
+			color: $primary;
 			font-size: 0.9rem;
 			@media (max-width: #{$md}) {
 				font-size: 0.75rem;
@@ -43,7 +44,7 @@
 		}
 
 		h3 {
-			margin-bottom: $gutter;
+			margin-bottom: divide($gutter, 2);
 			line-height: 1.2;
 
 			@media (max-width: #{$md}) {
@@ -53,6 +54,8 @@
 
 		p {
 			max-width: 600px;
+			margin-top: 0;
+			margin-bottom: 0;
 			color: #fff;
 			line-height: 1.2;
 		}

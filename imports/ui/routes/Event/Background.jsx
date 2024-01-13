@@ -11,13 +11,13 @@ export const Background = function ({ event, primary, secondary }) {
 
 	return (
 		<Fragment>
-			<section
+			<div
 				className="page-event__bg page-event__bg--background"
 				style={{
 					backgroundImage: `url(./${event.image})`
 				}}
-			></section>
-			<section className="page-event__bg page-event__bg--foreground">
+			></div>
+			<div className="page-event__bg page-event__bg--foreground">
 				<div
 					className="page-event__bg-line page-event__bg-line-left"
 					style={{
@@ -30,7 +30,7 @@ export const Background = function ({ event, primary, secondary }) {
 						background: gradient
 					}}
 				/>
-			</section>
+			</div>
 		</Fragment>
 	);
 };

@@ -1,0 +1,58 @@
+.stream {
+	position: relative;
+
+	&.expand {
+		width: 100vw;
+		height: 100dvh;
+		position: fixed !important;
+		top: 0;
+		left: 0;
+		z-index: 999;
+		padding: calc(var(--header-height) + #{$gutter}) $gutter $gutter;
+		opacity: 0;
+		background-color: #fff;
+
+		[data-expand-trigger] {
+			top: calc(var(--header-height) + #{$gutter});
+			right: $gutter;
+		}
+	}
+
+	&.animate__fadeIn {
+		opacity: 1;
+	}
+
+	h4 {
+		margin-top: 0;
+
+		span {
+			color: #000;
+		}
+	}
+
+	&__video-player {
+		position: relative;
+
+		video {
+			filter: grayscale(1) opacity(0.75);
+			transition: filter var(--animate-delay) ease-in-out;
+
+			&.playing {
+				filter: grayscale(0) opacity(1);
+			}
+		}
+	}
+
+	&__play {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		z-index: 2;
+
+		svg {
+			width: 50px;
+			color: #fff;
+		}
+	}
+}

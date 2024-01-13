@@ -708,25 +708,25 @@
       "where": "client",
       "type": "js",
       "cacheable": true,
-      "url": "/app/app.js?hash=7a92b3e218ea4ff4140ab6f4b184a42a14196c87",
+      "url": "/app/app.js?hash=c7642adc84e6aaf884775234351cf54ae1bbfd4c",
       "replaceable": true,
       "sourceMap": "app/app.js.map",
-      "sourceMapUrl": "/app/7a92b3e218ea4ff4140ab6f4b184a42a14196c87.map",
-      "size": 85416,
-      "hash": "7a92b3e218ea4ff4140ab6f4b184a42a14196c87",
-      "sri": "GKUA2jZEuwdqabqQqlMIzgO1l5ECSmlL1YLRjG7RJH0fidBq0ZbBdsf2tV/Svj7lap0OEYJDOurxn4MS1DaBpQ=="
+      "sourceMapUrl": "/app/c7642adc84e6aaf884775234351cf54ae1bbfd4c.map",
+      "size": 123979,
+      "hash": "c7642adc84e6aaf884775234351cf54ae1bbfd4c",
+      "sri": "o4vn+7ccLP3cpfyuKC8xQ0m0gIqDuREPI3NiYQYMoTClPJzGxxA7G+7Awg1R5o9L6XEMEOcUjFQEmRp7T8d1iQ=="
     },
     {
       "path": "merged-stylesheets.css",
       "where": "client",
       "type": "css",
       "cacheable": true,
-      "url": "/merged-stylesheets.css?hash=e7f232e90e7fdd0efacbf2be0bf11d33f088ec11",
+      "url": "/merged-stylesheets.css?hash=1b02d4f9a67fa3d17a0405abdc23ed6e83f1ccfb",
       "sourceMap": "merged-stylesheets.css.map",
-      "sourceMapUrl": "/e7f232e90e7fdd0efacbf2be0bf11d33f088ec11.map",
-      "size": 324253,
-      "hash": "e7f232e90e7fdd0efacbf2be0bf11d33f088ec11",
-      "sri": "1LjiL7Iw9EvxRh3VOUErtnDrvC3E+hIYQHi/xfw6tqaNY3KqrKvwULTN+Pd7Qh9KqiKz2JH8RorI/9vmnugcVA=="
+      "sourceMapUrl": "/1b02d4f9a67fa3d17a0405abdc23ed6e83f1ccfb.map",
+      "size": 338174,
+      "hash": "1b02d4f9a67fa3d17a0405abdc23ed6e83f1ccfb",
+      "sri": "t7jx6wjzs0uNwmHtymHfKgGn9jf3AP3XLg2wi2QuYGq4HU69CWQaD4sonIKEA2ND6EXH+P/a94kdNhCHXUW/+g=="
     },
     {
       "path": "packages/promise/promise.d.ts",
@@ -816,6 +816,56 @@
       "url": "/banner.mp4",
       "size": 17631544,
       "hash": "def9b5db449de8a711a9cc3aa2fb4637c9039107",
+      "sri": null
+    },
+    {
+      "path": "app/barreled-1.jpeg",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/barreled-1.jpeg",
+      "size": 289363,
+      "hash": "0f9caafd40839c004d203b374ffebcd7c9e9830b",
+      "sri": null
+    },
+    {
+      "path": "app/barreled-2.jpeg",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/barreled-2.jpeg",
+      "size": 67853,
+      "hash": "4e0e97744885a3080abfd3226fc5b951872da923",
+      "sri": null
+    },
+    {
+      "path": "app/barreled-3.jpeg",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/barreled-3.jpeg",
+      "size": 477666,
+      "hash": "8a1785afbeebf02662d25d18319ffdea75714ab8",
+      "sri": null
+    },
+    {
+      "path": "app/barreled-logo.png",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/barreled-logo.png",
+      "size": 154993,
+      "hash": "666b1db3e34d314e6b5c3e0aae9c607f981ae037",
+      "sri": null
+    },
+    {
+      "path": "app/barreled.jpeg",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/barreled.jpeg",
+      "size": 526469,
+      "hash": "9f7c01bf044cb0de2c4b5d26eff4dc6eac9e4234",
       "sri": null
     },
     {
@@ -976,6 +1026,16 @@
       "url": "/event-logo.png",
       "size": 23090,
       "hash": "8c005ba41a86ffd1c17fe75cec2f31466c203129",
+      "sri": null
+    },
+    {
+      "path": "app/event-video.mp4",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/event-video.mp4",
+      "size": 9665354,
+      "hash": "15166d31394adc47abe439505fd660a33f166c26",
       "sri": null
     },
     {
@@ -6671,5 +6731,5 @@
       "hash": "c4178ccf27875de05579329a3b18e881506d254c"
     }
   ],
-  "hmrVersion": 1705002650702
+  "hmrVersion": 1705139020657
 }

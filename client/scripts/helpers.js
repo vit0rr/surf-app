@@ -1,11 +1,33 @@
+/**
+ * Creates aribtrary wait time based on miliseconds
+ * @param { int } milliseconds
+ * @return { promise } resolves once time has been reached
+ * */
 export const asyncTimeout = function (ms) {
 	return new Promise((resolve) => setTimeout(resolve, ms));
 };
 
+/**
+ * Gets CSS variables for usage
+ * @param { string } variable name
+ * */
 export const getCSSVariable = function (variable) {
 	if (!window) return;
 
 	return getComputedStyle(document.body).getPropertyValue(variable);
+};
+
+/**
+ * Creates intersection observe to detect when element comes into view
+ * @params { object } el - dom element to monitor
+ * @params { func } callback - returns event when dom element comes in and out of status
+ * */
+export const intersectionObserver = function (el, callback, options = {}) {
+	if (!window) return;
+
+	if (!el || !callback) return;
+	const observer = new IntersectionObserver(callback, options);
+	observer.observe(el);
 };
 
 export const handleize = function (str) {
@@ -16,7 +38,7 @@ export const handleize = function (str) {
 };
 
 export const randomInt = function (min, max, wholenum) {
-	if (wholenum) Math.floor(Math.random() * (max - min + 1) + min);
+	if (wholenum) return Math.floor(Math.random() * (max - min + 1) + min);
 	return Math.random() * (max - min + 1) + min;
 };
 

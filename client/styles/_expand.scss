@@ -1,0 +1,13 @@
+[data-expand] {
+	position: relative;
+}
+
+[data-expand-trigger] {
+	position: absolute;
+	top: 0;
+	right: 0;
+
+	* {
+		fill: #000;
+	}
+}

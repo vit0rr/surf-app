@@ -6438,6 +6438,7 @@ iframe[data-uk-cover], iframe[uk-cover] {
   --md: 960px;
   --lg: 1200px;
   --xl: 1600px;
+  --header-height: 80px;
   --blue-100: #28a5f5;
   --blue-200: #86bbd8;
   --blue-500: #1e87f0;
@@ -6465,6 +6466,16 @@ iframe[data-uk-cover], iframe[uk-cover] {
   z-index: 99;
   object-fit: cover;
   transition: all 250ms ease-in; }
+
+[data-expand] {
+  position: relative; }
+
+[data-expand-trigger] {
+  position: absolute;
+  top: 0;
+  right: 0; }
+  [data-expand-trigger] * {
+    fill: #000; }
 
 .banner {
   width: 100%; }
@@ -6495,18 +6506,21 @@ iframe[data-uk-cover], iframe[uk-cover] {
       margin: 0;
       color: #fff; }
     .banner__content h4 {
+      color: #c12841;
       font-size: 0.9rem; }
       @media (max-width: 960px) {
         .banner__content h4 {
           font-size: 0.75rem; } }
     .banner__content h3 {
-      margin-bottom: 15px;
+      margin-bottom: calc(15px / 2);
       line-height: 1.2; }
       @media (max-width: 960px) {
         .banner__content h3 {
           font-size: 1.1rem; } }
     .banner__content p {
       max-width: 600px;
+      margin-top: 0;
+      margin-bottom: 0;
       color: #fff;
       line-height: 1.2; }
     @media (min-width: 960px) {
@@ -6557,6 +6571,90 @@ iframe[data-uk-cover], iframe[uk-cover] {
     width: 0%; }
   to {
     width: 100%; } }
+
+.cta-register {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+  flex-wrap: nowrap;
+  container: register / inline-size;
+  width: 100%;
+  position: relative;
+  row-gap: calc(15px / 2);
+  padding: 15px;
+  overflow: hidden; }
+  @media (min-width: 768px) {
+    .cta-register {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+      flex-wrap: wrap; } }
+  .cta-register::before {
+    content: '';
+    width: calc(100% / 3 * 2);
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 2;
+    background-color: #fff;
+    opacity: 0.75; }
+  .cta-register__info, .cta-register__cta {
+    z-index: 2; }
+  .cta-register__cover {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    z-index: 1;
+    filter: grayscale(1) opacity(0.55) brightness(0.35); }
+  .cta-register__info {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: nowrap; }
+    .cta-register__info img {
+      width: auto;
+      height: 35px;
+      display: block;
+      margin: 0; }
+      @media (min-width: 960px) {
+        .cta-register__info img {
+          height: 45px; } }
+    .cta-register__info img + .cta-register__title {
+      margin-left: 15px; }
+  .cta-register__title h5 {
+    font-size: clamp(16px, 2vw, 24px); }
+  .cta-register__cta {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: nowrap; }
+    @media (min-width: 768px) {
+      .cta-register__cta {
+        margin-left: auto; } }
+    .cta-register__cta h6 {
+      font-size: clamp(16px, 2vw, 24px); }
+  .cta-register h5,
+  .cta-register h6,
+  .cta-register button {
+    position: relative;
+    z-index: 3; }
+  .cta-register h5,
+  .cta-register h6 {
+    margin: 0; }
+  .cta-register button {
+    margin-left: 15px; }
+    @media (max-width: 768px) {
+      .cta-register button {
+        line-height: calc(15px * 2);
+        padding: 0 15px; } }
 
 .image-grid a,
 .image-grid a:visited {
@@ -6655,6 +6753,394 @@ iframe[data-uk-cover], iframe[uk-cover] {
       margin-left: 15px; }
     .image-grid .image_grid-item--date .image-grid__item-body h3 {
       margin-top: 0; } }
+
+.park-map {
+  container: park / inline-size;
+  width: 100%;
+  max-width: 960px;
+  position: relative;
+  margin: 0 auto; }
+  .park-map.expand {
+    width: 100vw;
+    height: 100dvh;
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    padding: calc(var(--header-height) + 15px) 15px 15px;
+    opacity: 0;
+    background-color: #fff; }
+    .park-map.expand [data-expand-trigger] {
+      top: calc(var(--header-height) + 15px);
+      right: 15px; }
+  .park-map.animate__fadeIn {
+    opacity: 1; }
+  .park-map h4 span {
+    color: #000; }
+  .park-map img {
+    width: 100%;
+    height: auto;
+    position: relative;
+    z-index: 1;
+    display: block;
+    filter: drop-shadow(2px 4px 6px #000); }
+  .park-map .line {
+    position: absolute;
+    z-index: 2;
+    transform: skew(-25deg);
+    border-top: 2px solid #c12841;
+    border-left: 2px solid #c12841; }
+    .park-map .line div {
+      padding: 5px 15px;
+      background-color: rgba(0, 0, 0, 0.75); }
+      .park-map .line div h6,
+      .park-map .line div p {
+        margin: 0; }
+      .park-map .line div h6 {
+        font-size: 10px; }
+      .park-map .line div p {
+        font-size: clamp(8px, 2vw, 14px);
+        color: #fff; }
+  .park-map [data-info] {
+    position: absolute;
+    bottom: calc(100% + 4px);
+    left: -10px;
+    transform: skew(25deg); }
+    .park-map [data-info] + div {
+      visibility: hidden;
+      pointer-events: none; }
+  .park-map__athlete {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: nowrap;
+    width: 100%;
+    height: 0;
+    position: relative; }
+    .park-map__athlete-run {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      align-items: center;
+      flex-wrap: nowrap;
+      width: calc(100% - 15px);
+      position: absolute;
+      top: 100%;
+      right: 0; }
+
+@container park (width > 500px) {
+  .park-map__athlete-run {
+    max-width: 75%;
+    right: 15px; } }
+
+@container park (width > 750px) {
+  .park-map__athlete-run {
+    max-width: 50%; } }
+      .park-map__athlete-run::before {
+        content: '';
+        width: 150px;
+        height: 125%;
+        position: absolute;
+        top: 50%;
+        left: calc(15px * -1.5);
+        transform: translateY(-50%) skew(-15deg);
+        background-color: #000; }
+    .park-map__athlete-image {
+      width: auto;
+      height: 150%;
+      aspect-ratio: 1/1;
+      position: absolute;
+      top: 50%;
+      left: 15px;
+      transform: translateY(-50%);
+      border-radius: 100%;
+      overflow: hidden;
+      background-color: #fff; }
+      .park-map__athlete-image img {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover; }
+    .park-map__athlete-name, .park-map__athlete-run, .park-map__athlete-points {
+      color: #fff; }
+  .park-map__map {
+    width: 100%;
+    margin-top: calc(15px * 2);
+    position: relative;
+    z-index: 2; }
+  .park-map__map-point {
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    z-index: 2;
+    border-radius: 100%; }
+
+.standings {
+  container: standings / inline-size; }
+  .standings.expand {
+    width: 100vw;
+    height: 100dvh;
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    padding: calc(var(--header-height) + 15px) 15px 15px;
+    opacity: 0;
+    background-color: #fff; }
+    .standings.expand [data-expand-trigger] {
+      top: calc(var(--header-height) + 15px);
+      right: unset;
+      left: 15px; }
+  .standings [data-expand-trigger] {
+    right: unset;
+    left: 0; }
+  .standings.animate__fadeIn {
+    opacity: 1; }
+  .standings h1,
+  .standings h2,
+  .standings h3,
+  .standings h4,
+  .standings h4,
+  .standings h6,
+  .standings p,
+  .standings span {
+    margin: 0;
+    color: #fff; }
+  .standings__table-header, .standings__table-body {
+    width: 100%; }
+  .standings__table-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-end;
+    flex-wrap: nowrap;
+    padding-bottom: 0; }
+    .standings__table-header button {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-end;
+      flex-wrap: nowrap;
+      height: 40px;
+      margin-top: 0;
+      overflow: hidden;
+      background-color: transparent; }
+      .standings__table-header button * {
+        fill: #000; }
+      .standings__table-header button .icon-group {
+        width: 20px;
+        height: 40px;
+        position: relative; }
+      .standings__table-header button .icon-up,
+      .standings__table-header button .icon-down {
+        position: absolute;
+        left: 0; }
+      .standings__table-header button .icon-up {
+        top: 5px; }
+      .standings__table-header button .icon-down {
+        bottom: 5px; }
+      .standings__table-header button .standings-label {
+        margin-left: calc(15px / 2); }
+    .standings__table-header .page-event__standings-tab {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+      flex-wrap: nowrap;
+      transition: all 200ms; }
+  .standings__table-body {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    opacity: 0; }
+  .standings .standings__table-cell-head--name,
+  .standings .standings__table-cell-head--run,
+  .standings .standings__table-cell-head--points {
+    padding: 15px calc(15px / 2); }
+  .standings .standings__table-cell-head--run {
+    position: relative;
+    z-index: 1; }
+    .standings .standings__table-cell-head--run::before {
+      content: '';
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      right: 100%;
+      background-color: #000; }
+  .standings .standings__table-cell-data-item--place {
+    text-align: center; }
+  .standings .standings__table-cell-data-item--place {
+    min-width: 25px;
+    max-width: 25px; }
+  .standings .standings__table-cell-head--run,
+  .standings .standings__table-cell-data-item--run,
+  .standings .standings__table-cell-head--points,
+  .standings .standings__table-cell-data-item--points {
+    min-width: 50px;
+    max-width: 50px;
+    position: relative;
+    text-align: right; }
+
+@container standings (width > 400px) {
+  .standings .standings__table-cell-head--run,
+  .standings .standings__table-cell-data-item--run,
+  .standings .standings__table-cell-head--points,
+  .standings .standings__table-cell-data-item--points {
+    min-width: 75px;
+    max-width: 75px; } }
+  .standings .standings__table-cell-data-item--run,
+  .standings .standings__table-cell-data-item--points {
+    position: relative;
+    z-index: 2; }
+  .standings .standings__table-cell-head--image,
+  .standings .standings__table-cell-data-item--image {
+    min-width: 75px;
+    max-width: 75px;
+    height: 75px;
+    text-align: center; }
+  .standings .standings__table-cell-data-item--image {
+    position: relative; }
+    .standings .standings__table-cell-data-item--image::before {
+      content: '';
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      background-color: #2d2e32; }
+    .standings .standings__table-cell-data-item--image img {
+      position: relative;
+      z-index: 2; }
+  .standings .standings__table-cell-data-item--name {
+    flex: 1; }
+  .standings__table-cell-head {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    font-size: 10px; }
+
+@container standings (width> 400px) {
+  .standings__table-cell-head {
+    font-size: 14px; } }
+    .standings__table-cell-head--run, .standings__table-cell-head--points {
+      background-color: #000; }
+    .standings__table-cell-head--name {
+      width: calc(100% - 125px);
+      height: 40px;
+      position: relative;
+      z-index: 2;
+      transform: skew(-15deg);
+      margin-left: auto; }
+
+@container standings (width> 400px) {
+  .standings__table-cell-head--name {
+    width: calc(100% - 175px);
+    height: 60px; } }
+    .standings__table-cell-head--gender {
+      display: none; }
+    .standings__table-cell-head--place span, .standings__table-cell-head--image span {
+      visibility: hidden; }
+  .standings__table-cell-data {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: nowrap;
+    width: 100%;
+    position: relative;
+    margin-top: 15px;
+    background-image: url("bg-texture-black-sand.jpeg");
+    background-size: cover;
+    background-position: center center;
+    background-blend-mode: screen;
+    text-decoration: none;
+    font-size: 12px; }
+
+@container standings (width> 400px) {
+  .standings__table-cell-data {
+    font-size: 14px; } }
+    .standings__table-cell-data::before, .standings__table-cell-data::after {
+      content: '';
+      height: 100%;
+      position: absolute;
+      top: 0;
+      z-index: 1;
+      background-color: #000; }
+    .standings__table-cell-data::before {
+      width: 75px;
+      left: 0; }
+    .standings__table-cell-data::after {
+      width: 100px;
+      right: 0; }
+
+@container standings (width > 400px) {
+  .standings__table-cell-data::after {
+    width: 150px; } }
+    .standings__table-cell-data:hover, .standings__table-cell-data:visited, .standings__table-cell-data:focus,
+    .standings__table-cell-data * {
+      text-decoration: none; }
+  .standings__table-cell-data-item--place, .standings__table-cell-data-item--run, .standings__table-cell-data-item--points {
+    position: relative;
+    z-index: 2; }
+  .standings__table-cell-data-item--name, .standings__table-cell-data-item--run, .standings__table-cell-data-item--points {
+    padding: calc(15px / 2); }
+  .standings__table-cell-data-item--image {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    width: 100px; }
+    .standings__table-cell-data-item--image img {
+      width: 50px;
+      height: 50px;
+      border-radius: 100%;
+      background-color: #fff; }
+
+.stream {
+  position: relative; }
+  .stream.expand {
+    width: 100vw;
+    height: 100dvh;
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    padding: calc(var(--header-height) + 15px) 15px 15px;
+    opacity: 0;
+    background-color: #fff; }
+    .stream.expand [data-expand-trigger] {
+      top: calc(var(--header-height) + 15px);
+      right: 15px; }
+  .stream.animate__fadeIn {
+    opacity: 1; }
+  .stream h4 {
+    margin-top: 0; }
+    .stream h4 span {
+      color: #000; }
+  .stream__video-player {
+    position: relative; }
+    .stream__video-player video {
+      filter: grayscale(1) opacity(0.75);
+      transition: filter var(--animate-delay) ease-in-out; }
+      .stream__video-player video.playing {
+        filter: grayscale(0) opacity(1); }
+  .stream__play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2; }
+    .stream__play svg {
+      width: 50px;
+      color: #fff; }
 
 .tabs {
   width: 100%;
@@ -6895,19 +7381,29 @@ footer {
   position: relative;
   margin-top: -80px;
   padding-top: 80px;
+  padding-bottom: 80px;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
   overflow: hidden; }
+  .page-event .container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    row-gap: 15px; }
+    .page-event .container section.animate__animated {
+      opacity: 0; }
+      .page-event .container section.animate__animated.animate__fadeIn {
+        opacity: 1; }
   .page-event section {
-    width: 100%; }
-  .page-event__info, .page-event__date, .page-event__standings-title, .page-event__athlete-table, .page-event__park, .page-event__sponsors {
     position: relative;
     z-index: 2; }
-  .page-event__info, .page-event__standings-title, .page-event__athlete-table, .page-event__park-athlete {
-    max-width: 960px;
-    margin: 0 auto; }
+    .page-event section .uk-card + .uk-card {
+      margin-top: 15px; }
   .page-event__bg {
+    width: 100%;
     height: 100%;
     position: fixed;
     top: 0;
@@ -6952,415 +7448,452 @@ footer {
       background-size: cover;
       background-position: top center;
       background-repeat: no-repeat; }
-  .page-event__info {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-    flex-wrap: wrap; }
-    .page-event__info-logo {
-      width: 25%; }
-      @media (min-width: 960px) {
-        .page-event__info-logo {
-          width: 160px; } }
-      .page-event__info-logo img {
-        width: 100%;
-        height: auto;
-        display: block; }
-    .page-event__info-title {
-      max-width: calc(50% - 15px);
-      margin-left: 15px; }
-      .page-event__info-title h1,
-      .page-event__info-title h2,
-      .page-event__info-title p {
-        margin: 0; }
-      .page-event__info-title h1 {
-        letter-spacing: -1px;
-        font-size: clamp(14px, 4vw, 36px); }
-        @media (min-width: 640px) {
-          .page-event__info-title h1 {
-            letter-spacing: -2px; } }
-    .page-event__info-date {
-      max-width: calc(25% - 15px);
-      margin-left: 15px;
-      padding-left: 15px;
-      border-left: 2px solid #000; }
-      .page-event__info-date p {
-        margin: 0;
-        font-size: clamp(36px, 4vw, 48px);
-        color: #c12841; }
-    @media (min-width: 960px) {
-      .page-event__info--description {
-        margin: 0 auto; } }
-    .page-event__info--description .uk-open,
-    .page-event__info--description div {
-      width: 100%;
-      max-width: 100%; }
-    .page-event__info--description button {
-      cursor: pointer;
-      background-color: transparent; }
-    .page-event__info--description p,
-    .page-event__info--description button {
-      line-height: 1.5;
-      font-size: 1rem; }
-  .page-event__standings-title {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-end;
-    flex-wrap: nowrap;
-    width: 100%;
-    padding-bottom: 0; }
-    .page-event__standings-title button {
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      align-items: flex-end;
-      flex-wrap: nowrap;
-      height: 40px;
-      margin: 0;
-      letter-spacing: -1px;
-      overflow: hidden;
-      background-color: transparent; }
-      .page-event__standings-title button .icon-group {
-        width: 20px;
-        height: 40px;
-        position: relative; }
-      .page-event__standings-title button .icon-up,
-      .page-event__standings-title button .icon-down {
-        position: absolute;
-        left: 0; }
-      .page-event__standings-title button .icon-up {
-        top: 5px; }
-      .page-event__standings-title button .icon-down {
-        bottom: 5px; }
-      .page-event__standings-title button .standings-label {
-        margin-left: calc(15px / 2); }
-    .page-event__standings-title .page-event__standings-tab {
-      display: flex;
-      flex-direction: row;
-      justify-content: flex-start;
-      align-items: center;
-      flex-wrap: nowrap;
-      transition: all 200ms; }
+  .page-event__cta-register {
+    width: calc(100% - 15px);
+    transform: skew(-15deg);
+    margin: 0 auto; }
+    .page-event__cta-register.uk-card-small .uk-card-body, .page-event__cta-register.uk-card-small.uk-card-body {
+      padding: 0; }
   .page-event__standings {
-    padding-bottom: calc(15px * 4); }
-  .page-event__athlete-table {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    flex-wrap: nowrap;
-    width: 100%;
-    opacity: 0; }
-  .page-event__athlete {
+    width: 100%; }
+    @media (min-width: 960px) {
+      .page-event__standings {
+        width: calc(50% - calc(15px / 2)); } }
+    @media (min-width: 1200px) {
+      .page-event__standings {
+        width: calc(100% / 3 - calc(15px / 2)); } }
+  .page-event__park-map {
+    width: 100%; }
+    @media (min-width: 960px) {
+      .page-event__park-map {
+        width: calc(50% - calc(15px / 2)); } }
+    @media (min-width: 1200px) {
+      .page-event__park-map {
+        width: calc(100% / 3 * 2 - calc(15px / 2)); } }
+
+.page-park {
+  width: 100%;
+  min-height: calc(100vh - 80px);
+  position: relative;
+  margin-top: -80px;
+  padding-top: 80px;
+  padding-bottom: 80px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  overflow: hidden; }
+  .page-park .container {
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
-    align-items: stretch;
-    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    row-gap: 15px; }
+    .page-park .container section.animate__animated {
+      opacity: 0; }
+      .page-park .container section.animate__animated.animate__fadeIn {
+        opacity: 1; }
+    .page-park .container + .container {
+      margin-top: 15px; }
+  .page-park section {
+    position: relative;
+    z-index: 2; }
+    .page-park section .uk-card + .uk-card {
+      margin-top: 15px; }
+  .page-park__bg {
     width: 100%;
-    text-decoration: none;
-    overflow: hidden; }
-    .page-event__athlete:visited, .page-event__athlete:focus, .page-event__athlete:hover {
-      text-decoration: none; }
-    .page-event__athlete > div {
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    overflow: hidden;
+    background-image: url("event-bg-splash.png");
+    background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat;
+    pointer-events: none; }
+    .page-park__bg .page-event__bg-line {
+      width: 200vw;
+      height: 100px;
+      position: absolute;
+      bottom: 0%;
+      transform-origin: center center; }
+      .page-park__bg .page-event__bg-line-left {
+        transform: translate(-50%, -50%) rotate(30deg);
+        left: -15%; }
+        @media (min-width: 960px) {
+          .page-park__bg .page-event__bg-line-left {
+            left: -10%; } }
+      .page-park__bg .page-event__bg-line-right {
+        transform: translate(50%, -50%) rotate(-25deg);
+        right: 0%; }
+      @media (min-width: 960px) {
+        .page-park__bg .page-event__bg-line {
+          height: 200px;
+          top: 65%; } }
+    .page-park__bg--background {
+      filter: grayscale(100%);
+      opacity: 0.25; }
+    .page-park__bg--foreground::before {
+      content: '';
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-image: url("event-bg-grid.png");
+      background-size: cover;
+      background-position: top center;
+      background-repeat: no-repeat; }
+  .page-park__banner {
+    width: 100%;
+    height: 50dvh;
+    min-height: 320px;
+    position: relative;
+    margin-top: calc(var(--header-height) * -1); }
+    .page-park__banner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: relative;
+      z-index: 1; }
+    .page-park__banner-overlay {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 2;
+      background-color: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(1px);
+      opacity: 0.5; }
+    .page-park__banner-content {
+      width: calc(100% - 15px);
+      max-width: 600px;
+      position: absolute;
+      bottom: 15px;
+      left: 15px;
+      z-index: 3; }
+      .page-park__banner-content img {
+        width: 50%;
+        min-width: 100px;
+        max-width: 150px;
+        filter: invert(1); }
+      .page-park__banner-content h1 {
+        margin-top: calc(15px / 2);
+        margin-bottom: calc(15px / 2);
+        color: #fff; }
+      .page-park__banner-content a {
+        color: #fff;
+        text-decoration: none; }
+        .page-park__banner-content a:visited, .page-park__banner-content a:focus, .page-park__banner-content a:hover {
+          text-decoration: none; }
+    .page-park__banner-social-media {
+      margin-top: 15px; }
+      .page-park__banner-social-media a + a {
+        margin-left: calc(15px / 2); }
+      .page-park__banner-social-media svg {
+        width: 30px;
+        height: auto; }
+  .page-park__event {
+    position: relative; }
+    .page-park__event-overlay {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1; }
+    .page-park__event-content {
+      position: absolute;
+      bottom: 15px;
+      left: calc(15px * 2);
+      z-index: 2; }
+      .page-park__event-content h5,
+      .page-park__event-content h6 {
+        margin: 0; }
+      .page-park__event-content h6 {
+        color: #fff; }
+    .page-park__event-date {
       display: flex;
       flex-direction: row;
       justify-content: center;
       align-items: center;
       flex-wrap: nowrap;
-      padding-top: 15px;
-      padding-bottom: 15px;
-      background-color: #000;
-      color: #fff; }
-      .page-event__athlete > div h1,
-      .page-event__athlete > div h2,
-      .page-event__athlete > div h3,
-      .page-event__athlete > div h4,
-      .page-event__athlete > div h4,
-      .page-event__athlete > div h6,
-      .page-event__athlete > div p {
-        margin: 0; }
-    .page-event__athlete-name h1,
-    .page-event__athlete-name h2,
-    .page-event__athlete-name h3,
-    .page-event__athlete-name h4,
-    .page-event__athlete-name h4,
-    .page-event__athlete-name h6,
-    .page-event__athlete-name p {
-      color: #fff; }
-    .page-event__athlete + .page-event__athlete {
-      margin-top: 15px; }
-    .page-event__athlete--heading + .page-event__athlete--heading {
-      margin-top: 0; }
-  .page-event__park {
-    padding-bottom: calc(15px * 8);
-    opacity: 0; }
-    .page-event__park-athlete {
-      width: 100%;
-      min-height: 55px;
-      position: relative; }
-      .page-event__park-athlete-run {
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-start;
-        align-items: center;
-        flex-wrap: nowrap;
-        width: fit-content;
-        max-width: calc(100% - 15px);
-        position: absolute;
-        top: calc(100% - 20px);
-        left: 15px;
-        z-index: 2; }
-        @media (min-width: 960px) {
-          .page-event__park-athlete-run {
-            top: calc(100% - 30px);
-            left: unset;
-            right: 15px; } }
-        .page-event__park-athlete-run::before {
-          content: '';
-          width: 50px;
-          height: 100%;
-          position: absolute;
-          top: 0;
-          left: calc(15px * -1);
-          z-index: 0;
-          transform: skew(-30deg);
-          background-color: #000;
-          color: transparent; }
-      .page-event__park-athlete-image {
-        width: 50px;
-        position: absolute;
-        top: 50%;
-        left: 0;
-        transform: translateY(-50%);
-        background-color: #fff;
-        border-radius: 100%; }
-        @media (min-width: 960px) {
-          .page-event__park-athlete-image {
-            width: 75px; } }
-        .page-event__park-athlete-image img {
-          width: 100%;
-          height: auto;
-          display: block;
-          border-radius: 100%; }
-      .page-event__park-athlete-name, .page-event__park-athlete-current-run, .page-event__park-athlete-points {
-        min-width: 60px;
-        max-width: 60px;
-        padding: calc(15px / 2);
-        padding-left: 0;
-        font-size: clamp(12px, 2vw, 24px);
-        color: #fff;
-        text-align: right; }
-        @media (min-width: 960px) {
-          .page-event__park-athlete-name, .page-event__park-athlete-current-run, .page-event__park-athlete-points {
-            min-width: 120px;
-            max-width: 120px;
-            padding: 15px;
-            padding-left: 0; } }
-      .page-event__park-athlete-name {
-        width: 100%;
-        min-width: 0;
-        max-width: none;
-        padding-left: 75px;
-        text-align: left; }
-        @media (min-width: 960px) {
-          .page-event__park-athlete-name {
-            width: 100%;
-            min-width: 0;
-            max-width: none;
-            padding-left: 100px; } }
-      .page-event__park-athlete-current-run {
-        margin-left: auto; }
-    .page-event__park-map {
-      width: 100%;
-      max-width: 960px;
-      position: relative;
-      margin: 0 auto; }
-      .page-event__park-map img {
-        width: 100%;
-        height: auto;
+      border: 1px solid #fff3;
+      background-color: rgba(0, 0, 0, 0.25);
+      -webkit-backdrop-filter: blur(20px);
+      backdrop-filter: blur(20px);
+      width: 55px;
+      height: 55px;
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      border-radius: 100%; }
+    .page-park__event .uk-slider-items {
+      width: calc(100% - 15px);
+      margin-left: calc(15px * -2); }
+      .page-park__event .uk-slider-items li {
         position: relative;
-        z-index: 1;
-        display: block;
-        filter: drop-shadow(2px 4px 6px #000); }
-      .page-event__park-map .line {
-        position: absolute;
-        z-index: 2;
-        transform: skew(-25deg);
-        border-top: 2px solid #c12841;
-        border-left: 2px solid #c12841; }
-        .page-event__park-map .line div {
-          padding: 5px 15px;
-          background-color: rgba(0, 0, 0, 0.75); }
-          .page-event__park-map .line div h6,
-          .page-event__park-map .line div p {
-            margin: 0; }
-          .page-event__park-map .line div h6 {
-            font-size: 10px; }
-          .page-event__park-map .line div p {
-            font-size: clamp(8px, 2vw, 14px);
-            color: #fff; }
-      .page-event__park-map [data-info] {
-        position: absolute;
-        bottom: calc(100% + 4px);
-        left: -10px;
-        transform: skew(25deg); }
-        .page-event__park-map [data-info] + div {
-          visibility: hidden;
-          pointer-events: none; }
-      .page-event__park-map .page-event__map-point {
-        width: 10px;
-        height: 10px;
-        position: absolute;
-        z-index: 2;
-        border-radius: 100%; }
-  .page-event__sponsors {
+        margin-left: 15px;
+        overflow: hidden; }
+        .page-park__event .uk-slider-items li:hover img {
+          transform: scale(2, 2);
+          transition: transform 5s ease-in; }
+        .page-park__event .uk-slider-items li img {
+          width: 100%;
+          height: 240px;
+          object-fit: cover;
+          transition: transform 2s ease-out; }
+        .page-park__event .uk-slider-items li p {
+          margin: 0;
+          color: #fff;
+          font-size: 12px;
+          letter-spacing: 0.5px; }
+          .page-park__event .uk-slider-items li p span + span {
+            margin-left: calc(15px / 6); }
+  .page-park__about {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    row-gap: 15px;
-    padding-top: calc(15px * 4);
-    background-color: #000; }
-    .page-event__sponsors a {
-      width: calc(50% - 15px - 15px); }
-      @media (min-width: 640px) {
-        .page-event__sponsors a {
-          width: calc(100% / 3 - 15px - 15px); } }
+    width: 100%;
+    row-gap: calc(15px * 3);
+    padding: calc(15px * 4) 15px; }
+    @media (min-width: 960px) {
+      .page-park__about {
+        padding: calc(15px * 6) calc(15px * 3); } }
+    .page-park__about-image, .page-park__about-content {
+      width: 100%;
+      max-width: 640px;
+      position: relative; }
+      .page-park__about-image img, .page-park__about-content img {
+        width: 100%;
+        position: relative;
+        z-index: 2;
+        display: block;
+        aspect-ratio: 1/1;
+        object-fit: cover;
+        opacity: 0; }
+        .page-park__about-image img.animate__fadeInLeft, .page-park__about-content img.animate__fadeInLeft {
+          opacity: 1; }
+    .page-park__about-overlay {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      opacity: 0.95; }
+    .page-park__about-image {
+      position: relative;
+      z-index: 3; }
       @media (min-width: 960px) {
-        .page-event__sponsors a {
-          width: calc(100% / 6 - 15px - 15px); } }
-    .page-event__sponsors p {
-      margin: 0;
-      font-size: 10px; }
-  .page-event .page-event__athlete-place,
-  .page-event .page-event__athlete-name,
-  .page-event .page-event__athlete-run,
-  .page-event .page-event__athlete-points,
-  .page-event .page-event__athlete-place *,
-  .page-event .page-event__athlete-name *,
-  .page-event .page-event__athlete-run *,
-  .page-event .page-event__athlete-points * {
-    font-size: clamp(12px, 2vw, 24px); }
-  .page-event .page-event__athlete-name,
-  .page-event .page-event__athlete-run.page-event__athlete--heading,
-  .page-event .page-event__athlete-points.page-event__athlete--heading,
-  .page-event .page-event__athlete-name:not(.page-event__athlete--heading)::before,
-  .page-event .page-event__athlete-name:not(.page-event__athlete--heading)::after,
-  .page-event .page-event__park-athlete-run {
-    background-image: url("bg-texture-black-sand.jpeg");
-    background-blend-mode: screen; }
-  .page-event .page-event__athlete-place {
-    min-width: 50px;
-    max-width: 50px;
-    position: relative;
-    z-index: 3;
-    display: flex; }
-  .page-event .page-event__athlete-image {
-    min-width: 60px;
-    max-width: 60px;
-    background-color: #2d2e32; }
-    .page-event .page-event__athlete-image img {
-      width: 40px;
-      height: 40px;
-      object-fit: cover;
+        .page-park__about-image {
+          width: calc(40% - 15px); } }
+      .page-park__about-image-square {
+        width: calc(100% / 3);
+        aspect-ratio: 1/1;
+        position: absolute;
+        left: calc(15px * -1);
+        bottom: calc(15px * -2);
+        z-index: 1;
+        opacity: 0; }
+        .page-park__about-image-square.animate__fadeInUp {
+          opacity: 1; }
+        @media (min-width: 960px) {
+          .page-park__about-image-square {
+            bottom: calc(15px * -3); } }
+    .page-park__about-content {
       position: relative;
       z-index: 2;
-      border-radius: 100%;
-      background-color: #fff; }
-    @media (min-width: 640px) {
-      .page-event .page-event__athlete-image {
-        min-width: 90px;
-        max-width: 90px; }
-        .page-event .page-event__athlete-image img {
-          width: 70px;
-          height: 70px; } }
-  .page-event .page-event__athlete-run,
-  .page-event .page-event__athlete-points {
-    min-width: 60px;
-    max-width: 60px;
-    justify-content: flex-end;
-    padding-right: 15px; }
-    @media (min-width: 640px) {
-      .page-event .page-event__athlete-run,
-      .page-event .page-event__athlete-points {
-        min-width: 90px;
-        max-width: 90px; } }
-    @media (min-width: 960px) {
-      .page-event .page-event__athlete-run,
-      .page-event .page-event__athlete-points {
-        min-width: 120px;
-        max-width: 120px; } }
-  .page-event .page-event__athlete-name {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-    flex-wrap: nowrap;
+      opacity: 0; }
+      .page-park__about-content.animate__fadeIn {
+        opacity: 1; }
+      .page-park__about-content h3,
+      .page-park__about-content p,
+      .page-park__about-content a {
+        color: #fff; }
+      .page-park__about-content p {
+        line-height: 1.5; }
+      .page-park__about-content a {
+        transform: skew(-15deg); }
+      @media (min-width: 960px) {
+        .page-park__about-content {
+          width: calc(60% - 15px);
+          margin-left: calc(15px * 2); } }
+    .page-park__about-social-media {
+      margin-top: 15px; }
+      .page-park__about-social-media a + a {
+        margin-left: calc(15px / 2); }
+      .page-park__about-social-media svg {
+        width: 25px;
+        height: auto; }
+  .page-park__happening {
     width: 100%; }
-  .page-event .page-event__athlete-gender {
-    display: none; }
-  .page-event .page-event__athlete--heading {
-    color: #fff; }
-    .page-event .page-event__athlete--heading-place, .page-event .page-event__athlete--heading-image {
-      visibility: hidden; }
-    .page-event .page-event__athlete--heading-name {
-      position: relative; }
-      .page-event .page-event__athlete--heading-name span {
-        position: relative;
-        z-index: 1; }
-      .page-event .page-event__athlete--heading-name::before {
-        content: attr(data-name);
-        width: auto;
-        height: 100%;
-        position: absolute;
-        top: 0;
-        left: calc(15px * -2);
-        z-index: 0;
-        padding-left: calc(15px * 2);
-        padding-right: calc(15px * 3);
-        transform: skew(-30deg);
-        background-color: #000;
-        color: transparent; }
-  .page-event .page-event__athlete--item .page-event__athlete-image {
-    position: relative; }
-    .page-event .page-event__athlete--item .page-event__athlete-image::before, .page-event .page-event__athlete--item .page-event__athlete-image:after {
-      content: '';
-      width: 100%;
-      height: 50%;
-      position: absolute;
-      right: -40%;
-      z-index: 1;
-      background-color: #2d2e32; }
-    .page-event .page-event__athlete--item .page-event__athlete-image::before {
-      top: 0;
-      transform: translateX(0%) skew(30deg); }
-    .page-event .page-event__athlete--item .page-event__athlete-image::after {
-      bottom: 0;
-      transform: translateX(0%) skew(-30deg); }
-  .page-event .page-event__athlete--item .page-event__athlete-name {
+    @media (min-width: 640px) {
+      .page-park__happening {
+        width: 320px;
+        position: absolute !important;
+        top: 25vh;
+        right: calc(15px * 2); } }
+    @media (min-width: 960px) {
+      .page-park__happening {
+        right: 5vw; } }
+    @media (min-width: 640px) {
+      .page-park__happening--full {
+        width: 100%;
+        position: relative !important;
+        top: unset;
+        right: unset; } }
+    @media (min-width: 960px) {
+      .page-park__happening--full {
+        right: unset; } }
+  .page-park__happening-now {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-end;
+    flex-wrap: nowrap;
+    width: calc(100% - calc(15px * 3));
     position: relative;
-    padding-left: 40px; }
-    .page-event .page-event__athlete--item .page-event__athlete-name::before, .page-event .page-event__athlete--item .page-event__athlete-name:after {
+    row-gap: calc(15px / 2);
+    overflow: hidden;
+    transform: skew(-15deg);
+    margin: 0 auto;
+    padding: 15px; }
+    .page-park__happening-now.uk-card-small .uk-card-body, .page-park__happening-now.uk-card-small.uk-card-body {
+      padding: 0; }
+    @media (min-width: 480px) {
+      .page-park__happening-now {
+        width: calc(100% - calc(15px * 2)); } }
+    @media (min-width: 640px) {
+      .page-park__happening-now {
+        width: calc(100% - 15px);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        flex-wrap: nowrap; } }
+    .page-park__happening-now::before {
       content: '';
-      width: 100%;
-      height: 50%;
+      width: calc(100% / 3 * 2);
+      height: 100%;
       position: absolute;
-      right: calc(15px * -1);
-      z-index: 1;
-      background-color: inherit; }
-    .page-event .page-event__athlete--item .page-event__athlete-name::before {
       top: 0;
-      transform: skew(30deg); }
-    .page-event .page-event__athlete--item .page-event__athlete-name::after {
-      bottom: 0;
-      transform: skew(-30deg); }
-    .page-event .page-event__athlete--item .page-event__athlete-name h6 {
-      position: relative;
+      right: 0;
+      z-index: 2;
+      background-color: #fff;
+      opacity: 0.75; }
+      @media (min-width: 640px) {
+        .page-park__happening-now::before {
+          width: 100%;
+          height: 50%; } }
+      @media (min-width: 1200px) {
+        .page-park__happening-now::before {
+          height: 45%; } }
+    .page-park__happening-now-info, .page-park__happening-now-cta {
       z-index: 2; }
+    .page-park__happening-now-cover {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      object-fit: cover;
+      z-index: 1;
+      filter: grayscale(1) opacity(0.55) brightness(0.35); }
+      @media (min-width: 640px) {
+        .page-park__happening-now-cover {
+          filter: grayscale(1) opacity(0.75) brightness(0.55); } }
+    .page-park__happening-now-info {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+      flex-wrap: nowrap; }
+      .page-park__happening-now-info img {
+        width: 50px;
+        min-width: 50px;
+        max-width: 50px;
+        height: auto;
+        display: block;
+        margin: 0; }
+      .page-park__happening-now-info img + .cta-register__title {
+        margin-left: 15px; }
+    .page-park__happening-now-title {
+      margin-left: 15px; }
+      .page-park__happening-now-title h5 {
+        font-size: clamp(16px, 2vw, 24px); }
+      .page-park__happening-now-title h5,
+      .page-park__happening-now-title h6 {
+        text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.33); }
+    .page-park__happening-now-cta {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+      flex-wrap: nowrap; }
+      @media (min-width: 640px) {
+        .page-park__happening-now-cta {
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-start;
+          align-items: flex-start;
+          flex-wrap: nowrap;
+          margin-top: 15px; } }
+      .page-park__happening-now-cta h6 {
+        font-size: clamp(16px, 2vw, 24px);
+        text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5); }
+        @media (min-width: 640px) {
+          .page-park__happening-now-cta h6 {
+            margin-top: 15px;
+            color: #fff; } }
+      @media (min-width: 640px) {
+        .page-park__happening-now-cta button {
+          margin-top: calc(15px / 2); } }
+    .page-park__happening-now h5,
+    .page-park__happening-now h6,
+    .page-park__happening-now button {
+      position: relative;
+      z-index: 3; }
+    .page-park__happening-now h5,
+    .page-park__happening-now h6 {
+      margin: 0; }
+    .page-park__happening-now button {
+      margin-left: 15px; }
+      @media (min-width: 640px) {
+        .page-park__happening-now button {
+          margin-left: 0;
+          line-height: calc(15px * 2);
+          padding: 0 15px; } }
+    .page-park__happening-now--full {
+      max-width: 1200px;
+      margin: 0 auto; }
+      @media (min-width: 640px) {
+        .page-park__happening-now--full {
+          display: flex;
+          flex-direction: row;
+          justify-content: flex-start;
+          align-items: center;
+          flex-wrap: wrap; } }
+      @media (min-width: 640px) {
+        .page-park__happening-now--full::before {
+          width: calc(100% / 3 * 2);
+          height: 100%; } }
+      @media (min-width: 1200px) {
+        .page-park__happening-now--full::before {
+          width: calc(100% / 3);
+          height: 100%; } }
+      @media (min-width: 640px) {
+        .page-park__happening-now--full .page-park__happening-now-cta {
+          margin-left: auto; } }
+      @media (min-width: 640px) {
+        .page-park__happening-now--full .page-park__happening-now-cta h6 {
+          margin-top: 0;
+          color: inherit; } }
 
 * {
   box-sizing: border-box; }

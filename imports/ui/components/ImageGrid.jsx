@@ -6,14 +6,15 @@ export const ImageGrid = function ({
 	filter = false,
 	fillImage = false,
 	items = [],
-	title = '',
-	setRoute = null
+	title = ''
 }) {
 	return (
 		<section className="image-grid">
 			{items && items.length && (
 				<div className="uk-container uk-padding">
-					{title && <h3 className="image-grid__title uk-text-bold">{title}</h3>}
+					{title && (
+						<h3 className="uk-h4 image-grid__title uk-text-bolder uk-text-uppercase">{title}</h3>
+					)}
 					<div className={`uk-grid ${grid}${filter && ' js-filter'}`} uk-grid="masonry: true">
 						{items.map((item, index) => {
 							let className = '';
@@ -28,11 +29,7 @@ export const ImageGrid = function ({
 							}
 
 							return (
-								<a
-									key={item.id ? item.id : index}
-									className={className}
-									onClick={(event) => item.setRoute(event, item)}
-								>
+								<a key={item.id ? item.id : index} className={className}>
 									<div className="uk-card uk-card-default uk-card-body">
 										<div className="image-grid__item-image">
 											<img data-image={item.id ? item.id : index} src={item.image} />
@@ -49,7 +46,7 @@ export const ImageGrid = function ({
 												</div>
 											)}
 											<div className="image-grid__item-content">
-												<h3>{item.title}</h3>
+												<h3 className="uk-h4 uk-text-uppercase">{item.title || item.name}</h3>
 												<p>{item.description}</p>
 												{item.url && (
 													<button

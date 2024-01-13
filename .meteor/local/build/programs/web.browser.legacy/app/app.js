@@ -27,12 +27,12 @@ var require = meteorInstall({"imports":{"ui":{"routes":{"Event":{"Background.jsx
       primary = _ref.primary,
       secondary = _ref.secondary;
     var gradient = "repeating-linear-gradient(\n\t\t45deg,\n\t\t" + primary + ",\n\t\t" + primary + " 5px,\n\t\t" + secondary + " 5px,\n\t\t" + secondary + " 10px\n\t)";
-    return /*#__PURE__*/React.createElement(Fragment, null, /*#__PURE__*/React.createElement("section", {
+    return /*#__PURE__*/React.createElement(Fragment, null, /*#__PURE__*/React.createElement("div", {
       className: "page-event__bg page-event__bg--background",
       style: {
         backgroundImage: "url(./" + event.image + ")"
       }
-    }), /*#__PURE__*/React.createElement("section", {
+    }), /*#__PURE__*/React.createElement("div", {
       className: "page-event__bg page-event__bg--foreground"
     }, /*#__PURE__*/React.createElement("div", {
       className: "page-event__bg-line page-event__bg-line-left",
@@ -52,462 +52,6 @@ var require = meteorInstall({"imports":{"ui":{"routes":{"Event":{"Background.jsx
 }.call(this, module);
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-},"Info.jsx":function module(require,exports,module){
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//                                                                                                                     //
-// imports/ui/routes/Event/Info.jsx                                                                                    //
-//                                                                                                                     //
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                                                                                                                       //
-!function (module1) {
-  module1.export({
-    Info: function () {
-      return Info;
-    }
-  });
-  var React, Fragment;
-  module1.link("react", {
-    "default": function (v) {
-      React = v;
-    },
-    Fragment: function (v) {
-      Fragment = v;
-    }
-  }, 0);
-  var dayjs;
-  module1.link("dayjs", {
-    "default": function (v) {
-      dayjs = v;
-    }
-  }, 1);
-  ___INIT_METEOR_FAST_REFRESH(module);
-  var Info = function (_ref) {
-    var event = _ref.event,
-      primary = _ref.primary;
-    return /*#__PURE__*/React.createElement(Fragment, null, /*#__PURE__*/React.createElement("section", {
-      className: "page-event__info uk-padding-small"
-    }, /*#__PURE__*/React.createElement("div", {
-      className: "page-event__info-logo"
-    }, /*#__PURE__*/React.createElement("img", {
-      src: event.logo,
-      alt: event.title
-    })), /*#__PURE__*/React.createElement("div", {
-      className: "page-event__info-title"
-    }, /*#__PURE__*/React.createElement("h1", {
-      className: "uk-text-uppercase"
-    }, event.title), /*#__PURE__*/React.createElement("h2", {
-      className: "uk-text-uppercase uk-text-meta",
-      style: {
-        color: primary
-      }
-    }, event.subtitle)), /*#__PURE__*/React.createElement("div", {
-      className: "page-event__info-date"
-    }, /*#__PURE__*/React.createElement("p", {
-      className: "uk-text-bolder",
-      style: {
-        color: primary
-      }
-    }, dayjs(event.date).format('YY')))), /*#__PURE__*/React.createElement("section", {
-      className: "page-event__info page-event__info--description uk-padding-small",
-      "uk-accordion": "uk-accordion"
-    }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("button", {
-      className: "uk-accordion-title"
-    }, "Event Details"), /*#__PURE__*/React.createElement("div", {
-      className: "uk-accordion-content"
-    }, /*#__PURE__*/React.createElement("p", null, event.description)))));
-  };
-  _c = Info;
-  var _c;
-  $RefreshReg$(_c, "Info");
-}.call(this, module);
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-},"Park.jsx":function module(require,exports,module){
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//                                                                                                                     //
-// imports/ui/routes/Event/Park.jsx                                                                                    //
-//                                                                                                                     //
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                                                                                                                       //
-!function (module1) {
-  var _slicedToArray;
-  module1.link("@babel/runtime/helpers/slicedToArray", {
-    default: function (v) {
-      _slicedToArray = v;
-    }
-  }, 0);
-  module1.export({
-    Park: function () {
-      return Park;
-    }
-  });
-  var React, useRef, useState, useEffect;
-  module1.link("react", {
-    "default": function (v) {
-      React = v;
-    },
-    useRef: function (v) {
-      useRef = v;
-    },
-    useState: function (v) {
-      useState = v;
-    },
-    useEffect: function (v) {
-      useEffect = v;
-    }
-  }, 0);
-  var getCSSVariable;
-  module1.link("../../../../client/scripts/helpers.js", {
-    getCSSVariable: function (v) {
-      getCSSVariable = v;
-    }
-  }, 1);
-  ___INIT_METEOR_FAST_REFRESH(module);
-  var _s = $RefreshSig$();
-  var Park = function (_ref) {
-    var event = _ref.event,
-      athlete = _ref.athlete,
-      league = _ref.league,
-      primary = _ref.primary,
-      secondary = _ref.secondary;
-    _s();
-    var mapRef = useRef(null);
-    var _useState = useState(''),
-      _useState2 = _slicedToArray(_useState, 2),
-      containerAnimation = _useState2[0],
-      setContainerAnimation = _useState2[1];
-    var _useState3 = useState(''),
-      _useState4 = _slicedToArray(_useState3, 2),
-      athleteAnimation = _useState4[0],
-      setAthleteAnimation = _useState4[1];
-    var setPointData = function () {
-      var map = document.querySelector('[data-map]');
-      event.run.points.forEach(function (point, index) {
-        var anchor = document.querySelectorAll('[data-anchor]')[index];
-        var line = document.createElement('div');
-        line.classList.add('line');
-        line.setAttribute('data-line', index);
-        line.style.borderColro = primary;
-        line.style.left = "calc(" + anchor.style.left + " + 20px)";
-        var markup = "\n\t\t\t\t<h6 class=\"uk-text-uppercase uk-text-bolder\" style=\"color: " + primary + ";\">" + point.title + "</h6>\n\t\t\t\t<p class=\"uk-text-uppercase uk-text-light\">" + point.text + "</p>\n\t\t\t";
-        var info = document.createElement('div');
-        info.setAttribute('data-info', index);
-        info.innerHTML = markup;
-        var info2 = document.createElement('div');
-        info2.innerHTML = markup;
-        line.append(info);
-        line.append(info2);
-        map.append(line);
-        var _line = document.querySelector("[data-line=\"" + index + "\"]");
-        var _line$getBoundingClie = _line.getBoundingClientRect(),
-          height = _line$getBoundingClie.height;
-        _line.style.top = "calc(" + anchor.style.top + " - " + height + "px - 5px)";
-      });
-    };
-    useEffect(function () {
-      var delay = parseInt(getCSSVariable('--animate-delay'));
-      setContainerAnimation('');
-      setAthleteAnimation('');
-      setTimeout(function () {
-        setContainerAnimation('animate__fadeIn');
-        setAthleteAnimation('animate__fadeInUp');
-      }, delay);
-      setTimeout(function () {}, delay * 2);
-      setPointData();
-    }, [league]);
-    var getCoords = function (event) {
-      var map = mapRef.current;
-      var _map$getBoundingClien = map.getBoundingClientRect(),
-        x = _map$getBoundingClien.x,
-        y = _map$getBoundingClien.y,
-        width = _map$getBoundingClien.width,
-        height = _map$getBoundingClien.height,
-        left = _map$getBoundingClien.left,
-        top = _map$getBoundingClien.top;
-      var clientX = event.clientX - left;
-      var clientY = event.clientY - top;
-      var _top = clientY / height * 100;
-      var _left = clientX / width * 100;
-      console.log({
-        clientX: clientX,
-        clientY: clientY,
-        top: _top,
-        left: _left
-      });
-    };
-    return /*#__PURE__*/React.createElement("section", {
-      ref: mapRef,
-      className: "page-event__park uk-padding-small animate__animated " + containerAnimation
-    }, /*#__PURE__*/React.createElement("div", {
-      className: "page-event__park-athlete animate__animated " + athleteAnimation
-    }, /*#__PURE__*/React.createElement("div", {
-      className: "page-event__park-athlete-run",
-      style: {
-        backgroundColor: primary
-      }
-    }, /*#__PURE__*/React.createElement("div", {
-      className: "page-event__park-athlete-image"
-    }, /*#__PURE__*/React.createElement("img", {
-      src: athlete.image
-    })), /*#__PURE__*/React.createElement("div", {
-      className: "page-event__park-athlete-name uk-text-uppercase uk-text-bold"
-    }, /*#__PURE__*/React.createElement("span", null, athlete.name)), /*#__PURE__*/React.createElement("div", {
-      className: "page-event__park-athlete-current-run uk-text-uppercase uk-text-bold"
-    }, /*#__PURE__*/React.createElement("span", null, "Run ", athlete.run)), /*#__PURE__*/React.createElement("div", {
-      className: "page-event__park-athlete-points uk-text-uppercase uk-text-bold"
-    }, /*#__PURE__*/React.createElement("span", null, athlete.points)))), /*#__PURE__*/React.createElement("div", {
-      "data-map": "map",
-      className: "page-event__park-map",
-      onClick: getCoords
-    }, event.run.points.map(function (point, index) {
-      return /*#__PURE__*/React.createElement("div", {
-        key: index,
-        "data-anchor": index,
-        className: "page-event__map-point",
-        style: {
-          top: point.coords.y,
-          left: point.coords.x,
-          backgroundColor: primary
-        }
-      });
-    }), /*#__PURE__*/React.createElement("img", {
-      src: event.park
-    })));
-  };
-  _s(Park, "QZzid0hpBW92YzoSZuXr1o91TG0=");
-  _c = Park;
-  var _c;
-  $RefreshReg$(_c, "Park");
-}.call(this, module);
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-},"Sponsors.jsx":function module(require,exports,module){
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//                                                                                                                     //
-// imports/ui/routes/Event/Sponsors.jsx                                                                                //
-//                                                                                                                     //
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                                                                                                                       //
-!function (module1) {
-  module1.export({
-    Sponsors: function () {
-      return Sponsors;
-    }
-  });
-  var React;
-  module1.link("react", {
-    "default": function (v) {
-      React = v;
-    }
-  }, 0);
-  ___INIT_METEOR_FAST_REFRESH(module);
-  var Sponsors = function (_ref) {
-    var event = _ref.event;
-    return /*#__PURE__*/React.createElement("section", {
-      className: "page-event__sponsors uk-padding-small"
-    }, event.sponsors.map(function (sponsor, index) {
-      return /*#__PURE__*/React.createElement("a", {
-        key: index
-      }, /*#__PURE__*/React.createElement("img", {
-        src: sponsor.image
-      }));
-    }), /*#__PURE__*/React.createElement("div", {
-      className: "page-event__sponsors-who"
-    }, /*#__PURE__*/React.createElement("p", {
-      className: "uk-text-meta uk-text-uppercase"
-    }, "This event is brought to you by")));
-  };
-  _c = Sponsors;
-  var _c;
-  $RefreshReg$(_c, "Sponsors");
-}.call(this, module);
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-},"Standings.jsx":function module(require,exports,module){
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//                                                                                                                     //
-// imports/ui/routes/Event/Standings.jsx                                                                               //
-//                                                                                                                     //
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                                                                                                                       //
-!function (module1) {
-  var _slicedToArray;
-  module1.link("@babel/runtime/helpers/slicedToArray", {
-    default: function (v) {
-      _slicedToArray = v;
-    }
-  }, 0);
-  module1.export({
-    Standings: function () {
-      return Standings;
-    }
-  });
-  var React, useEffect, useState;
-  module1.link("react", {
-    "default": function (v) {
-      React = v;
-    },
-    useEffect: function (v) {
-      useEffect = v;
-    },
-    useState: function (v) {
-      useState = v;
-    }
-  }, 0);
-  var getCSSVariable;
-  module1.link("../../../../client/scripts/helpers.js", {
-    getCSSVariable: function (v) {
-      getCSSVariable = v;
-    }
-  }, 1);
-  ___INIT_METEOR_FAST_REFRESH(module);
-  var _s = $RefreshSig$();
-  var Standings = function (_ref) {
-    var athletes = _ref.athletes,
-      league = _ref.league,
-      primary = _ref.primary,
-      secondary = _ref.secondary;
-    _s();
-    var _useState = useState(''),
-      _useState2 = _slicedToArray(_useState, 2),
-      animation = _useState2[0],
-      setAnimation = _useState2[1];
-    useEffect(function () {
-      var delay = parseInt(getCSSVariable('--animate-delay'));
-      setAnimation('');
-      setTimeout(function () {
-        setAnimation('animate__fadeIn');
-      }, delay);
-    }, [league]);
-    return /*#__PURE__*/React.createElement("section", {
-      className: "page-event__standings uk-padding-small"
-    }, /*#__PURE__*/React.createElement("div", {
-      className: "page-event__athlete-table animate__animated " + animation
-    }, /*#__PURE__*/React.createElement("div", {
-      className: "page-event__athlete page-event__athlete--key"
-    }, Object.keys(athletes[0]).map(function (key) {
-      return /*#__PURE__*/React.createElement("div", {
-        key: key,
-        className: "page-event__athlete-" + key + " page-event__athlete--heading page-event__athlete--heading-" + key + " uk-text-uppercase uk-text-bold",
-        style: {
-          backgroundColor: primary
-        },
-        "data-name": key == 'name' ? 'athlete' : key
-      }, /*#__PURE__*/React.createElement("span", null, key == 'name' ? 'athlete' : key));
-    })), athletes.filter(function (a) {
-      return a.gender == league;
-    }).map(function (athlete, index) {
-      var place = index + 1;
-      var pointsWidth = athlete.points / 10 * 100;
-      var delay = index + 1;
-      var transitionDelay = '1.' + delay + 's';
-      return /*#__PURE__*/React.createElement("a", {
-        href: athlete.url,
-        key: index,
-        className: "page-event__athlete page-event__athlete--item"
-      }, /*#__PURE__*/React.createElement("div", {
-        className: "page-event__athlete-place",
-        "data-index": place
-      }, /*#__PURE__*/React.createElement("span", null, place)), /*#__PURE__*/React.createElement("div", {
-        className: "page-event__athlete-image"
-      }, /*#__PURE__*/React.createElement("img", {
-        src: athlete.image
-      }), /*#__PURE__*/React.createElement("span", {
-        className: "fib fi-" + athlete.country
-      })), /*#__PURE__*/React.createElement("div", {
-        className: "page-event__athlete-name uk-padding-small",
-        style: {
-          backgroundColor: primary
-        }
-      }, /*#__PURE__*/React.createElement("h6", {
-        className: "uk-text-normal uk-text-uppercase uk-text-bolder"
-      }, athlete.name)), /*#__PURE__*/React.createElement("div", {
-        className: "page-event__athlete-run"
-      }, /*#__PURE__*/React.createElement("span", {
-        className: "uk-text-bolder",
-        style: {
-          color: primary
-        }
-      }, athlete.run)), /*#__PURE__*/React.createElement("div", {
-        className: "page-event__athlete-points"
-      }, /*#__PURE__*/React.createElement("span", {
-        className: "uk-text-bolder uk-text-italic",
-        style: {
-          color: primary
-        }
-      }, athlete.points)));
-    })));
-  };
-  _s(Standings, "+yr5erg43o222oPC6ff1DtV6KYU=");
-  _c = Standings;
-  var _c;
-  $RefreshReg$(_c, "Standings");
-}.call(this, module);
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-},"StandingsTitle.jsx":function module(require,exports,module){
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//                                                                                                                     //
-// imports/ui/routes/Event/StandingsTitle.jsx                                                                          //
-//                                                                                                                     //
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                                                                                                                       //
-!function (module1) {
-  module1.export({
-    StandingsTitle: function () {
-      return StandingsTitle;
-    }
-  });
-  var React;
-  module1.link("react", {
-    "default": function (v) {
-      React = v;
-    }
-  }, 0);
-  ___INIT_METEOR_FAST_REFRESH(module);
-  var StandingsTitle = function (_ref) {
-    var tabs = _ref.tabs,
-      tab = _ref.tab,
-      setTab = _ref.setTab;
-    var index = tabs.findIndex(function (t) {
-      return t.slug == tab.slug;
-    });
-    return /*#__PURE__*/React.createElement("section", {
-      className: "page-event__standings-title uk-padding-small"
-    }, /*#__PURE__*/React.createElement("button", {
-      className: "uk-text-bold uk-h2 uk-text-uppercase",
-      onClick: setTab
-    }, tabs.map(function (t) {
-      var sum = index * 40 * -1;
-      var transform = "translateY(" + sum + "px)";
-      return /*#__PURE__*/React.createElement("div", {
-        key: t.slug,
-        className: "page-event__standings-tab",
-        style: {
-          transform: transform
-        }
-      }, t.label, /*#__PURE__*/React.createElement("span", {
-        className: "icon-group"
-      }, /*#__PURE__*/React.createElement("span", {
-        className: "icon-up",
-        "uk-icon": "icon: triangle-up"
-      }), /*#__PURE__*/React.createElement("span", {
-        className: "icon-down",
-        "uk-icon": "icon: triangle-down"
-      })));
-    })));
-  };
-  _c = StandingsTitle;
-  var _c;
-  $RefreshReg$(_c, "StandingsTitle");
-}.call(this, module);
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 },"index.jsx":function module(require,exports,module){
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -523,12 +67,6 @@ var require = meteorInstall({"imports":{"ui":{"routes":{"Event":{"Background.jsx
       _slicedToArray = v;
     }
   }, 0);
-  var _toConsumableArray;
-  module1.link("@babel/runtime/helpers/toConsumableArray", {
-    default: function (v) {
-      _toConsumableArray = v;
-    }
-  }, 1);
   module1.export({
     Event: function () {
       return Event;
@@ -553,49 +91,49 @@ var require = meteorInstall({"imports":{"ui":{"routes":{"Event":{"Background.jsx
     }
   }, 0);
   module1.link("/node_modules/flag-icons/css/flag-icons.min.css");
-  var randomInt, sortBy;
-  module1.link("../../../../client/scripts/helpers.js", {
-    randomInt: function (v) {
-      randomInt = v;
-    },
-    sortBy: function (v) {
-      sortBy = v;
+  var data;
+  module1.link("../../../../client/scripts/data", {
+    "default": function (v) {
+      data = v;
     }
   }, 1);
+  var getCSSVariable, asyncTimeout;
+  module1.link("../../../../client/scripts/helpers.js", {
+    getCSSVariable: function (v) {
+      getCSSVariable = v;
+    },
+    asyncTimeout: function (v) {
+      asyncTimeout = v;
+    }
+  }, 2);
   var Background;
   module1.link("./Background", {
     Background: function (v) {
       Background = v;
     }
-  }, 2);
-  var Info;
-  module1.link("./Info", {
-    Info: function (v) {
-      Info = v;
-    }
   }, 3);
-  var StandingsTitle;
-  module1.link("./StandingsTitle", {
-    StandingsTitle: function (v) {
-      StandingsTitle = v;
+  var CTARegister;
+  module1.link("../../components/CTARegister.jsx", {
+    CTARegister: function (v) {
+      CTARegister = v;
     }
   }, 4);
   var Standings;
-  module1.link("./Standings", {
+  module1.link("../../components/Standings.jsx", {
     Standings: function (v) {
       Standings = v;
     }
   }, 5);
-  var Park;
-  module1.link("./Park", {
-    Park: function (v) {
-      Park = v;
+  var ParkMap;
+  module1.link("../../components/ParkMap.jsx", {
+    ParkMap: function (v) {
+      ParkMap = v;
     }
   }, 6);
-  var Sponsors;
-  module1.link("./Sponsors.jsx", {
-    Sponsors: function (v) {
-      Sponsors = v;
+  var Stream;
+  module1.link("../../components/Stream.jsx", {
+    Stream: function (v) {
+      Stream = v;
     }
   }, 7);
   ___INIT_METEOR_FAST_REFRESH(module);
@@ -603,121 +141,620 @@ var require = meteorInstall({"imports":{"ui":{"routes":{"Event":{"Background.jsx
   var Event = function (props) {
     _s();
     var mainRef = useRef(null);
-    var keys = ['place', 'image', 'name', 'gender', 'run', 'points'];
-    var primary = props.event.theme.primary;
-    var secondary = props.event.theme.secondary;
-    var _athletes = _toConsumableArray(props.event.athletes).map(function (athlete, index) {
-      var multiplier = (randomInt(4, 9) / 100).toFixed(2);
-      var decimal = 0.13 * index;
-      athlete.points = (multiplier * 100 + decimal).toFixed(2);
-      athlete.run = 1;
-      if (index < 4) athlete.run = 2;
-      var obj = {};
-      keys.forEach(function (key) {
-        return obj[key] = athlete[key];
-      });
-      return obj;
-    });
-    _athletes = sortBy(_athletes, 'points', true);
-    var _useState = useState(_athletes),
+    var _useState = useState(''),
       _useState2 = _slicedToArray(_useState, 2),
-      athletes = _useState2[0],
-      setAthletes = _useState2[1];
-    var _useState3 = useState([{
-        label: /*#__PURE__*/React.createElement(Fragment, null, "Men's", ' ', /*#__PURE__*/React.createElement("span", {
-          className: "standings-label",
-          style: {
-            color: primary
-          }
-        }, "Standings")),
-        slug: 'male',
-        active: true
-      }, {
-        label: /*#__PURE__*/React.createElement(Fragment, null, "Women's", /*#__PURE__*/React.createElement("span", {
-          className: "standings-label",
-          style: {
-            color: primary
-          }
-        }, "Standings")),
-        slug: 'female',
-        active: false
-      }, {
-        label: /*#__PURE__*/React.createElement(Fragment, null, "Park", /*#__PURE__*/React.createElement("span", {
-          className: "standings-label",
-          style: {
-            color: primary
-          }
-        }, "View")),
-        slug: 'park',
-        active: false
-      }]),
-      _useState4 = _slicedToArray(_useState3, 2),
-      tabs = _useState4[0],
-      setTabs = _useState4[1];
-    var setTab = function () {
-      var state = _toConsumableArray(tabs);
-      var index = tabs.findIndex(function (tab) {
-        return tab.active;
-      });
-      var nextIndex = index + 1;
-      var limit = state.length - 1;
-      state = state.map(function (tab) {
-        tab.active = false;
-        return tab;
-      });
-      if (nextIndex > limit) {
-        state[0].active = true;
-      } else {
-        state[nextIndex].active = true;
-      }
-      setTabs(state);
-    };
+      animation = _useState2[0],
+      setAnimation = _useState2[1];
     useEffect(function () {
-      var mainEl = mainRef.current;
-      mainEl.classList.add('active');
+      var delay = parseInt(getCSSVariable('--animate-delay'));
+      setAnimation('');
+      setTimeout(function () {
+        setAnimation('animate__fadeIn');
+      }, delay);
     }, []);
-    var tab = tabs.find(function (tab) {
-      return tab.active;
-    });
-    var displayStandings = false;
-    if (tab.slug == 'male' || tab.slug == 'female') displayStandings = true;
     return /*#__PURE__*/React.createElement("main", {
       ref: mainRef,
       className: "page-event"
     }, /*#__PURE__*/React.createElement(Background, {
-      event: props.event,
-      primary: primary,
-      secondary: secondary
-    }), /*#__PURE__*/React.createElement(Info, {
-      event: props.event,
-      primary: primary,
-      secondary: secondary
-    }), /*#__PURE__*/React.createElement(StandingsTitle, {
-      tabs: tabs,
-      tab: tab,
-      setTab: setTab
-    }), displayStandings && /*#__PURE__*/React.createElement(Fragment, null, /*#__PURE__*/React.createElement(Standings, {
-      athletes: athletes,
-      primary: primary,
-      secondary: secondary,
-      league: tab.slug
-    })), !displayStandings && /*#__PURE__*/React.createElement(Park, {
-      event: props.event,
-      athlete: athletes[0],
-      league: tab.slug,
-      primary: primary,
-      secondary: secondary
-    }), /*#__PURE__*/React.createElement(Sponsors, {
-      event: props.event,
-      primary: primary,
-      secondary: secondary,
-      league: tab.slug
-    }));
+      event: data.event,
+      primary: data.event.theme.primary,
+      secondary: data.event.theme.secondary
+    }), /*#__PURE__*/React.createElement("div", {
+      className: "container uk-container uk-container-large"
+    }, /*#__PURE__*/React.createElement("section", {
+      className: "page-event__cta-register uk-card uk-card-default uk-card-small uk-card-body animate__animated animate__delay-1s " + animation
+    }, /*#__PURE__*/React.createElement(CTARegister, null)), /*#__PURE__*/React.createElement("section", {
+      className: "page-event__standings uk-card uk-card-default uk-card-small uk-card-body animate__animated animate__delay-1s " + animation
+    }, /*#__PURE__*/React.createElement(Standings, null)), /*#__PURE__*/React.createElement("section", {
+      className: "page-event__park-map animate__animated animate__delay-1s " + animation
+    }, /*#__PURE__*/React.createElement("div", {
+      className: " uk-card uk-card-default uk-card-small uk-card-body"
+    }, /*#__PURE__*/React.createElement(Stream, null)), /*#__PURE__*/React.createElement("div", {
+      className: " uk-card uk-card-default uk-card-small uk-card-body"
+    }, /*#__PURE__*/React.createElement(ParkMap, null)))));
   };
-  _s(Event, "IlYMT1Nlu4Z44Ce9MB0GOpepsx0=");
+  _s(Event, "AwBpkQpZdXbs5zhD/ELLeSKVTlM=");
   _c = Event;
   var _c;
   $RefreshReg$(_c, "Event");
+}.call(this, module);
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+}},"Park":{"About.jsx":function module(require,exports,module){
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                     //
+// imports/ui/routes/Park/About.jsx                                                                                    //
+//                                                                                                                     //
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                                       //
+!function (module1) {
+  module1.export({
+    About: function () {
+      return About;
+    }
+  });
+  var React, Fragment, useRef, useEffect;
+  module1.link("react", {
+    "default": function (v) {
+      React = v;
+    },
+    Fragment: function (v) {
+      Fragment = v;
+    },
+    useRef: function (v) {
+      useRef = v;
+    },
+    useEffect: function (v) {
+      useEffect = v;
+    }
+  }, 0);
+  var randomInt, intersectionObserver;
+  module1.link("../../../../client/scripts/helpers.js", {
+    randomInt: function (v) {
+      randomInt = v;
+    },
+    intersectionObserver: function (v) {
+      intersectionObserver = v;
+    }
+  }, 1);
+  ___INIT_METEOR_FAST_REFRESH(module);
+  var _s = $RefreshSig$();
+  var About = function (_ref) {
+    var park = _ref.park;
+    _s();
+    var imageRef = useRef(null);
+    var squareRef = useRef(null);
+    var contentRef = useRef(null);
+    var index = randomInt(0, park.media.length - 1, true);
+    var image = park.media[index];
+
+    // const formatDescription = (str) {
+    // 	let descripition = <span>;
+
+    // 	return <span>;
+    // }
+
+    useEffect(function () {
+      var image = imageRef.current;
+      intersectionObserver(image, function (event) {
+        if (event[0].isIntersecting) image.classList.add('animate__fadeInLeft');
+      }, {
+        threshold: 0.75
+      });
+      var square = squareRef.current;
+      intersectionObserver(square, function (event) {
+        if (event[0].isIntersecting) square.classList.add('animate__fadeInUp');
+      }, {
+        threshold: 0.75
+      });
+      var content = contentRef.current;
+      intersectionObserver(content, function (event) {
+        if (event[0].isIntersecting) content.classList.add('animate__fadeIn');
+      }, {
+        threshold: 0.75
+      });
+    }, []);
+    return /*#__PURE__*/React.createElement(Fragment, null, /*#__PURE__*/React.createElement("div", {
+      className: "page-park__about-overlay",
+      style: {
+        backgroundColor: park.theme.primary
+      }
+    }), /*#__PURE__*/React.createElement("div", {
+      className: "page-park__about-image uk-visible@m"
+    }, /*#__PURE__*/React.createElement("img", {
+      ref: imageRef,
+      className: "animate__animated",
+      src: image
+    }), /*#__PURE__*/React.createElement("div", {
+      ref: squareRef,
+      className: "page-park__about-image-square animate__animated",
+      style: {
+        backgroundColor: park.theme.secondary
+      }
+    })), /*#__PURE__*/React.createElement("div", {
+      ref: contentRef,
+      className: "page-park__about-content animate__animated"
+    }, /*#__PURE__*/React.createElement("h3", {
+      className: "uk-h1 uk-text-uppercase uk-text-bold"
+    }, "The Park"), /*#__PURE__*/React.createElement("p", {
+      dangerouslySetInnerHTML: {
+        __html: park.description
+      }
+    }), /*#__PURE__*/React.createElement("a", {
+      className: "uk-button uk-button-danger",
+      href: park.url,
+      style: {
+        backgroundColor: park.theme.secondary
+      }
+    }, "Visit ", park.name), /*#__PURE__*/React.createElement("div", {
+      className: "page-park__about-social-media"
+    }, park.social.map(function (item, index) {
+      var icon = 'link';
+      if (item.indexOf('facebook') > -1) icon = 'facebook';
+      if (item.indexOf('instagram') > -1) icon = 'instagram';
+      if (item.indexOf('twitter') > -1) icon = 'twitter';
+      if (item.indexOf('youtube') > -1) icon = 'youtube';
+      return /*#__PURE__*/React.createElement("a", {
+        key: index,
+        href: item,
+        target: "_blank"
+      }, /*#__PURE__*/React.createElement("span", {
+        "uk-icon": "icon: " + icon
+      }));
+    }))));
+  };
+  _s(About, "sVfNSQ0Y2oHlAJpaA+dnQVsuKKA=");
+  _c = About;
+  var _c;
+  $RefreshReg$(_c, "About");
+}.call(this, module);
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+},"Background.jsx":function module(require,exports,module){
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                     //
+// imports/ui/routes/Park/Background.jsx                                                                               //
+//                                                                                                                     //
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                                       //
+!function (module1) {
+  module1.export({
+    Background: function () {
+      return Background;
+    }
+  });
+  var React, Fragment;
+  module1.link("react", {
+    "default": function (v) {
+      React = v;
+    },
+    Fragment: function (v) {
+      Fragment = v;
+    }
+  }, 0);
+  ___INIT_METEOR_FAST_REFRESH(module);
+  var Background = function (_ref) {
+    var event = _ref.event,
+      primary = _ref.primary,
+      secondary = _ref.secondary;
+    var gradient = "repeating-linear-gradient(\n\t\t45deg,\n\t\t" + primary + ",\n\t\t" + primary + " 5px,\n\t\t" + secondary + " 5px,\n\t\t" + secondary + " 10px\n\t)";
+    return /*#__PURE__*/React.createElement(Fragment, null, /*#__PURE__*/React.createElement("div", {
+      className: "page-event__bg page-event__bg--background",
+      style: {
+        backgroundImage: "url(./" + event.image + ")"
+      }
+    }), /*#__PURE__*/React.createElement("div", {
+      className: "page-event__bg page-event__bg--foreground"
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "page-event__bg-line page-event__bg-line-left",
+      style: {
+        background: gradient
+      }
+    }), /*#__PURE__*/React.createElement("div", {
+      className: "page-event__bg-line page-event__bg-line-right",
+      style: {
+        background: gradient
+      }
+    })));
+  };
+  _c = Background;
+  var _c;
+  $RefreshReg$(_c, "Background");
+}.call(this, module);
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+},"Banner.jsx":function module(require,exports,module){
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                     //
+// imports/ui/routes/Park/Banner.jsx                                                                                   //
+//                                                                                                                     //
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                                       //
+!function (module1) {
+  module1.export({
+    Banner: function () {
+      return Banner;
+    }
+  });
+  var React, Fragment;
+  module1.link("react", {
+    "default": function (v) {
+      React = v;
+    },
+    Fragment: function (v) {
+      Fragment = v;
+    }
+  }, 0);
+  ___INIT_METEOR_FAST_REFRESH(module);
+  var Banner = function (_ref) {
+    var park = _ref.park;
+    return /*#__PURE__*/React.createElement(Fragment, null, /*#__PURE__*/React.createElement("div", {
+      className: "page-park__banner-overlay",
+      style: {
+        backgroundColor: park.theme.secondary
+      }
+    }), /*#__PURE__*/React.createElement("img", {
+      className: "page-park__banner-image",
+      src: park.image
+    }), /*#__PURE__*/React.createElement("div", {
+      className: "page-park__banner-content"
+    }, /*#__PURE__*/React.createElement("img", {
+      src: park.logo,
+      alt: park.name
+    }), /*#__PURE__*/React.createElement("h1", {
+      className: "uk-h2 uk-text-bolder uk-text-uppercase"
+    }, park.name), /*#__PURE__*/React.createElement("a", {
+      href: park.url,
+      target: "_black",
+      title: park.name,
+      className: "uk-text-bold uk-text-uppercase"
+    }, park.url), /*#__PURE__*/React.createElement("div", {
+      className: "page-park__banner-social-media"
+    }, park.social.map(function (item, index) {
+      var icon = 'link';
+      if (item.indexOf('facebook') > -1) icon = 'facebook';
+      if (item.indexOf('instagram') > -1) icon = 'instagram';
+      if (item.indexOf('twitter') > -1) icon = 'twitter';
+      if (item.indexOf('youtube') > -1) icon = 'youtube';
+      return /*#__PURE__*/React.createElement("a", {
+        key: index,
+        href: item,
+        target: "_blank"
+      }, /*#__PURE__*/React.createElement("span", {
+        "uk-icon": "icon: " + icon
+      }));
+    }))));
+  };
+  _c = Banner;
+  var _c;
+  $RefreshReg$(_c, "Banner");
+}.call(this, module);
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+},"Events.jsx":function module(require,exports,module){
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                     //
+// imports/ui/routes/Park/Events.jsx                                                                                   //
+//                                                                                                                     //
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                                       //
+!function (module1) {
+  var _toConsumableArray;
+  module1.link("@babel/runtime/helpers/toConsumableArray", {
+    default: function (v) {
+      _toConsumableArray = v;
+    }
+  }, 0);
+  module1.export({
+    Events: function () {
+      return Events;
+    }
+  });
+  var React, Fragment;
+  module1.link("react", {
+    "default": function (v) {
+      React = v;
+    },
+    Fragment: function (v) {
+      Fragment = v;
+    }
+  }, 0);
+  var dayjs;
+  module1.link("dayjs", {
+    "default": function (v) {
+      dayjs = v;
+    }
+  }, 1);
+  ___INIT_METEOR_FAST_REFRESH(module);
+  var Events = function (_ref) {
+    var park = _ref.park;
+    return /*#__PURE__*/React.createElement("div", {
+      className: "page-park__event",
+      "uk-slider": "center: true"
+    }, /*#__PURE__*/React.createElement("ul", {
+      className: "uk-slider-items"
+    }, [].concat(_toConsumableArray(park.events), _toConsumableArray(park.events)).map(function (event, index) {
+      var month = dayjs(event.date).format('MM');
+      var day = dayjs(event.date).format('DD');
+      return /*#__PURE__*/React.createElement("li", {
+        key: index
+      }, /*#__PURE__*/React.createElement("a", null, /*#__PURE__*/React.createElement("div", {
+        className: "page-park__event-overlay",
+        style: {
+          background: "linear-gradient(0.25turn, " + park.theme.secondary + ", transparent)"
+        }
+      }), /*#__PURE__*/React.createElement("div", {
+        className: "page-park__event-content"
+      }, /*#__PURE__*/React.createElement("h5", {
+        style: {
+          color: park.theme.primary
+        },
+        className: "uk-text-uppercase uk-text-bold"
+      }, event.title), /*#__PURE__*/React.createElement("h6", {
+        className: "uk-text-uppercase"
+      }, event.subtitle)), /*#__PURE__*/React.createElement("div", {
+        className: "page-park__event-date"
+      }, /*#__PURE__*/React.createElement("p", null, /*#__PURE__*/React.createElement("span", null, day), /*#__PURE__*/React.createElement("span", null, "/"), /*#__PURE__*/React.createElement("span", null, month))), /*#__PURE__*/React.createElement("img", {
+        src: event.image,
+        width: "",
+        height: "",
+        alt: ""
+      })));
+    })));
+  };
+  _c = Events;
+  var _c;
+  $RefreshReg$(_c, "Events");
+}.call(this, module);
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+},"HappeningNow.jsx":function module(require,exports,module){
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                     //
+// imports/ui/routes/Park/HappeningNow.jsx                                                                             //
+//                                                                                                                     //
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                                       //
+!function (module1) {
+  module1.export({
+    HappeningNow: function () {
+      return HappeningNow;
+    }
+  });
+  var React, Fragment, useRef, useEffect;
+  module1.link("react", {
+    "default": function (v) {
+      React = v;
+    },
+    Fragment: function (v) {
+      Fragment = v;
+    },
+    useRef: function (v) {
+      useRef = v;
+    },
+    useEffect: function (v) {
+      useEffect = v;
+    }
+  }, 0);
+  var intersectionObserver;
+  module1.link("../../../../client/scripts/helpers.js", {
+    intersectionObserver: function (v) {
+      intersectionObserver = v;
+    }
+  }, 1);
+  ___INIT_METEOR_FAST_REFRESH(module);
+  var _s = $RefreshSig$();
+  var HappeningNow = function (_ref) {
+    var park = _ref.park,
+      event = _ref.event,
+      full = _ref.full;
+    _s();
+    //const imageRef = useRef(null);
+    // const formatDescription = (str) {
+    // 	let descripition = <span>;
+
+    useEffect(function () {
+      // const image = imageRef.current;
+      // intersectionObserver(
+      // 	image,
+      // 	(event) => {
+      // 		if (event[0].isIntersecting) image.classList.add('animate__fadeInLeft');
+      // 	},
+      // 	{ threshold: 0.75 }
+      // );
+    }, []);
+    console.log(event);
+    return /*#__PURE__*/React.createElement("div", {
+      className: "page-park__happening-now" + (full ? ' page-park__happening-now--full' : '')
+    }, /*#__PURE__*/React.createElement("img", {
+      className: "page-park__happening-now-cover animate__animated animate__delay-1s animate__fadeIn",
+      src: "./" + event.image
+    }), /*#__PURE__*/React.createElement("div", {
+      className: "page-park__happening-now-info animate__animated animate__fadeInDown animate__delay-2s"
+    }, /*#__PURE__*/React.createElement("img", {
+      src: park.logo,
+      alt: event.title
+    }), /*#__PURE__*/React.createElement("div", {
+      className: "page-park__happening-now-title"
+    }, /*#__PURE__*/React.createElement("h5", {
+      className: "uk-h6 uk-text-uppercase uk-text-bolder"
+    }, event.title), /*#__PURE__*/React.createElement("h6", {
+      className: "uk-text-uppercase"
+    }, event.subtitle))), /*#__PURE__*/React.createElement("div", {
+      className: "page-park__happening-now-cta animate__animated animate__fadeInUp animate__delay-2s"
+    }, /*#__PURE__*/React.createElement("h6", {
+      className: "uk-text-uppercase uk-text-bolder uk-text-italic"
+    }, "Happening ", /*#__PURE__*/React.createElement("span", {
+      style: {
+        color: event.theme.primary
+      }
+    }, "Now")), /*#__PURE__*/React.createElement("button", {
+      className: "uk-button uk-button-secondary uk-button-large",
+      style: {
+        backgroundColor: event.theme.primary
+      }
+    }, "Jump In")));
+  };
+  _s(HappeningNow, "OD7bBpZva5O2jO+Puf00hKivP7c=");
+  _c = HappeningNow;
+  var _c;
+  $RefreshReg$(_c, "HappeningNow");
+}.call(this, module);
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+},"index.jsx":function module(require,exports,module){
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                     //
+// imports/ui/routes/Park/index.jsx                                                                                    //
+//                                                                                                                     //
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                                       //
+!function (module1) {
+  var _slicedToArray;
+  module1.link("@babel/runtime/helpers/slicedToArray", {
+    default: function (v) {
+      _slicedToArray = v;
+    }
+  }, 0);
+  module1.export({
+    Park: function () {
+      return Park;
+    }
+  });
+  var React, Fragment, useState, useEffect, useRef;
+  module1.link("react", {
+    "default": function (v) {
+      React = v;
+    },
+    Fragment: function (v) {
+      Fragment = v;
+    },
+    useState: function (v) {
+      useState = v;
+    },
+    useEffect: function (v) {
+      useEffect = v;
+    },
+    useRef: function (v) {
+      useRef = v;
+    }
+  }, 0);
+  module1.link("/node_modules/flag-icons/css/flag-icons.min.css");
+  var data;
+  module1.link("../../../../client/scripts/data", {
+    "default": function (v) {
+      data = v;
+    }
+  }, 1);
+  var getCSSVariable, asyncTimeout;
+  module1.link("../../../../client/scripts/helpers.js", {
+    getCSSVariable: function (v) {
+      getCSSVariable = v;
+    },
+    asyncTimeout: function (v) {
+      asyncTimeout = v;
+    }
+  }, 2);
+  var Background;
+  module1.link("./Background", {
+    Background: function (v) {
+      Background = v;
+    }
+  }, 3);
+  var Banner;
+  module1.link("./Banner", {
+    Banner: function (v) {
+      Banner = v;
+    }
+  }, 4);
+  var HappeningNow;
+  module1.link("./HappeningNow", {
+    HappeningNow: function (v) {
+      HappeningNow = v;
+    }
+  }, 5);
+  var Events;
+  module1.link("./Events", {
+    Events: function (v) {
+      Events = v;
+    }
+  }, 6);
+  var About;
+  module1.link("./About", {
+    About: function (v) {
+      About = v;
+    }
+  }, 7);
+  var CTARegister;
+  module1.link("../../components/CTARegister.jsx", {
+    CTARegister: function (v) {
+      CTARegister = v;
+    }
+  }, 8);
+  ___INIT_METEOR_FAST_REFRESH(module);
+  var _s = $RefreshSig$();
+  var Park = function (props) {
+    _s();
+    var mainRef = useRef(null);
+    var _useState = useState(''),
+      _useState2 = _slicedToArray(_useState, 2),
+      animation = _useState2[0],
+      setAnimation = _useState2[1];
+    useEffect(function () {
+      var delay = parseInt(getCSSVariable('--animate-delay'));
+      setAnimation('');
+      setTimeout(function () {
+        setAnimation('animate__fadeIn');
+      }, delay);
+    }, []);
+    return /*#__PURE__*/React.createElement("main", {
+      ref: mainRef,
+      className: "page-park"
+    }, /*#__PURE__*/React.createElement(Background, {
+      event: data.park,
+      primary: data.park.theme.primary,
+      secondary: data.park.theme.secondary
+    }), /*#__PURE__*/React.createElement("div", {
+      className: "container"
+    }, /*#__PURE__*/React.createElement("section", {
+      className: "page-park__banner animate__animated animate__delay-1s " + animation
+    }, /*#__PURE__*/React.createElement(Banner, {
+      park: data.park
+    })), /*#__PURE__*/React.createElement("section", {
+      className: "page-park__happening animate__animated animate__delay-1s " + animation
+    }, /*#__PURE__*/React.createElement(HappeningNow, {
+      park: data.park,
+      event: data.event
+    }))), /*#__PURE__*/React.createElement("div", {
+      className: "container"
+    }, /*#__PURE__*/React.createElement("section", {
+      className: "page-park__events animate__animated animate__delay-1s " + animation
+    }, /*#__PURE__*/React.createElement(Events, {
+      park: data.park
+    }))), /*#__PURE__*/React.createElement("div", {
+      className: "container"
+    }, /*#__PURE__*/React.createElement("section", {
+      className: "page-park__about animate__animated animate__delay-1s " + animation
+    }, /*#__PURE__*/React.createElement(About, {
+      park: data.park
+    })), /*#__PURE__*/React.createElement("section", {
+      className: "page-park__happening page-park__happening--full animate__animated animate__delay-1s " + animation
+    }, /*#__PURE__*/React.createElement(HappeningNow, {
+      park: data.park,
+      event: data.event,
+      full: true
+    }))));
+  };
+  _s(Park, "AwBpkQpZdXbs5zhD/ELLeSKVTlM=");
+  _c = Park;
+  var _c;
+  $RefreshReg$(_c, "Park");
 }.call(this, module);
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -769,7 +806,7 @@ var require = meteorInstall({"imports":{"ui":{"routes":{"Event":{"Background.jsx
     }
   }, 2);
   var data;
-  module1.link("../../../client/scripts/data.js", {
+  module1.link("../../../client/scripts/data", {
     "default": function (v) {
       data = v;
     }
@@ -880,38 +917,30 @@ var require = meteorInstall({"imports":{"ui":{"routes":{"Event":{"Background.jsx
     }
   }, 2);
   var data;
-  module1.link("../../../client/scripts/data.js", {
+  module1.link("../../../client/scripts/data", {
     "default": function (v) {
       data = v;
     }
   }, 3);
   ___INIT_METEOR_FAST_REFRESH(module);
   var Home = function (props) {
-    var events = data.events({
-      setRoute: props.setRoute
-    }).slice(0, 3);
+    var items = [{
+      video: true,
+      src: 'banner.mp4',
+      title: /*#__PURE__*/React.createElement("span", null, "Featured", /*#__PURE__*/React.createElement("br", null), "Waco Surf Park"),
+      subtitle: 'Live',
+      description: "Texas isn't known for its surfing, but Waco Surf has changed the game.",
+      buttonText: 'View',
+      buttonUrl: 'https://www.youtube.com/watch?v=jfGuUD-inBM'
+    }];
     return /*#__PURE__*/React.createElement("main", {
       className: "page-home"
     }, /*#__PURE__*/React.createElement(Banner, {
-      items: [{
-        video: true,
-        src: 'banner.mp4',
-        title: /*#__PURE__*/React.createElement("span", null, "Waco Surf Trip with the ", /*#__PURE__*/React.createElement("br", null), "GoPro Surf Team"),
-        subtitle: 'Live',
-        description: "Texas isn't known for its surfing, but Waco Surf has changed the game.",
-        buttonText: 'Watch Now',
-        buttonUrl: 'https://www.youtube.com/watch?v=jfGuUD-inBM'
-      }, {
-        src: 'banner-image-1.png',
-        title: /*#__PURE__*/React.createElement("span", null, "The Rail Project: ", /*#__PURE__*/React.createElement("br", null), "Julian Wilson has ride of his life as he surf-skates in water"),
-        subtitle: 'VOD',
-        description: 'A new kind of skate park.',
-        buttonText: 'Watch Now',
-        buttonUrl: 'https://www.youtube.com/watch?v=y2CTZ5GtMUA'
-      }]
+      items: items
     }), /*#__PURE__*/React.createElement(ImageGrid, {
-      title: "What's Going Down",
-      items: events,
+      title: "Nearby Parks",
+      type: "park",
+      items: data.parks,
       grid: "uk-child-width-1-2@s uk-child-width-1-3@m uk-child-width-1-4@l"
     }));
   };
@@ -982,6 +1011,165 @@ var require = meteorInstall({"imports":{"ui":{"routes":{"Event":{"Background.jsx
   _c = Banner;
   var _c;
   $RefreshReg$(_c, "Banner");
+}.call(this, module);
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+},"CTARegister.jsx":function module(require,exports,module){
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                     //
+// imports/ui/components/CTARegister.jsx                                                                               //
+//                                                                                                                     //
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                                       //
+!function (module1) {
+  module1.export({
+    CTARegister: function () {
+      return CTARegister;
+    }
+  });
+  var React;
+  module1.link("react", {
+    "default": function (v) {
+      React = v;
+    }
+  }, 0);
+  var data;
+  module1.link("../../../client/scripts/data", {
+    "default": function (v) {
+      data = v;
+    }
+  }, 1);
+  ___INIT_METEOR_FAST_REFRESH(module);
+  var CTARegister = function () {
+    return /*#__PURE__*/React.createElement("div", {
+      className: "cta-register"
+    }, /*#__PURE__*/React.createElement("img", {
+      className: "cta-register__cover animate__animated animate__delay-1s animate__fadeIn",
+      src: "./" + data.event.image
+    }), /*#__PURE__*/React.createElement("div", {
+      className: "cta-register__info animate__animated animate__fadeInDown animate__delay-2s"
+    }, /*#__PURE__*/React.createElement("img", {
+      src: data.event.logo,
+      alt: data.event.title
+    }), /*#__PURE__*/React.createElement("div", {
+      className: "cta-register__title"
+    }, /*#__PURE__*/React.createElement("h5", {
+      className: "uk-h6 uk-text-uppercase uk-text-bolder"
+    }, data.event.title), /*#__PURE__*/React.createElement("h6", {
+      className: "uk-text-uppercase"
+    }, data.event.subtitle))), /*#__PURE__*/React.createElement("div", {
+      className: "cta-register__cta animate__animated animate__fadeInUp animate__delay-2s"
+    }, /*#__PURE__*/React.createElement("h6", {
+      className: "uk-text-uppercase uk-text-bolder uk-text-italic"
+    }, "Registration Open"), /*#__PURE__*/React.createElement("button", {
+      className: "uk-button uk-button-secondary uk-button-large",
+      style: {
+        backgroundColor: data.event.theme.secondary
+      }
+    }, "Sign Up")));
+  };
+  _c = CTARegister;
+  var _c;
+  $RefreshReg$(_c, "CTARegister");
+}.call(this, module);
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+},"Expand.jsx":function module(require,exports,module){
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                     //
+// imports/ui/components/Expand.jsx                                                                                    //
+//                                                                                                                     //
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                                       //
+!function (module1) {
+  var _regeneratorRuntime;
+  module1.link("@babel/runtime/regenerator", {
+    default: function (v) {
+      _regeneratorRuntime = v;
+    }
+  }, 0);
+  module1.export({
+    Expand: function () {
+      return Expand;
+    }
+  });
+  var React, useEffect;
+  module1.link("react", {
+    "default": function (v) {
+      React = v;
+    },
+    useEffect: function (v) {
+      useEffect = v;
+    }
+  }, 0);
+  var asyncTimeout, getCSSVariable;
+  module1.link("../../../client/scripts/helpers.js", {
+    asyncTimeout: function (v) {
+      asyncTimeout = v;
+    },
+    getCSSVariable: function (v) {
+      getCSSVariable = v;
+    }
+  }, 1);
+  ___INIT_METEOR_FAST_REFRESH(module);
+  var _s = $RefreshSig$();
+  var Expand = function (props) {
+    _s();
+    useEffect(function () {
+      var container = document.querySelector("[data-expand=\"" + props.id + "\"]");
+      if (!container) return;
+      container.classList.add('animate__animated');
+    });
+    var expand = function () {
+      function _callee() {
+        var container, delay;
+        return _regeneratorRuntime.async(function () {
+          function _callee$(_context) {
+            while (1) switch (_context.prev = _context.next) {
+              case 0:
+                container = document.querySelector("[data-expand=\"" + props.id + "\"]");
+                delay = parseInt(getCSSVariable('--animate-delay'));
+                if (container) {
+                  _context.next = 4;
+                  break;
+                }
+                return _context.abrupt("return");
+              case 4:
+                if (!(container.className.indexOf('expand') > -1)) {
+                  _context.next = 10;
+                  break;
+                }
+                container.classList.add(props.animationOut);
+                _context.next = 8;
+                return _regeneratorRuntime.awrap(asyncTimeout(delay));
+              case 8:
+                container.classList.remove(props.animationOut, props.animationIn, 'expand');
+                return _context.abrupt("return");
+              case 10:
+                container.classList.add('expand');
+                container.classList.add(props.animationIn);
+              case 12:
+              case "end":
+                return _context.stop();
+            }
+          }
+          return _callee$;
+        }(), null, null, null, Promise);
+      }
+      return _callee;
+    }();
+    return /*#__PURE__*/React.createElement("button", {
+      "data-expand-trigger": "stream",
+      "uk-icon": "icon: expand",
+      onClick: expand
+    });
+  };
+  _s(Expand, "OD7bBpZva5O2jO+Puf00hKivP7c=");
+  _c = Expand;
+  var _c;
+  $RefreshReg$(_c, "Expand");
 }.call(this, module);
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -1076,15 +1264,13 @@ var require = meteorInstall({"imports":{"ui":{"routes":{"Event":{"Background.jsx
       _ref$items = _ref.items,
       items = _ref$items === void 0 ? [] : _ref$items,
       _ref$title = _ref.title,
-      title = _ref$title === void 0 ? '' : _ref$title,
-      _ref$setRoute = _ref.setRoute,
-      setRoute = _ref$setRoute === void 0 ? null : _ref$setRoute;
+      title = _ref$title === void 0 ? '' : _ref$title;
     return /*#__PURE__*/React.createElement("section", {
       className: "image-grid"
     }, items && items.length && /*#__PURE__*/React.createElement("div", {
       className: "uk-container uk-padding"
     }, title && /*#__PURE__*/React.createElement("h3", {
-      className: "image-grid__title uk-text-bold"
+      className: "uk-h4 image-grid__title uk-text-bolder uk-text-uppercase"
     }, title), /*#__PURE__*/React.createElement("div", {
       className: "uk-grid " + grid + (filter && ' js-filter'),
       "uk-grid": "masonry: true"
@@ -1100,10 +1286,7 @@ var require = meteorInstall({"imports":{"ui":{"routes":{"Event":{"Background.jsx
       }
       return /*#__PURE__*/React.createElement("a", {
         key: item.id ? item.id : index,
-        className: className,
-        onClick: function (event) {
-          return item.setRoute(event, item);
-        }
+        className: className
       }, /*#__PURE__*/React.createElement("div", {
         className: "uk-card uk-card-default uk-card-body"
       }, /*#__PURE__*/React.createElement("div", {
@@ -1121,7 +1304,9 @@ var require = meteorInstall({"imports":{"ui":{"routes":{"Event":{"Background.jsx
         className: "image-grid__item-date-month-year uk-text-small"
       }, date[0], " / ", date[2])), /*#__PURE__*/React.createElement("div", {
         className: "image-grid__item-content"
-      }, /*#__PURE__*/React.createElement("h3", null, item.title), /*#__PURE__*/React.createElement("p", null, item.description), item.url && /*#__PURE__*/React.createElement("button", {
+      }, /*#__PURE__*/React.createElement("h3", {
+        className: "uk-h4 uk-text-uppercase"
+      }, item.title || item.name), /*#__PURE__*/React.createElement("p", null, item.description), item.url && /*#__PURE__*/React.createElement("button", {
         href: item.url,
         className: "uk-button uk-button-danger uk-button-medium"
       }, "View")))));
@@ -1429,6 +1614,526 @@ var require = meteorInstall({"imports":{"ui":{"routes":{"Event":{"Background.jsx
 }.call(this, module);
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+},"ParkMap.jsx":function module(require,exports,module){
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                     //
+// imports/ui/components/ParkMap.jsx                                                                                   //
+//                                                                                                                     //
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                                       //
+!function (module1) {
+  var _slicedToArray;
+  module1.link("@babel/runtime/helpers/slicedToArray", {
+    default: function (v) {
+      _slicedToArray = v;
+    }
+  }, 0);
+  module1.export({
+    ParkMap: function () {
+      return ParkMap;
+    }
+  });
+  var React, useRef, useState, useEffect;
+  module1.link("react", {
+    "default": function (v) {
+      React = v;
+    },
+    useRef: function (v) {
+      useRef = v;
+    },
+    useState: function (v) {
+      useState = v;
+    },
+    useEffect: function (v) {
+      useEffect = v;
+    }
+  }, 0);
+  var data;
+  module1.link("../../../client/scripts/data", {
+    "default": function (v) {
+      data = v;
+    }
+  }, 1);
+  var getCSSVariable;
+  module1.link("../../../client/scripts/helpers.js", {
+    getCSSVariable: function (v) {
+      getCSSVariable = v;
+    }
+  }, 2);
+  var Expand;
+  module1.link("./Expand.jsx", {
+    Expand: function (v) {
+      Expand = v;
+    }
+  }, 3);
+  ___INIT_METEOR_FAST_REFRESH(module);
+  var _s = $RefreshSig$();
+  var ParkMap = function () {
+    _s();
+    var mapRef = useRef(null);
+    var athlete = data.athletes[0];
+    var _useState = useState(''),
+      _useState2 = _slicedToArray(_useState, 2),
+      animation = _useState2[0],
+      setAnimation = _useState2[1];
+    var setPointData = function () {
+      var map = document.querySelector('[data-map]');
+      data.event.run.points.forEach(function (point, index) {
+        var anchor = document.querySelectorAll('[data-anchor]')[index];
+        var line = document.createElement('div');
+        line.classList.add('line');
+        line.setAttribute('data-line', index);
+        line.style.borderColro = data.event.theme.primary;
+        line.style.left = "calc(" + anchor.style.left + " + 20px)";
+        var markup = "\n\t\t\t\t<h6 class=\"uk-text-uppercase uk-text-bolder\" style=\"color: " + data.event.theme.primary + ";\">" + point.title + "</h6>\n\t\t\t\t<p class=\"uk-text-uppercase uk-text-light\">" + point.text + "</p>\n\t\t\t";
+        var info = document.createElement('div');
+        info.setAttribute('data-info', index);
+        info.innerHTML = markup;
+        var info2 = document.createElement('div');
+        info2.innerHTML = markup;
+        line.append(info);
+        line.append(info2);
+        map.append(line);
+        var _line = document.querySelector("[data-line=\"" + index + "\"]");
+        var _line$getBoundingClie = _line.getBoundingClientRect(),
+          height = _line$getBoundingClie.height;
+        _line.style.top = "calc(" + anchor.style.top + " - " + height + "px - 5px)";
+      });
+    };
+    var getCoords = function (event) {
+      var map = mapRef.current;
+      var _map$getBoundingClien = map.getBoundingClientRect(),
+        x = _map$getBoundingClien.x,
+        y = _map$getBoundingClien.y,
+        width = _map$getBoundingClien.width,
+        height = _map$getBoundingClien.height,
+        left = _map$getBoundingClien.left,
+        top = _map$getBoundingClien.top;
+      var clientX = event.clientX - left;
+      var clientY = event.clientY - top;
+      var _top = clientY / height * 100;
+      var _left = clientX / width * 100;
+      console.log({
+        clientX: clientX,
+        clientY: clientY,
+        top: _top,
+        left: _left
+      });
+    };
+    useEffect(function () {
+      var delay = parseInt(getCSSVariable('--animate-delay'));
+      setAnimation('');
+      setTimeout(function () {
+        setAnimation('animate__fadeInUp');
+      }, delay);
+      setTimeout(function () {
+        setPointData();
+      }, delay * 2);
+    }, []);
+    return /*#__PURE__*/React.createElement("div", {
+      ref: mapRef,
+      className: "park-map uk-padding-small animate__animated",
+      "data-expand": "park-map"
+    }, /*#__PURE__*/React.createElement("h4", {
+      className: "uk-text-bold uk-text-uppercase",
+      style: {
+        color: data.event.theme.primary
+      }
+    }, /*#__PURE__*/React.createElement("span", null, "Current"), " Run"), /*#__PURE__*/React.createElement(Expand, {
+      id: "park-map",
+      animationIn: "animate__fadeIn",
+      animationOut: "animate__fadeOut"
+    }), /*#__PURE__*/React.createElement("div", {
+      className: "park-map__athlete"
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "park-map__athlete-run animate__animated animate__delay-1s " + animation,
+      style: {
+        backgroundColor: data.event.theme.primary
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "park-map__athlete-image"
+    }, /*#__PURE__*/React.createElement("img", {
+      src: athlete.image
+    })), /*#__PURE__*/React.createElement("div", {
+      className: "park-map__athlete-name uk-padding-small uk-text-uppercase uk-text-bold"
+    }, /*#__PURE__*/React.createElement("span", null, athlete.name)), /*#__PURE__*/React.createElement("div", {
+      className: "park-map__athlete-current-run uk-padding-small uk-text-uppercase uk-text-bold"
+    }, /*#__PURE__*/React.createElement("span", null, "Run ", athlete.run)), /*#__PURE__*/React.createElement("div", {
+      className: "park-map__athlete-points uk-padding-small uk-text-uppercase uk-text-bold"
+    }, /*#__PURE__*/React.createElement("span", null, athlete.points)))), /*#__PURE__*/React.createElement("div", {
+      "data-map": "map",
+      className: "park-map__map",
+      onClick: getCoords
+    }, data.event.run.points.map(function (point, index) {
+      return /*#__PURE__*/React.createElement("div", {
+        key: index,
+        "data-anchor": index,
+        className: "park-map__map-point",
+        style: {
+          top: point.coords.y,
+          left: point.coords.x,
+          backgroundColor: data.event.theme.primary
+        }
+      });
+    }), /*#__PURE__*/React.createElement("img", {
+      src: data.event.park
+    })));
+  };
+  _s(ParkMap, "8mg4/kRZfWN5fRut+ZOjd2QN7VU=");
+  _c = ParkMap;
+  var _c;
+  $RefreshReg$(_c, "ParkMap");
+}.call(this, module);
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+},"Standings.jsx":function module(require,exports,module){
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                     //
+// imports/ui/components/Standings.jsx                                                                                 //
+//                                                                                                                     //
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                                       //
+!function (module1) {
+  var _slicedToArray;
+  module1.link("@babel/runtime/helpers/slicedToArray", {
+    default: function (v) {
+      _slicedToArray = v;
+    }
+  }, 0);
+  var _toConsumableArray;
+  module1.link("@babel/runtime/helpers/toConsumableArray", {
+    default: function (v) {
+      _toConsumableArray = v;
+    }
+  }, 1);
+  module1.export({
+    Standings: function () {
+      return Standings;
+    }
+  });
+  var React, Fragment, useEffect, useState;
+  module1.link("react", {
+    "default": function (v) {
+      React = v;
+    },
+    Fragment: function (v) {
+      Fragment = v;
+    },
+    useEffect: function (v) {
+      useEffect = v;
+    },
+    useState: function (v) {
+      useState = v;
+    }
+  }, 0);
+  var data;
+  module1.link("../../../client/scripts/data", {
+    "default": function (v) {
+      data = v;
+    }
+  }, 1);
+  var getCSSVariable, randomInt, sortBy;
+  module1.link("../../../client/scripts/helpers.js", {
+    getCSSVariable: function (v) {
+      getCSSVariable = v;
+    },
+    randomInt: function (v) {
+      randomInt = v;
+    },
+    sortBy: function (v) {
+      sortBy = v;
+    }
+  }, 2);
+  var Expand;
+  module1.link("./Expand.jsx", {
+    Expand: function (v) {
+      Expand = v;
+    }
+  }, 3);
+  ___INIT_METEOR_FAST_REFRESH(module);
+  var _s = $RefreshSig$();
+  var Standings = function () {
+    _s();
+    var keys = ['place', 'image', 'name', 'gender', 'run', 'points'];
+    var athletes = _toConsumableArray(data.event.athletes).map(function (athlete, index) {
+      var multiplier = (randomInt(4, 9) / 100).toFixed(2);
+      var decimal = 0.13 * index;
+      athlete.points = (multiplier * 100 + decimal).toFixed(2);
+      athlete.run = 1;
+      if (index < 4) athlete.run = 2;
+      var obj = {};
+      keys.forEach(function (key) {
+        return obj[key] = athlete[key];
+      });
+      return obj;
+    });
+    athletes = sortBy(athletes, 'points', true);
+    var _useState = useState(''),
+      _useState2 = _slicedToArray(_useState, 2),
+      animation = _useState2[0],
+      setAnimation = _useState2[1];
+    var _useState3 = useState([{
+        label: /*#__PURE__*/React.createElement(Fragment, null, "Men's", ' ', /*#__PURE__*/React.createElement("span", {
+          className: "standings-label",
+          style: {
+            color: data.event.theme.primary
+          }
+        }, "Standings")),
+        slug: 'male',
+        active: true
+      }, {
+        label: /*#__PURE__*/React.createElement(Fragment, null, "Women's", /*#__PURE__*/React.createElement("span", {
+          className: "standings-label",
+          style: {
+            color: data.event.theme.primary
+          }
+        }, "Standings")),
+        slug: 'female',
+        active: false
+      }]),
+      _useState4 = _slicedToArray(_useState3, 2),
+      tabs = _useState4[0],
+      setTabs = _useState4[1];
+    var setTab = function () {
+      var state = _toConsumableArray(tabs);
+      var index = tabs.findIndex(function (tab) {
+        return tab.active;
+      });
+      var nextIndex = index + 1;
+      var limit = state.length - 1;
+      state = state.map(function (tab) {
+        tab.active = false;
+        return tab;
+      });
+      if (nextIndex > limit) {
+        state[0].active = true;
+      } else {
+        state[nextIndex].active = true;
+      }
+      setTabs(state);
+    };
+    var tab = tabs.find(function (tab) {
+      return tab.active;
+    });
+    var index = tabs.findIndex(function (t) {
+      return t.slug == tab.slug;
+    });
+    useEffect(function () {
+      var delay = parseInt(getCSSVariable('--animate-delay'));
+      setAnimation('');
+      setTimeout(function () {
+        setAnimation('animate__fadeIn');
+      }, delay);
+    }, [tabs]);
+    return /*#__PURE__*/React.createElement("div", {
+      "data-expand": "standings",
+      className: "standings"
+    }, /*#__PURE__*/React.createElement(Expand, {
+      id: "standings",
+      animationIn: "animate__fadeIn",
+      animationOut: "animate__fadeOut"
+    }), /*#__PURE__*/React.createElement("div", {
+      className: "standings__table-header"
+    }, /*#__PURE__*/React.createElement("button", {
+      className: "uk-text-bold uk-h4 uk-text-uppercase",
+      onClick: setTab
+    }, tabs.map(function (t) {
+      var sum = index * 40 * -1;
+      var transform = "translateY(" + sum + "px)";
+      return /*#__PURE__*/React.createElement("div", {
+        key: t.slug,
+        className: "page-event__standings-tab",
+        style: {
+          transform: transform
+        }
+      }, t.label, /*#__PURE__*/React.createElement("span", {
+        className: "icon-group"
+      }, /*#__PURE__*/React.createElement("span", {
+        className: "icon-up",
+        "uk-icon": "icon: triangle-up"
+      }), /*#__PURE__*/React.createElement("span", {
+        className: "icon-down",
+        "uk-icon": "icon: triangle-down"
+      })));
+    }))), /*#__PURE__*/React.createElement("div", {
+      className: "standings__table-body animate__animated " + animation
+    }, Object.keys(athletes[0]).map(function (key) {
+      if (!['gender', 'place', 'image'].includes(key)) {
+        return /*#__PURE__*/React.createElement("div", {
+          key: key,
+          className: "standings__table-cell-head standings__table-cell-head--" + key + " athlete--heading athlete--heading-" + key + " uk-text-uppercase uk-text-bold",
+          style: {
+            backgroundColor: "" + (key == 'name' && data.event.theme.primary)
+          },
+          "data-name": key == 'name' ? 'athlete' : key
+        }, /*#__PURE__*/React.createElement("span", null, key == 'name' ? 'athlete' : key));
+      }
+    }), athletes.filter(function (a) {
+      return a.gender == tab.slug;
+    }).map(function (athlete, index) {
+      var place = index + 1;
+      var pointsWidth = athlete.points / 10 * 100;
+      var delay = index + 1;
+      var transitionDelay = '1.' + delay + 's';
+      return /*#__PURE__*/React.createElement("a", {
+        href: athlete.url,
+        key: index,
+        className: "standings__table-cell-data",
+        style: {
+          backgroundColor: data.event.theme.primary
+        }
+      }, /*#__PURE__*/React.createElement("div", {
+        className: "standings__table-cell-data-item standings__table-cell-data-item--place",
+        "data-index": place
+      }, /*#__PURE__*/React.createElement("span", null, place)), /*#__PURE__*/React.createElement("div", {
+        className: "standings__table-cell-data-item standings__table-cell-data-item--image"
+      }, /*#__PURE__*/React.createElement("img", {
+        src: athlete.image
+      })), /*#__PURE__*/React.createElement("div", {
+        className: "standings__table-cell-data-item standings__table-cell-data-item--name"
+      }, /*#__PURE__*/React.createElement("h6", {
+        className: "uk-text-normal uk-text-uppercase uk-text-bolder"
+      }, athlete.name)), /*#__PURE__*/React.createElement("div", {
+        className: "standings__table-cell-data-item standings__table-cell-data-item--run"
+      }, /*#__PURE__*/React.createElement("span", {
+        className: "uk-text-bolder",
+        style: {
+          color: data.event.theme.primary
+        }
+      }, athlete.run)), /*#__PURE__*/React.createElement("div", {
+        className: "standings__table-cell-data-item standings__table-cell-data-item--points"
+      }, /*#__PURE__*/React.createElement("span", {
+        className: "uk-text-bolder uk-text-italic",
+        style: {
+          color: data.event.theme.primary
+        }
+      }, athlete.points)));
+    })));
+  };
+  _s(Standings, "L0KMGSgec6GthQUkzXD4L6qpTq4=");
+  _c = Standings;
+  var _c;
+  $RefreshReg$(_c, "Standings");
+}.call(this, module);
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+},"Stream.jsx":function module(require,exports,module){
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                     //
+// imports/ui/components/Stream.jsx                                                                                    //
+//                                                                                                                     //
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                                       //
+!function (module1) {
+  var _slicedToArray;
+  module1.link("@babel/runtime/helpers/slicedToArray", {
+    default: function (v) {
+      _slicedToArray = v;
+    }
+  }, 0);
+  module1.export({
+    Stream: function () {
+      return Stream;
+    }
+  });
+  var React, useState, useEffect, useRef;
+  module1.link("react", {
+    "default": function (v) {
+      React = v;
+    },
+    useState: function (v) {
+      useState = v;
+    },
+    useEffect: function (v) {
+      useEffect = v;
+    },
+    useRef: function (v) {
+      useRef = v;
+    }
+  }, 0);
+  var data;
+  module1.link("../../../client/scripts/data", {
+    "default": function (v) {
+      data = v;
+    }
+  }, 1);
+  var getCSSVariable;
+  module1.link("../../../client/scripts/helpers.js", {
+    getCSSVariable: function (v) {
+      getCSSVariable = v;
+    }
+  }, 2);
+  var Expand;
+  module1.link("./Expand.jsx", {
+    Expand: function (v) {
+      Expand = v;
+    }
+  }, 3);
+  ___INIT_METEOR_FAST_REFRESH(module);
+  var _s = $RefreshSig$();
+  var Stream = function () {
+    _s();
+    var videoRef = useRef(null);
+    var _useState = useState(false),
+      _useState2 = _slicedToArray(_useState, 2),
+      play = _useState2[0],
+      setPlay = _useState2[1];
+    var _useState3 = useState(''),
+      _useState4 = _slicedToArray(_useState3, 2),
+      animation = _useState4[0],
+      setAnimation = _useState4[1];
+    var toggle = function () {
+      var player = videoRef.current;
+      if (play) {
+        player.pause();
+        setPlay(false);
+        return;
+      }
+      player.play();
+      setPlay(true);
+    };
+    useEffect(function () {
+      var delay = parseInt(getCSSVariable('--animate-delay'));
+      setAnimation('');
+      setTimeout(function () {
+        setAnimation('animate__fadeIn');
+      }, delay);
+    }, []);
+    return /*#__PURE__*/React.createElement("div", {
+      "data-expand": "stream",
+      className: "stream"
+    }, /*#__PURE__*/React.createElement(Expand, {
+      id: "stream",
+      animationIn: "animate__fadeIn",
+      animationOut: "animate__fadeOut"
+    }), /*#__PURE__*/React.createElement("h4", {
+      className: "uk-text-bold uk-text-uppercase",
+      style: {
+        color: data.event.theme.primary
+      }
+    }, /*#__PURE__*/React.createElement("span", null, "Happening"), " Now"), /*#__PURE__*/React.createElement("div", {
+      className: "stream__video-player animate__animated " + animation
+    }, /*#__PURE__*/React.createElement("video", {
+      className: "" + (play ? 'playing' : ''),
+      ref: videoRef,
+      src: data.event.stream,
+      onClick: toggle
+    }), !play && /*#__PURE__*/React.createElement("button", {
+      className: "stream__play active",
+      "uk-icon": "icon: play-circle",
+      onClick: toggle
+    })));
+  };
+  _s(Stream, "5MbSwFWUR1ae6cjBdLpdbA0GNAw=");
+  _c = Stream;
+  var _c;
+  $RefreshReg$(_c, "Stream");
+}.call(this, module);
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 },"Tabs.jsx":function module(require,exports,module){
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1510,7 +2215,7 @@ var require = meteorInstall({"imports":{"ui":{"routes":{"Event":{"Background.jsx
       return App;
     }
   });
-  var React, Fragment, useState;
+  var React, Fragment, useState, useEffect;
   module1.link("react", {
     "default": function (v) {
       React = v;
@@ -1520,6 +2225,9 @@ var require = meteorInstall({"imports":{"ui":{"routes":{"Event":{"Background.jsx
     },
     useState: function (v) {
       useState = v;
+    },
+    useEffect: function (v) {
+      useEffect = v;
     }
   }, 0);
   var Navbar;
@@ -1546,213 +2254,48 @@ var require = meteorInstall({"imports":{"ui":{"routes":{"Event":{"Background.jsx
       Event = v;
     }
   }, 4);
+  var Park;
+  module1.link("/imports/ui/routes/Park", {
+    Park: function (v) {
+      Park = v;
+    }
+  }, 5);
   var Footer;
   module1.link("/imports/ui/components/Footer", {
     Footer: function (v) {
       Footer = v;
     }
-  }, 5);
+  }, 6);
   var data;
-  module1.link("../../client/scripts/data.js", {
+  module1.link("../../client/scripts/data", {
     "default": function (v) {
       data = v;
     }
-  }, 6);
+  }, 7);
   var transition;
   module1.link("../../client/scripts/helpers.js", {
     transition: function (v) {
       transition = v;
     }
-  }, 7);
+  }, 8);
   ___INIT_METEOR_FAST_REFRESH(module);
   var _s = $RefreshSig$();
-  var test = {
-    'id': 1,
-    'tag': 'Park',
-    'title': 'The Hawaiian Islands',
-    'location': 'Haleiwa,Oahu, United States',
-    'description': "The HIC Haleiwa Pro is a premier surfing competition that takes place in the captivating backdrop of the Hawaiian Islands. Known for its thrilling waves and stunning coastal scenery, this event is a highlight on the professional surfing calendar. Surfers from around the world converge on the iconic North Shore of Oahu to showcase their skills and compete for top honors. The competition is a part of the World Surf League's Qualifying Series, attracting elite surfers eager to conquer the challenging waves of Haleiwa. With its rich surfing culture, warm hospitality, and breathtaking ocean views, the HIC Haleiwa Pro not only celebrates the sport but also pays homage to the unique spirit of Hawaii's surf culture. It's an event where passion meets skill, and spectators are treated to an exhilarating display of talent against the backdrop of one of the world's most iconic surfing destinations.",
-    'image': 'hic.jpeg',
-    'subtitle': 'HIC Haleiwa Pro',
-    'start_date': '07-12-2024',
-    'end_date': '07-15-2024',
-    'url': '/a',
-    'athletes': [{
-      'birthstart_date': 'Apr 16, 1995',
-      'end_date': 'Apr 16, 1995',
-      'gender': 'male',
-      'hometown': 'Ubatuba, São Paulo',
-      'country': 'br',
-      'image': 'fillipe-toledo.png',
-      'name': 'Filipe Toledo',
-      'stance': 'regular',
-      'weight': 154,
-      'height': {
-        'feet': 5,
-        'inches': 9
-      }
-    }, {
-      'birthstart_date': 'Sep 2, 1998',
-      'end_date': 'Sep 2, 1998',
-      'gender': 'male',
-      'hometown': 'North Stradbroke Island, Queensland, Australia',
-      'country': 'au',
-      'image': 'ethan-ewing.png',
-      'name': 'Ethan Ewing',
-      'weight': 169,
-      'stance': 'regular',
-      'height': {
-        'feet': 5,
-        'inches': 11
-      }
-    }, {
-      'birthstart_date': 'Jul 29, 1998',
-      'end_date': 'Jul 29, 1998',
-      'hometown': 'San Clemente, California',
-      'country': 'us',
-      'gender': 'male',
-      'image': 'griffin-colapinto.png',
-      'name': 'Griffin Colapinto',
-      'stance': 'regular',
-      'weight': 171,
-      'height': {
-        'feet': 5,
-        'inches': 11
-      }
-    }, {
-      'birthstart_date': 'Aug 30, 2000',
-      'end_date': 'Aug 30, 2000',
-      'hometown': 'Saquarema',
-      'country': 'br',
-      'gender': 'male',
-      'image': 'joao-chianca.png',
-      'name': 'Joao Chianca',
-      'stance': 'regular',
-      'weight': 171,
-      'height': {
-        'feet': 5,
-        'inches': 11
-      }
-    }, {
-      'birthstart_date': 'Dec 27, 1997',
-      'end_date': 'Dec 27, 1997',
-      'hometown': 'Margaret River',
-      'country': 'au',
-      'gender': 'male',
-      'image': 'jack-robinson-1.png',
-      'name': 'Jack Robinson',
-      'stance': 'regular',
-      'weight': 178,
-      'height': {
-        'feet': 5,
-        'inches': 11
-      }
-    }, {
-      'birthstart_date': 'Aug 27, 1992',
-      'end_date': 'Aug 27, 1992',
-      'name': 'Carissa Moore',
-      'image': 'carissa-moore.png',
-      'hometown': 'Honolulu, Oahu, Hawaii',
-      'country': 'us',
-      'gender': 'female',
-      'weight': 154,
-      'stance': 'regular',
-      'height': {
-        'feet': 5,
-        'inches': 7
-      }
-    }, {
-      'birthstart_date': 'Oct 26, 2005',
-      'end_date': 'Oct 26, 2005',
-      'name': 'Caitlin Simmers',
-      'image': 'caitlin-simmers.png',
-      'hometown': 'Oceanside, CA',
-      'country': 'us',
-      'gender': 'female',
-      'weight': 114,
-      'stance': 'regular',
-      'height': {
-        'feet': 5,
-        'inches': 3
-      }
-    }, {
-      'birthstart_date': ' May 9, 1996',
-      'end_date': ' May 9, 1996',
-      'name': 'Tatiana Weston-Webb',
-      'image': 'tatiana.png',
-      'hometown': 'Princeville, Kauai, Hawaii',
-      'country': 'us',
-      'gender': 'female',
-      'weight': 127,
-      'stance': 'Goofy',
-      'height': {
-        'feet': 5,
-        'inches': 4
-      }
-    }],
-    'logo': './event-logo-dark.png',
-    'sponsors': [{
-      'image': 'activision.png',
-      'url': ''
-    }, {
-      'image': 'sharpeye.png',
-      'url': ''
-    }, {
-      'image': 'redbull.png',
-      'url': ''
-    }, {
-      'image': 'hurley.png',
-      'url': ''
-    }, {
-      'image': 'oneil.png',
-      'url': ''
-    }, {
-      'image': 'slater.png',
-      'url': ''
-    }],
-    'theme': {
-      'primary': 'var(--primary)',
-      'secondary': 'var(--secondary)'
-    },
-    'park': './wavepark-1.png',
-    'run': {
-      points: [{
-        title: 'Wave 1',
-        text: 'Tail Slide',
-        coords: {
-          x: '78%',
-          y: '22%'
-        }
-      }, {
-        title: 'Wave 2',
-        text: 'Aerial',
-        coords: {
-          x: '80.2%',
-          y: '30.5%'
-        }
-      }, {
-        title: 'Wave 3',
-        text: 'Snap',
-        coords: {
-          x: '57%',
-          y: '45.5%'
-        }
-      }, {
-        title: 'Wave 4',
-        text: 'Off-the-Lip',
-        coords: {
-          x: '50%',
-          y: '67%'
-        }
-      }]
-    }
-  };
+  console.log(data);
   var App = function () {
     _s();
     var _useState = useState({
         home: {
           background: 'transparent',
-          active: true
+          active: false
+        },
+        parks: {
+          background: 'transparent',
+          active: false
+        },
+        park: {
+          background: 'transparent',
+          active: true,
+          hidden: true
         },
         events: {
           background: 'var(--blue-700)',
@@ -1761,14 +2304,10 @@ var require = meteorInstall({"imports":{"ui":{"routes":{"Event":{"Background.jsx
         event: {
           background: 'transparent',
           active: false,
-          props: test,
+          props: data.park,
           hidden: true
         },
         leagues: {
-          background: 'transparent',
-          active: false
-        },
-        parks: {
           background: 'transparent',
           active: false
         }
@@ -1811,6 +2350,22 @@ var require = meteorInstall({"imports":{"ui":{"routes":{"Event":{"Background.jsx
       }
       return _callee;
     }();
+    var setHeaderHeight = function () {
+      var header = document.querySelector('header');
+      var _header$getBoundingCl = header.getBoundingClientRect(),
+        height = _header$getBoundingCl.height;
+      var root = document.querySelector(':root');
+      root.style.setProperty('--header-height', height + 'px');
+    };
+    useEffect(function () {
+      window.setRoute = function (route, props) {
+        return setRoute(route, props);
+      };
+      setHeaderHeight();
+      window.addEventListener('resize', function () {
+        setHeaderHeight();
+      });
+    }, []);
     return /*#__PURE__*/React.createElement(Fragment, null, /*#__PURE__*/React.createElement(Navbar, {
       setRoute: setRoute,
       routes: routes
@@ -1818,31 +2373,30 @@ var require = meteorInstall({"imports":{"ui":{"routes":{"Event":{"Background.jsx
       setRoute: setRoute
     }), routes.events.active && /*#__PURE__*/React.createElement(Events, {
       setRoute: setRoute
-    }), routes.event && routes.event.active && /*#__PURE__*/React.createElement(Event, {
-      event: routes.event.props
-    }), /*#__PURE__*/React.createElement(Footer, null));
+    }), routes.event && routes.event.active && /*#__PURE__*/React.createElement(Event, null), routes.park && routes.park.active && /*#__PURE__*/React.createElement(Park, null), /*#__PURE__*/React.createElement(Footer, null));
   };
-  _s(App, "4vBGvdf0XE0FB5yAJbi1eEDoLVg=");
+  _s(App, "R1XodfBKwf0yUUEdwed6qX1pM/A=");
   _c = App;
   var _c;
   $RefreshReg$(_c, "App");
 }.call(this, module);
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-}}},"client":{"scripts":{"data.js":function module(require,exports,module){
+}}},"client":{"scripts":{"data":{"athletes.js":function module(require,exports,module){
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //                                                                                                                     //
-// client/scripts/data.js                                                                                              //
+// client/scripts/data/athletes.js                                                                                     //
 //                                                                                                                     //
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                                                                                                                        //
 !function (module1) {
   ___INIT_METEOR_FAST_REFRESH(module);
-  var athletes = [{
+  module1.exportDefault(athletes = [{
     birthstart_date: 'Apr 16, 1995',
     end_date: 'Apr 16, 1995',
     gender: 'male',
+    run: 1,
     hometown: 'Ubatuba, São Paulo',
     country: 'br',
     image: 'fillipe-toledo.png',
@@ -1857,6 +2411,7 @@ var require = meteorInstall({"imports":{"ui":{"routes":{"Event":{"Background.jsx
     birthstart_date: 'Sep 2, 1998',
     end_date: 'Sep 2, 1998',
     gender: 'male',
+    run: 1,
     hometown: 'North Stradbroke Island, Queensland, Australia',
     country: 'au',
     image: 'ethan-ewing.png',
@@ -1873,6 +2428,7 @@ var require = meteorInstall({"imports":{"ui":{"routes":{"Event":{"Background.jsx
     hometown: 'San Clemente, California',
     country: 'us',
     gender: 'male',
+    run: 1,
     image: 'griffin-colapinto.png',
     name: 'Griffin Colapinto',
     stance: 'regular',
@@ -1887,6 +2443,7 @@ var require = meteorInstall({"imports":{"ui":{"routes":{"Event":{"Background.jsx
     hometown: 'Saquarema',
     country: 'br',
     gender: 'male',
+    run: 1,
     image: 'joao-chianca.png',
     name: 'Joao Chianca',
     stance: 'regular',
@@ -1901,6 +2458,7 @@ var require = meteorInstall({"imports":{"ui":{"routes":{"Event":{"Background.jsx
     hometown: 'Margaret River',
     country: 'au',
     gender: 'male',
+    run: 1,
     image: 'jack-robinson-1.png',
     name: 'Jack Robinson',
     stance: 'regular',
@@ -1917,6 +2475,7 @@ var require = meteorInstall({"imports":{"ui":{"routes":{"Event":{"Background.jsx
     hometown: 'Honolulu, Oahu, Hawaii',
     country: 'us',
     gender: 'female',
+    run: 1,
     weight: 154,
     stance: 'regular',
     height: {
@@ -1931,6 +2490,7 @@ var require = meteorInstall({"imports":{"ui":{"routes":{"Event":{"Background.jsx
     hometown: 'Oceanside, CA',
     country: 'us',
     gender: 'female',
+    run: 1,
     weight: 114,
     stance: 'regular',
     height: {
@@ -1945,33 +2505,600 @@ var require = meteorInstall({"imports":{"ui":{"routes":{"Event":{"Background.jsx
     hometown: 'Princeville, Kauai, Hawaii',
     country: 'us',
     gender: 'female',
+    run: 1,
     weight: 127,
     stance: 'Goofy',
     height: {
       feet: 5,
       inches: 4
     }
-  }];
-  var sponsors = [{
-    image: 'activision.png',
-    url: ''
-  }, {
-    image: 'sharpeye.png',
-    url: ''
-  }, {
-    image: 'redbull.png',
-    url: ''
-  }, {
-    image: 'hurley.png',
-    url: ''
-  }, {
-    image: 'oneil.png',
-    url: ''
-  }, {
-    image: 'slater.png',
-    url: ''
-  }];
-  var run = {
+  }]);
+}.call(this, module);
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+},"event.js":function module(require,exports,module){
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                     //
+// client/scripts/data/event.js                                                                                        //
+//                                                                                                                     //
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                                       //
+!function (module1) {
+  ___INIT_METEOR_FAST_REFRESH(module);
+  module1.exportDefault(event = {
+    'id': 1,
+    'tag': 'Park',
+    'title': 'Desert Barrel',
+    'subtitle': 'Barreled Best Trick',
+    'location': 'Yakima Washington, United States',
+    'description': "Barreled Surf's first ever best trick competion, open registration for all ages and skill levels.",
+    logo: 'barreled-logo.png',
+    'image': 'hic.jpeg',
+    'start_date': '07-12-2024',
+    'end_date': '07-15-2024',
+    'url': '/a',
+    'stream': 'event-video.mp4',
+    'athletes': [{
+      'birthstart_date': 'Apr 16, 1995',
+      'end_date': 'Apr 16, 1995',
+      'gender': 'male',
+      run: 1,
+      'hometown': 'Ubatuba, São Paulo',
+      'country': 'br',
+      'image': 'fillipe-toledo.png',
+      'name': 'Filipe Toledo',
+      'stance': 'regular',
+      'weight': 154,
+      'height': {
+        'feet': 5,
+        'inches': 9
+      }
+    }, {
+      'birthstart_date': 'Sep 2, 1998',
+      'end_date': 'Sep 2, 1998',
+      'gender': 'male',
+      run: 1,
+      'hometown': 'North Stradbroke Island, Queensland, Australia',
+      'country': 'au',
+      'image': 'ethan-ewing.png',
+      'name': 'Ethan Ewing',
+      'weight': 169,
+      'stance': 'regular',
+      'height': {
+        'feet': 5,
+        'inches': 11
+      }
+    }, {
+      'birthstart_date': 'Jul 29, 1998',
+      'end_date': 'Jul 29, 1998',
+      'hometown': 'San Clemente, California',
+      'country': 'us',
+      'gender': 'male',
+      run: 1,
+      'image': 'griffin-colapinto.png',
+      'name': 'Griffin Colapinto',
+      'stance': 'regular',
+      'weight': 171,
+      'height': {
+        'feet': 5,
+        'inches': 11
+      }
+    }, {
+      'birthstart_date': 'Aug 30, 2000',
+      'end_date': 'Aug 30, 2000',
+      'hometown': 'Saquarema',
+      'country': 'br',
+      'gender': 'male',
+      run: 1,
+      'image': 'joao-chianca.png',
+      'name': 'Joao Chianca',
+      'stance': 'regular',
+      'weight': 171,
+      'height': {
+        'feet': 5,
+        'inches': 11
+      }
+    }, {
+      'birthstart_date': 'Dec 27, 1997',
+      'end_date': 'Dec 27, 1997',
+      'hometown': 'Margaret River',
+      'country': 'au',
+      'gender': 'male',
+      run: 1,
+      'image': 'jack-robinson-1.png',
+      'name': 'Jack Robinson',
+      'stance': 'regular',
+      'weight': 178,
+      'height': {
+        'feet': 5,
+        'inches': 11
+      }
+    }, {
+      'birthstart_date': 'Aug 27, 1992',
+      'end_date': 'Aug 27, 1992',
+      'name': 'Carissa Moore',
+      'image': 'carissa-moore.png',
+      'hometown': 'Honolulu, Oahu, Hawaii',
+      'country': 'us',
+      'gender': 'female',
+      run: 1,
+      'weight': 154,
+      'stance': 'regular',
+      'height': {
+        'feet': 5,
+        'inches': 7
+      }
+    }, {
+      'birthstart_date': 'Oct 26, 2005',
+      'end_date': 'Oct 26, 2005',
+      'name': 'Caitlin Simmers',
+      'image': 'caitlin-simmers.png',
+      'hometown': 'Oceanside, CA',
+      'country': 'us',
+      'gender': 'female',
+      run: 1,
+      'weight': 114,
+      'stance': 'regular',
+      'height': {
+        'feet': 5,
+        'inches': 3
+      }
+    }, {
+      'birthstart_date': ' May 9, 1996',
+      'end_date': ' May 9, 1996',
+      'name': 'Tatiana Weston-Webb',
+      'image': 'tatiana.png',
+      'hometown': 'Princeville, Kauai, Hawaii',
+      'country': 'us',
+      'gender': 'female',
+      run: 1,
+      'weight': 127,
+      'stance': 'Goofy',
+      'height': {
+        'feet': 5,
+        'inches': 4
+      }
+    }],
+    'sponsors': [{
+      'image': 'activision.png',
+      'url': ''
+    }, {
+      'image': 'sharpeye.png',
+      'url': ''
+    }, {
+      'image': 'redbull.png',
+      'url': ''
+    }, {
+      'image': 'hurley.png',
+      'url': ''
+    }, {
+      'image': 'oneil.png',
+      'url': ''
+    }, {
+      'image': 'slater.png',
+      'url': ''
+    }],
+    theme: {
+      'primary': 'var(--primary)',
+      'secondary': 'var(--secondary)',
+      'tertiary': '#f4eede'
+    },
+    'park': './wavepark-1.png',
+    'run': {
+      points: [{
+        title: 'Wave 1',
+        text: 'Tail Slide',
+        coords: {
+          x: '60%',
+          y: '30%'
+        }
+      }, {
+        title: 'Wave 2',
+        text: 'Aerial',
+        coords: {
+          x: '60.2%',
+          y: '50.5%'
+        }
+      }, {
+        title: 'Wave 3',
+        text: 'Snap',
+        coords: {
+          x: '50%',
+          y: '65.5%'
+        }
+      }]
+    }
+  });
+}.call(this, module);
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+},"events.js":function module(require,exports,module){
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                     //
+// client/scripts/data/events.js                                                                                       //
+//                                                                                                                     //
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                                       //
+!function (module1) {
+  var event;
+  module1.link("./event.js", {
+    "default": function (v) {
+      event = v;
+    }
+  }, 0);
+  ___INIT_METEOR_FAST_REFRESH(module);
+  module1.exportDefault(events = [event, {
+    'id': 1,
+    'tag': 'Park',
+    'title': 'The Hawaiian Islands',
+    'location': 'Haleiwa,Oahu, United States',
+    'description': "The HIC Haleiwa Pro is a premier surfing competition that takes place in the captivating backdrop of the Hawaiian Islands. Known for its thrilling waves and stunning coastal scenery, this event is a highlight on the professional surfing calendar. Surfers from around the world converge on the iconic North Shore of Oahu to showcase their skills and compete for top honors. The competition is a part of the World Surf League's Qualifying Series, attracting elite surfers eager to conquer the challenging waves of Haleiwa. With its rich surfing culture, warm hospitality, and breathtaking ocean views, the HIC Haleiwa Pro not only celebrates the sport but also pays homage to the unique spirit of Hawaii's surf culture. It's an event where passion meets skill, and spectators are treated to an exhilarating display of talent against the backdrop of one of the world's most iconic surfing destinations.",
+    logo: 'barreled-logo.png',
+    'image': 'hic.jpeg',
+    'subtitle': 'HIC Haleiwa Pro',
+    'start_date': '07-12-2024',
+    'end_date': '07-15-2024',
+    'url': '/a',
+    'stream': 'event-video.mp4',
+    'athletes': [{
+      'birthstart_date': 'Apr 16, 1995',
+      'end_date': 'Apr 16, 1995',
+      'gender': 'male',
+      run: 1,
+      'hometown': 'Ubatuba, São Paulo',
+      'country': 'br',
+      'image': 'fillipe-toledo.png',
+      'name': 'Filipe Toledo',
+      'stance': 'regular',
+      'weight': 154,
+      'height': {
+        'feet': 5,
+        'inches': 9
+      }
+    }, {
+      'birthstart_date': 'Sep 2, 1998',
+      'end_date': 'Sep 2, 1998',
+      'gender': 'male',
+      run: 1,
+      'hometown': 'North Stradbroke Island, Queensland, Australia',
+      'country': 'au',
+      'image': 'ethan-ewing.png',
+      'name': 'Ethan Ewing',
+      'weight': 169,
+      'stance': 'regular',
+      'height': {
+        'feet': 5,
+        'inches': 11
+      }
+    }, {
+      'birthstart_date': 'Jul 29, 1998',
+      'end_date': 'Jul 29, 1998',
+      'hometown': 'San Clemente, California',
+      'country': 'us',
+      'gender': 'male',
+      run: 1,
+      'image': 'griffin-colapinto.png',
+      'name': 'Griffin Colapinto',
+      'stance': 'regular',
+      'weight': 171,
+      'height': {
+        'feet': 5,
+        'inches': 11
+      }
+    }, {
+      'birthstart_date': 'Aug 30, 2000',
+      'end_date': 'Aug 30, 2000',
+      'hometown': 'Saquarema',
+      'country': 'br',
+      'gender': 'male',
+      run: 1,
+      'image': 'joao-chianca.png',
+      'name': 'Joao Chianca',
+      'stance': 'regular',
+      'weight': 171,
+      'height': {
+        'feet': 5,
+        'inches': 11
+      }
+    }, {
+      'birthstart_date': 'Dec 27, 1997',
+      'end_date': 'Dec 27, 1997',
+      'hometown': 'Margaret River',
+      'country': 'au',
+      'gender': 'male',
+      run: 1,
+      'image': 'jack-robinson-1.png',
+      'name': 'Jack Robinson',
+      'stance': 'regular',
+      'weight': 178,
+      'height': {
+        'feet': 5,
+        'inches': 11
+      }
+    }, {
+      'birthstart_date': 'Aug 27, 1992',
+      'end_date': 'Aug 27, 1992',
+      'name': 'Carissa Moore',
+      'image': 'carissa-moore.png',
+      'hometown': 'Honolulu, Oahu, Hawaii',
+      'country': 'us',
+      'gender': 'female',
+      run: 1,
+      'weight': 154,
+      'stance': 'regular',
+      'height': {
+        'feet': 5,
+        'inches': 7
+      }
+    }, {
+      'birthstart_date': 'Oct 26, 2005',
+      'end_date': 'Oct 26, 2005',
+      'name': 'Caitlin Simmers',
+      'image': 'caitlin-simmers.png',
+      'hometown': 'Oceanside, CA',
+      'country': 'us',
+      'gender': 'female',
+      run: 1,
+      'weight': 114,
+      'stance': 'regular',
+      'height': {
+        'feet': 5,
+        'inches': 3
+      }
+    }, {
+      'birthstart_date': ' May 9, 1996',
+      'end_date': ' May 9, 1996',
+      'name': 'Tatiana Weston-Webb',
+      'image': 'tatiana.png',
+      'hometown': 'Princeville, Kauai, Hawaii',
+      'country': 'us',
+      'gender': 'female',
+      run: 1,
+      'weight': 127,
+      'stance': 'Goofy',
+      'height': {
+        'feet': 5,
+        'inches': 4
+      }
+    }],
+    'sponsors': [{
+      'image': 'activision.png',
+      'url': ''
+    }, {
+      'image': 'sharpeye.png',
+      'url': ''
+    }, {
+      'image': 'redbull.png',
+      'url': ''
+    }, {
+      'image': 'hurley.png',
+      'url': ''
+    }, {
+      'image': 'oneil.png',
+      'url': ''
+    }, {
+      'image': 'slater.png',
+      'url': ''
+    }],
+    'theme': {
+      'primary': 'var(--primary)',
+      'secondary': 'var(--secondary)'
+    },
+    'park': './wavepark-1.png',
+    'run': {
+      points: [{
+        title: 'Wave 1',
+        text: 'Tail Slide',
+        coords: {
+          x: '60%',
+          y: '30%'
+        }
+      }, {
+        title: 'Wave 2',
+        text: 'Aerial',
+        coords: {
+          x: '60.2%',
+          y: '50.5%'
+        }
+      }, {
+        title: 'Wave 3',
+        text: 'Snap',
+        coords: {
+          x: '50%',
+          y: '65.5%'
+        }
+      }]
+    }
+  }]);
+}.call(this, module);
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+},"index.js":function module(require,exports,module){
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                     //
+// client/scripts/data/index.js                                                                                        //
+//                                                                                                                     //
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                                       //
+!function (module1) {
+  var athletes;
+  module1.link("./athletes.js", {
+    "default": function (v) {
+      athletes = v;
+    }
+  }, 0);
+  var event;
+  module1.link("./event.js", {
+    "default": function (v) {
+      event = v;
+    }
+  }, 1);
+  var events;
+  module1.link("./events.js", {
+    events: function (v) {
+      events = v;
+    }
+  }, 2);
+  var park;
+  module1.link("./park.js", {
+    "default": function (v) {
+      park = v;
+    }
+  }, 3);
+  var parks;
+  module1.link("./parks.js", {
+    parks: function (v) {
+      parks = v;
+    }
+  }, 4);
+  var run;
+  module1.link("./run.js", {
+    "default": function (v) {
+      run = v;
+    }
+  }, 5);
+  var sponsors;
+  module1.link("./sponsors.js", {
+    "default": function (v) {
+      sponsors = v;
+    }
+  }, 6);
+  ___INIT_METEOR_FAST_REFRESH(module);
+  module1.exportDefault({
+    athletes: athletes,
+    event: event,
+    events: events,
+    park: park,
+    parks: parks,
+    run: run,
+    sponsors: sponsors
+  });
+}.call(this, module);
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+},"park.js":function module(require,exports,module){
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                     //
+// client/scripts/data/park.js                                                                                         //
+//                                                                                                                     //
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                                       //
+!function (module1) {
+  ___INIT_METEOR_FAST_REFRESH(module);
+  module1.exportDefault(park = {
+    id: 1,
+    name: 'Surf Barreled',
+    url: 'www.surfbarreled.com',
+    social: ['https://www.instagram.com/surfbarreled/', 'https://www.facebook.com/surfbarreled/'],
+    address: {
+      street: 'PO Box 1107',
+      state: 'WA',
+      city: 'Moxess',
+      zipcode: '98936'
+    },
+    description: 'Barreled Surf Park aims to be a key part of the Yakima community and the broader Pacific Northwest.  Our goal is to introduce the region to surfing, providing an opportunity to access a sport once reserved for postcards and documentaries.  Surfing has a way of broadening one’s horizons and sense of adventure and we hope to be the first stepping stone while, unmistakably, knowing you’re in Yakima.  From architecture to offerings, we will show off this special valley we call home - all while learning a skill that can be used around the globe.',
+    youtube: 'https://www.youtube.com/embed/NWPUGf_Po6Q?si=s6DzaeC_t7ZscNYC',
+    vimeo: null,
+    video: null,
+    logo: 'barreled-logo.png',
+    image: './barreled-1.jpeg',
+    media: ['./barreled.jpeg', './barreled-1.jpeg', './barreled-2.jpeg', './barreled-3.jpeg'],
+    membership: [],
+    theme: {
+      'primary': 'var(--primary)',
+      'secondary': 'var(--secondary)',
+      'tertiary': '#f4eede'
+    },
+    amenities: [{
+      name: 'Grill',
+      description: 'Burgers, Burritos, Kebabs and more',
+      image: ''
+    }, {
+      name: 'Cold Bar',
+      description: 'Salads, Sandwiches, and Smoothies',
+      image: ''
+    }, {
+      name: 'Cafe',
+      description: 'Baked Goods and Coffee options',
+      image: ''
+    }, {
+      name: 'Ice Cream',
+      description: 'Desserts, Shakes, and Cones',
+      image: ''
+    }, {
+      name: 'Bar',
+      image: 'Our name, Barreled, is the bridge between surf culture and Yakima.  It’s not only the pinnacle maneuver in surfing, it’s also a tip of the cap to Yakima’s distinguished craft beverage industry, which uses barrels for aging and measuring.'
+    }, {
+      name: 'Lodging',
+      image: '',
+      description: 'A variety of lodging options will be offered to capture the different types of travelers that visit the Yakima Valley each year. '
+    }],
+    food: [],
+    events: [{
+      title: 'Desert Barrel',
+      subtitle: 'Best Trick',
+      date: '07-12-2024',
+      image: './barreled.jpeg'
+    }, {
+      title: 'Open Park',
+      subtitle: 'Free admission until 5pm',
+      date: '08-02-2024',
+      image: './barreled-1.jpeg'
+    }, {
+      title: 'Beginner Surf Lessons',
+      subtitle: 'Sign up for reservations',
+      date: '09-09-2024',
+      image: './barreled-2.jpeg'
+    }, {
+      title: 'Camp Out',
+      subtitle: 'Lodging Party',
+      date: '11-31-2024',
+      image: './barreled-3.jpeg'
+    }]
+  });
+}.call(this, module);
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+},"parks.js":function module(require,exports,module){
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                     //
+// client/scripts/data/parks.js                                                                                        //
+//                                                                                                                     //
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                                       //
+!function (module1) {
+  module1.export({
+    parks: function () {
+      return parks;
+    }
+  });
+  var park;
+  module1.link("./park.js", {
+    "default": function (v) {
+      park = v;
+    }
+  }, 0);
+  ___INIT_METEOR_FAST_REFRESH(module);
+  var parks = [park];
+}.call(this, module);
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+},"run.js":function module(require,exports,module){
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                     //
+// client/scripts/data/run.js                                                                                          //
+//                                                                                                                     //
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                                       //
+!function (module1) {
+  ___INIT_METEOR_FAST_REFRESH(module);
+  module1.exportDefault(run = {
     points: [{
       title: 'Wave 1',
       text: 'Tail Slide',
@@ -2001,130 +3128,43 @@ var require = meteorInstall({"imports":{"ui":{"routes":{"Event":{"Background.jsx
         y: '67%'
       }
     }]
-  };
-  var events = function (props) {
-    return [{
-      id: 1,
-      tag: 'Park',
-      title: 'The Hawaiian Islands',
-      location: 'Haleiwa,Oahu, United States',
-      description: "The HIC Haleiwa Pro is a premier surfing competition that takes place in the captivating backdrop of the Hawaiian Islands. Known for its thrilling waves and stunning coastal scenery, this event is a highlight on the professional surfing calendar. Surfers from around the world converge on the iconic North Shore of Oahu to showcase their skills and compete for top honors. The competition is a part of the World Surf League's Qualifying Series, attracting elite surfers eager to conquer the challenging waves of Haleiwa. With its rich surfing culture, warm hospitality, and breathtaking ocean views, the HIC Haleiwa Pro not only celebrates the sport but also pays homage to the unique spirit of Hawaii's surf culture. It's an event where passion meets skill, and spectators are treated to an exhilarating display of talent against the backdrop of one of the world's most iconic surfing destinations.",
-      image: 'hic.jpeg',
-      subtitle: 'HIC Haleiwa Pro',
-      start_date: '07-12-2024',
-      end_date: '07-15-2024',
-      url: '/a',
-      athletes: athletes,
-      logo: './event-logo-dark.png',
-      sponsors: sponsors,
-      park: './wavepark-1.png',
-      run: run,
-      theme: {
-        primary: 'var(--primary)',
-        secondary: 'var(--secondary)'
-      },
-      setRoute: function (event, _event) {
-        return props.setRoute('event', _event);
-      }
-    }, {
-      id: 2,
-      tag: 'Pipe',
-      title: 'Tahiti',
-      description: 'From the sheer terror of Teahupo’o to the relaxed family and ocean-based way of life, Tahiti offers something for everyone. Let No Contest give you a guided tour of these incredible islands.',
-      image: 'tahiti.png',
-      subtitle: '',
-      start_date: '07-26-2024',
-      end_date: '07-29-2024',
-      url: '/b',
-      athletes: athletes,
-      logo: './event-logo-dark.png',
-      sponsors: sponsors,
-      park: './wavepark-1.png',
-      run: run,
-      theme: {
-        primary: 'var(--primary)',
-        secondary: 'var(--secondary)'
-      },
-      setRoute: function (event, _event) {
-        return props.setRoute('event', _event);
-      }
-    }, {
-      id: 3,
-      tag: 'Park',
-      title: 'Molly Picklum: What it Takes',
-      description: "Experience the highs and lows of the WSL World Tour and the mid-season cut, with Australian rookie Molly Picklum. Discover the headspace it requires to compete as one of the world's best surfers.",
-      image: 'what-it-takes.png',
-      subtitle: '',
-      start_date: '09-01-2024',
-      end_date: '09-05-2024',
-      url: '/c',
-      athletes: athletes,
-      logo: './event-logo-dark.png',
-      sponsors: sponsors,
-      park: './wavepark-1.png',
-      run: run,
-      theme: {
-        primary: 'var(--primary)',
-        secondary: 'var(--secondary)'
-      },
-      setRoute: function (event, _event) {
-        return props.setRoute('event', _event);
-      }
-    }, {
-      id: 4,
-      tag: 'Big Wave',
-      title: 'Waco Surf Trip with the GoPro Surf Team',
-      description: "Texas isn't known for its surfing, but Waco Surf has changed the game.",
-      image: 'what-it-takes.png',
-      subtitle: '',
-      start_date: '09-23-2024',
-      end_date: '09-26-2024',
-      url: '/d',
-      athletes: athletes,
-      logo: './event-logo-dark.png',
-      sponsors: sponsors,
-      park: './wavepark-1.png',
-      run: run,
-      theme: {
-        primary: 'var(--primary)',
-        secondary: 'var(--secondary)'
-      },
-      setRoute: function (event, _event) {
-        return props.setRoute('event', _event);
-      }
-    }, {
-      id: 5,
-      tag: 'Big Wave',
-      title: 'The Rail Project: Julian Wilson has ride of his life as he surf-skates in water',
-      description: 'A new kind of skate park.',
-      image: 'what-it-takes.png',
-      subtitle: '',
-      start_date: '10-25-2024',
-      end_date: '10-28-2024',
-      url: '/e',
-      athletes: athletes,
-      logo: './event-logo-dark.png',
-      sponsors: sponsors,
-      park: './wavepark-1.png',
-      run: run,
-      theme: {
-        primary: 'var(--primary)',
-        secondary: 'var(--secondary)'
-      },
-      setRoute: function (event, _event) {
-        return props.setRoute('event', _event);
-      }
-    }];
-  };
-  module1.exportDefault({
-    athletes: athletes,
-    logo: './event-logo-dark.png',
-    events: events
   });
 }.call(this, module);
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-},"helpers.js":function module(require,exports,module){
+},"sponsors.js":function module(require,exports,module){
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                     //
+// client/scripts/data/sponsors.js                                                                                     //
+//                                                                                                                     //
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                                       //
+!function (module1) {
+  ___INIT_METEOR_FAST_REFRESH(module);
+  module1.exportDefault(sponsors = [{
+    image: 'activision.png',
+    url: ''
+  }, {
+    image: 'sharpeye.png',
+    url: ''
+  }, {
+    image: 'redbull.png',
+    url: ''
+  }, {
+    image: 'hurley.png',
+    url: ''
+  }, {
+    image: 'oneil.png',
+    url: ''
+  }, {
+    image: 'slater.png',
+    url: ''
+  }]);
+}.call(this, module);
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+}},"helpers.js":function module(require,exports,module){
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //                                                                                                                     //
@@ -2146,6 +3186,9 @@ var require = meteorInstall({"imports":{"ui":{"routes":{"Event":{"Background.jsx
     getCSSVariable: function () {
       return getCSSVariable;
     },
+    intersectionObserver: function () {
+      return intersectionObserver;
+    },
     handleize: function () {
       return handleize;
     },
@@ -2160,6 +3203,11 @@ var require = meteorInstall({"imports":{"ui":{"routes":{"Event":{"Background.jsx
     }
   });
   ___INIT_METEOR_FAST_REFRESH(module);
+  /**
+   * Creates aribtrary wait time based on miliseconds
+   * @param { int } milliseconds
+   * @return { promise } resolves once time has been reached
+   * */
   var asyncTimeout = function (ms) {
     return new Promise(function (resolve) {
       return setTimeout(resolve, ms);
@@ -2169,11 +3217,18 @@ var require = meteorInstall({"imports":{"ui":{"routes":{"Event":{"Background.jsx
     if (!window) return;
     return getComputedStyle(document.body).getPropertyValue(variable);
   };
+  var intersectionObserver = function (el, callback) {
+    var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+    if (!window) return;
+    if (!el || !callback) return;
+    var observer = new IntersectionObserver(callback, options);
+    observer.observe(el);
+  };
   var handleize = function (str) {
     return str.toLowerCase().replace(/[^\w\u00C0-\u024f]+/g, '-').replace(/^-+|-+$/g, '');
   };
   var randomInt = function (min, max, wholenum) {
-    if (wholenum) Math.floor(Math.random() * (max - min + 1) + min);
+    if (wholenum) return Math.floor(Math.random() * (max - min + 1) + min);
     return Math.random() * (max - min + 1) + min;
   };
   var sortBy = function (arr, key, reverse) {

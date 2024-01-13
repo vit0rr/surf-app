@@ -1,0 +1,101 @@
+.cta-register {
+	$_sm: 768px;
+
+	@include flex(column, flex-start, flex-end);
+	container: register / inline-size;
+	width: 100%;
+	position: relative;
+	row-gap: divide($gutter, 2);
+	padding: $gutter;
+	overflow: hidden;
+
+	@media (min-width: #{$_sm}) {
+		@include flex(row, flex-start, center, wrap);
+	}
+
+	&::before {
+		content: '';
+		width: calc(100% / 3 * 2);
+		height: 100%;
+		position: absolute;
+		top: 0;
+		right: 0;
+		z-index: 2;
+		background-color: #fff;
+		opacity: 0.75;
+	}
+
+	&__info,
+	&__cta {
+		z-index: 2;
+	}
+
+	&__cover {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		left: 0;
+		object-fit: cover;
+		z-index: 1;
+		filter: grayscale(1) opacity(0.55) brightness(0.35);
+	}
+
+	&__info {
+		@include flex(row, flex-start, center);
+
+		img {
+			width: auto;
+			height: 35px;
+			display: block;
+			margin: 0;
+
+			@media (min-width: #{$md}) {
+				height: 45px;
+			}
+		}
+
+		img + .cta-register__title {
+			margin-left: $gutter;
+		}
+	}
+
+	&__title {
+		h5 {
+			font-size: clamp(16px, 2vw, 24px);
+		}
+	}
+
+	&__cta {
+		@include flex(row, flex-start, center);
+
+		@media (min-width: #{$_sm}) {
+			margin-left: auto;
+		}
+
+		h6 {
+			font-size: clamp(16px, 2vw, 24px);
+		}
+	}
+
+	h5,
+	h6,
+	button {
+		position: relative;
+		z-index: 3;
+	}
+
+	h5,
+	h6 {
+		margin: 0;
+	}
+
+	button {
+		margin-left: $gutter;
+
+		@media (max-width: #{$_sm}) {
+			line-height: multiply($gutter, 2);
+			padding: 0 $gutter;
+		}
+	}
+}
