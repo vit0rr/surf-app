@@ -32,7 +32,11 @@ export const Amenities = function ({ park }) {
 
 					if (['grill', 'food', 'bbq', 'sandwich'].includes(name)) {
 						return (
-							<button data-amenity={index} style={{ backgroundColor: park.theme.primary }}>
+							<button
+								key={index}
+								data-amenity={index}
+								style={{ backgroundColor: park.theme.primary }}
+							>
 								<svg height="800px" width="800px" id="Layer_1" viewBox="0 0 232.661 232.661">
 									<g>
 										<path
@@ -86,13 +90,18 @@ export const Amenities = function ({ park }) {
 										</g>
 									</g>
 								</svg>
+								<span>{amenity.name}</span>
 							</button>
 						);
 					}
 
 					if (['cold bar', 'salad', 'salad bar'].includes(name)) {
 						return (
-							<button data-amenity={index} style={{ backgroundColor: park.theme.primary }}>
+							<button
+								key={index}
+								data-amenity={index}
+								style={{ backgroundColor: park.theme.primary }}
+							>
 								<svg height="800px" width="800px" id="Layer_1" viewBox="0 0 511.988 511.988">
 									<path
 										style={{ fill: '#8CC153' }}
@@ -149,14 +158,19 @@ export const Amenities = function ({ park }) {
 	c0,5.891,4.781,10.656,10.671,10.656c5.891,0,10.656-4.766,10.656-10.656h32v-21.343H0V223.986z"
 									/>
 								</svg>
+								<span>{amenity.name}</span>
 							</button>
 						);
 					}
 
 					if (['cafe', 'coffee'].includes(name)) {
 						return (
-							<button data-amenity={index} style={{ backgroundColor: park.theme.primary }}>
-								<svg width="800px" height="800px" viewBox="0 0 1024 1024" class="icon">
+							<button
+								key={index}
+								data-amenity={index}
+								style={{ backgroundColor: park.theme.primary }}
+							>
+								<svg width="800px" height="800px" viewBox="0 0 1024 1024" className="icon">
 									<path
 										d="M294.613731 1002.666458a21.333329 21.333329 0 0 1-21.333329-19.839996L215.040414 224.853286h593.919877L750.720303 982.826462a21.333329 21.333329 0 0 1-21.333329 19.839996z"
 										fill="#F05071"
@@ -190,6 +204,7 @@ export const Amenities = function ({ park }) {
 										fill="#5C2D51"
 									/>
 								</svg>
+								<span>{amenity.name}</span>
 							</button>
 						);
 					}
@@ -199,8 +214,12 @@ export const Amenities = function ({ park }) {
 
 					if (['bar', 'beer', 'wine', 'whiskey', 'liquor'].includes(name)) {
 						return (
-							<button data-amenity={index} style={{ backgroundColor: park.theme.primary }}>
-								<svg width="800px" height="800px" viewBox="0 0 1024 1024" class="icon">
+							<button
+								key={index}
+								data-amenity={index}
+								style={{ backgroundColor: park.theme.primary }}
+							>
+								<svg width="800px" height="800px" viewBox="0 0 1024 1024" className="icon">
 									<path
 										d="M239.616 247.808s28.672-73.728 75.776-75.776c47.104 0 73.728-86.016 108.544-90.112s94.208-8.192 94.208-8.192 59.392-63.488 112.64-43.008S737.28 83.968 737.28 106.496s40.96 2.048 40.96 2.048 75.776 34.816 77.824 86.016 0 92.16 0 92.16v284.672h-614.4l-2.048-323.584z"
 										fill="#FFFFFF"
@@ -223,13 +242,18 @@ export const Amenities = function ({ park }) {
 										fill="#3F4651"
 									/>
 								</svg>
+								<span>{amenity.name}</span>
 							</button>
 						);
 					}
 
 					if (['hotel', 'motel', 'lodging'].includes(name)) {
 						return (
-							<button data-amenity={index} style={{ backgroundColor: park.theme.primary }}>
+							<button
+								key={index}
+								data-amenity={index}
+								style={{ backgroundColor: park.theme.primary }}
+							>
 								<svg id="Capa_1" viewBox="0 0 298 298">
 									<g>
 										<path
@@ -294,6 +318,7 @@ export const Amenities = function ({ park }) {
 										/>
 									</g>
 								</svg>
+								<span>{amenity.name}</span>
 							</button>
 						);
 					}

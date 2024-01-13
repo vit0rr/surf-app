@@ -366,6 +366,7 @@ var require = meteorInstall({"imports":{"ui":{"routes":{"Event":{"Background.jsx
       const name = amenity.name.toLowerCase();
       if (['grill', 'food', 'bbq', 'sandwich'].includes(name)) {
         return /*#__PURE__*/React.createElement("button", {
+          key: index,
           "data-amenity": index,
           style: {
             backgroundColor: park.theme.primary
@@ -433,10 +434,11 @@ var require = meteorInstall({"imports":{"ui":{"routes":{"Event":{"Background.jsx
           cx: "151.64",
           cy: "55.28",
           r: "5"
-        })))));
+        })))), /*#__PURE__*/React.createElement("span", null, amenity.name));
       }
       if (['cold bar', 'salad', 'salad bar'].includes(name)) {
         return /*#__PURE__*/React.createElement("button", {
+          key: index,
           "data-amenity": index,
           style: {
             backgroundColor: park.theme.primary
@@ -491,10 +493,11 @@ var require = meteorInstall({"imports":{"ui":{"routes":{"Event":{"Background.jsx
             fill: '#967ADC'
           },
           d: "M0,223.986v21.343h31.999c0,5.891,4.781,10.656,10.672,10.656s10.672-4.766,10.672-10.656H74.67 c0,5.891,4.781,10.656,10.672,10.656s10.656-4.766,10.656-10.656h21.343c0,5.891,4.766,10.656,10.656,10.656 c5.89,0,10.672-4.766,10.672-10.656h21.327c0,5.891,4.781,10.656,10.672,10.656s10.672-4.766,10.672-10.656h21.327 c0,5.891,4.781,10.656,10.672,10.656s10.655-4.766,10.655-10.657h21.344c0,5.891,4.766,10.656,10.656,10.656 s10.672-4.766,10.672-10.656h21.327c0,5.891,4.781,10.656,10.672,10.656c5.89,0,10.671-4.766,10.671-10.656h21.328 c0,5.891,4.781,10.656,10.672,10.656s10.656-4.766,10.656-10.656h21.343c0,5.891,4.766,10.656,10.655,10.656 c5.891,0,10.672-4.766,10.672-10.656h21.328c0,5.891,4.781,10.656,10.672,10.656s10.672-4.766,10.672-10.656h21.327 c0,5.891,4.781,10.656,10.671,10.656c5.891,0,10.656-4.766,10.656-10.656h32v-21.343H0V223.986z"
-        })));
+        })), /*#__PURE__*/React.createElement("span", null, amenity.name));
       }
       if (['cafe', 'coffee'].includes(name)) {
         return /*#__PURE__*/React.createElement("button", {
+          key: index,
           "data-amenity": index,
           style: {
             backgroundColor: park.theme.primary
@@ -503,7 +506,7 @@ var require = meteorInstall({"imports":{"ui":{"routes":{"Event":{"Background.jsx
           width: "800px",
           height: "800px",
           viewBox: "0 0 1024 1024",
-          class: "icon"
+          className: "icon"
         }, /*#__PURE__*/React.createElement("path", {
           d: "M294.613731 1002.666458a21.333329 21.333329 0 0 1-21.333329-19.839996L215.040414 224.853286h593.919877L750.720303 982.826462a21.333329 21.333329 0 0 1-21.333329 19.839996z",
           fill: "#F05071"
@@ -528,11 +531,12 @@ var require = meteorInstall({"imports":{"ui":{"routes":{"Event":{"Background.jsx
         }), /*#__PURE__*/React.createElement("path", {
           d: "M774.186964 392.106585l-34.346659 454.613239H283.5204L249.387074 392.106585H774.186964m46.079991-42.666658H203.307083l41.386658 539.946554h534.613222l41.599992-539.946554z",
           fill: "#5C2D51"
-        })));
+        })), /*#__PURE__*/React.createElement("span", null, amenity.name));
       }
       if (['desert', 'beer', 'ice cream'].includes(name)) {}
       if (['bar', 'beer', 'wine', 'whiskey', 'liquor'].includes(name)) {
         return /*#__PURE__*/React.createElement("button", {
+          key: index,
           "data-amenity": index,
           style: {
             backgroundColor: park.theme.primary
@@ -541,7 +545,7 @@ var require = meteorInstall({"imports":{"ui":{"routes":{"Event":{"Background.jsx
           width: "800px",
           height: "800px",
           viewBox: "0 0 1024 1024",
-          class: "icon"
+          className: "icon"
         }, /*#__PURE__*/React.createElement("path", {
           d: "M239.616 247.808s28.672-73.728 75.776-75.776c47.104 0 73.728-86.016 108.544-90.112s94.208-8.192 94.208-8.192 59.392-63.488 112.64-43.008S737.28 83.968 737.28 106.496s40.96 2.048 40.96 2.048 75.776 34.816 77.824 86.016 0 92.16 0 92.16v284.672h-614.4l-2.048-323.584z",
           fill: "#FFFFFF"
@@ -560,10 +564,11 @@ var require = meteorInstall({"imports":{"ui":{"routes":{"Event":{"Background.jsx
         }), /*#__PURE__*/React.createElement("path", {
           d: "M524.288 430.08c0 34.816 26.624 61.44 61.44 61.44s61.44-26.624 61.44-61.44-26.624-61.44-61.44-61.44-61.44 26.624-61.44 61.44z m61.44-20.48c12.288 0 20.48 8.192 20.48 20.48s-8.192 20.48-20.48 20.48-20.48-8.192-20.48-20.48 8.192-20.48 20.48-20.48z",
           fill: "#3F4651"
-        })));
+        })), /*#__PURE__*/React.createElement("span", null, amenity.name));
       }
       if (['hotel', 'motel', 'lodging'].includes(name)) {
         return /*#__PURE__*/React.createElement("button", {
+          key: index,
           "data-amenity": index,
           style: {
             backgroundColor: park.theme.primary
@@ -642,7 +647,7 @@ var require = meteorInstall({"imports":{"ui":{"routes":{"Event":{"Background.jsx
           d: "M24.666,33.043c4.411,0,8-3.589,8-8c0-4.411-3.589-8-8-8c-4.411,0-8,3.589-8,8 C16.666,29.454,20.255,33.043,24.666,33.043z"
         }), /*#__PURE__*/React.createElement("path", {
           d: "M24.666,49.043c13.233,0,24-10.767,24-24s-10.767-24-24-24c-13.233,0-24,10.767-24,24S11.433,49.043,24.666,49.043z M24.666,17.043c4.411,0,8,3.589,8,8c0,4.411-3.589,8-8,8c-4.411,0-8-3.589-8-8C16.666,20.632,20.255,17.043,24.666,17.043z"
-        }))));
+        }))), /*#__PURE__*/React.createElement("span", null, amenity.name));
       }
     })));
   };
