@@ -1,1 +1,11 @@
 node_modules/
+
+
+# track these files, if they exist
+!.gitignore
+!.github
+!.editorconfig
+!README.md
+!CHANGELOG.md
+!.meteor
+!.git
