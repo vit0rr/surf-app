@@ -7,12 +7,13 @@ export const About = function ({ park }) {
 	const contentRef = useRef(null);
 	const index = randomInt(0, park.media.length - 1, true);
 	const image = park.media[index];
-
-	// const formatDescription = (str) {
-	// 	let descripition = <span>;
-
-	// 	return <span>;
-	// }
+	const gradient = `repeating-linear-gradient(
+		45deg,
+		${park.theme.primary},
+		${park.theme.primary} 5px,
+		${park.theme.secondary} 5px,
+		${park.theme.secondary} 10px
+	)`;
 
 	useEffect(() => {
 		const image = imageRef.current;
@@ -59,6 +60,9 @@ export const About = function ({ park }) {
 					className="page-park__about-image-square animate__animated"
 					style={{
 						backgroundColor: park.theme.secondary
+					}}
+					style={{
+						background: gradient
 					}}
 				></div>
 			</div>

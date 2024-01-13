@@ -1,3 +1,11 @@
+@mixin park-section-padding {
+	padding: multiply($gutter, 4) $gutter;
+
+	@media (min-width: #{$md}) {
+		padding: multiply($gutter, 6) multiply($gutter, 3);
+	}
+}
+
 .page-park {
 	$_md: 960px;
 	$_xl: 1440px;
@@ -257,11 +265,7 @@
 		@include flex(row, center, center, wrap);
 		width: 100%;
 		row-gap: multiply($gutter, 3);
-		padding: multiply($gutter, 4) $gutter;
-
-		@media (min-width: #{$md}) {
-			padding: multiply($gutter, 6) multiply($gutter, 3);
-		}
+		@include park-section-padding;
 
 		&-image,
 		&-content {
@@ -480,11 +484,6 @@
 			h5 {
 				font-size: clamp(16px, 2vw, 24px);
 			}
-
-			h5,
-			h6 {
-				text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.33);
-			}
 		}
 
 		&-cta {
@@ -557,6 +556,24 @@
 				}
 			}
 
+			.page-park__happening-now-info {
+				@media (min-width: #{$sm}) {
+					img {
+						filter: invert(1);
+					}
+					h5,
+					h6 {
+						color: #fff;
+					}
+				}
+			}
+
+			.page-park__happening-now-cover {
+				@media (min-width: #{$sm}) {
+					filter: grayscale(1) brightness(0.85);
+				}
+			}
+
 			.page-park__happening-now-cta {
 				@media (min-width: #{$sm}) {
 					margin-left: auto;
@@ -568,6 +585,82 @@
 						color: inherit;
 					}
 				}
+			}
+		}
+	}
+
+	&__park-amenities {
+		width: 100%;
+	}
+
+	&__amenities {
+		@include park-section-padding;
+		width: 100%;
+
+		&-title {
+			text-align: center;
+
+			h3 {
+				color: #fff;
+				letter-spacing: 1px;
+			}
+		}
+
+		&-selection {
+			@include flex(row, center, center, wrap);
+			row-gap: $gutter;
+
+			button {
+				width: 50px;
+				height: 50px;
+				position: relative;
+				aspect-ratio: 1/1;
+				padding: $gutter;
+				border-radius: 100%;
+				border: 3px solid #fff;
+				transition: transform 500ms ease-in-out;
+
+				@media (min-width: #{$md}) {
+					width: 100px;
+					height: 100px;
+				}
+
+				&::after {
+					content: '';
+					width: 0;
+					height: 0;
+					position: absolute;
+					top: calc(100% + 10px);
+					left: 50%;
+					transform: translateX(-50%);
+					border-left: 10px solid transparent;
+					border-right: 10px solid transparent;
+					border-top: 10px solid #fff;
+					opacity: 0;
+					transition: all 500ms ease-in-out;
+				}
+
+				&:hover {
+					transform: translateY(-10%);
+
+					&:after {
+						opacity: 1;
+						transform: translate(-50%, 100%);
+					}
+				}
+
+				& + button {
+					margin-left: multiply($gutter, 2);
+
+					@media (min-width: #{$md}) {
+						margin-left: multiply($gutter, 3);
+					}
+				}
+			}
+
+			svg {
+				width: 100%;
+				height: auto;
 			}
 		}
 	}

@@ -7,6 +7,7 @@ import { Banner } from './Banner';
 import { HappeningNow } from './HappeningNow';
 import { Events } from './Events';
 import { About } from './About';
+import { Amenities } from './Amenities';
 
 import { CTARegister } from '../../components/CTARegister.jsx';
 
@@ -53,6 +54,11 @@ export const Park = function (props) {
 					className={`page-park__happening page-park__happening--full animate__animated animate__delay-1s ${animation}`}
 				>
 					<HappeningNow park={data.park} event={data.event} full={true} />
+				</section>
+				<section
+					className={`page-park__park-amenities animate__animated animate__delay-1s ${animation}`}
+				>
+					<Amenities park={park} />
 				</section>
 			</div>
 		</main>

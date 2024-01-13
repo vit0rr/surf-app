@@ -16,8 +16,6 @@ export const HappeningNow = function ({ park, event, full }) {
 		// 	{ threshold: 0.75 }
 		// );
 	}, []);
-
-	console.log(event);
 	return (
 		<div className={`page-park__happening-now${full ? ' page-park__happening-now--full' : ''}`}>
 			<img

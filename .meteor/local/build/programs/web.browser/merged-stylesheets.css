@@ -7827,9 +7827,6 @@ footer {
       margin-left: 15px; }
       .page-park__happening-now-title h5 {
         font-size: clamp(16px, 2vw, 24px); }
-      .page-park__happening-now-title h5,
-      .page-park__happening-now-title h6 {
-        text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.33); }
     .page-park__happening-now-cta {
       display: flex;
       flex-direction: row;
@@ -7888,12 +7885,80 @@ footer {
           width: calc(100% / 3);
           height: 100%; } }
       @media (min-width: 640px) {
+        .page-park__happening-now--full .page-park__happening-now-info img {
+          filter: invert(1); }
+        .page-park__happening-now--full .page-park__happening-now-info h5,
+        .page-park__happening-now--full .page-park__happening-now-info h6 {
+          color: #fff; } }
+      @media (min-width: 640px) {
+        .page-park__happening-now--full .page-park__happening-now-cover {
+          filter: grayscale(1) brightness(0.85); } }
+      @media (min-width: 640px) {
         .page-park__happening-now--full .page-park__happening-now-cta {
           margin-left: auto; } }
       @media (min-width: 640px) {
         .page-park__happening-now--full .page-park__happening-now-cta h6 {
           margin-top: 0;
           color: inherit; } }
+  .page-park__park-amenities {
+    width: 100%; }
+  .page-park__amenities {
+    padding: calc(15px * 4) 15px;
+    width: 100%; }
+    @media (min-width: 960px) {
+      .page-park__amenities {
+        padding: calc(15px * 6) calc(15px * 3); } }
+    .page-park__amenities-title {
+      text-align: center; }
+      .page-park__amenities-title h3 {
+        color: #fff;
+        letter-spacing: 1px; }
+    .page-park__amenities-selection {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      row-gap: 15px; }
+      .page-park__amenities-selection button {
+        width: 50px;
+        height: 50px;
+        position: relative;
+        aspect-ratio: 1/1;
+        padding: 15px;
+        border-radius: 100%;
+        border: 3px solid #fff;
+        transition: transform 500ms ease-in-out; }
+        @media (min-width: 960px) {
+          .page-park__amenities-selection button {
+            width: 100px;
+            height: 100px; } }
+        .page-park__amenities-selection button::after {
+          content: '';
+          width: 0;
+          height: 0;
+          position: absolute;
+          top: calc(100% + 10px);
+          left: 50%;
+          transform: translateX(-50%);
+          border-left: 10px solid transparent;
+          border-right: 10px solid transparent;
+          border-top: 10px solid #fff;
+          opacity: 0;
+          transition: all 500ms ease-in-out; }
+        .page-park__amenities-selection button:hover {
+          transform: translateY(-10%); }
+          .page-park__amenities-selection button:hover:after {
+            opacity: 1;
+            transform: translate(-50%, 100%); }
+        .page-park__amenities-selection button + button {
+          margin-left: calc(15px * 2); }
+          @media (min-width: 960px) {
+            .page-park__amenities-selection button + button {
+              margin-left: calc(15px * 3); } }
+      .page-park__amenities-selection svg {
+        width: 100%;
+        height: auto; }
 
 * {
   box-sizing: border-box; }
