@@ -1299,8 +1299,8 @@ module.useNode();
     ".js",
     ".json",
     ".ts",
-    ".jsx",
-    ".mjs"
+    ".mjs",
+    ".jsx"
   ]
 });
 

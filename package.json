@@ -22,5 +22,8 @@
       "server": "server/main.js"
     },
     "testModule": "tests/main.js"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^8.3.1"
   }
 }

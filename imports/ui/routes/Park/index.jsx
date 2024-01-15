@@ -1,15 +1,18 @@
 import React, { Fragment, useState, useEffect, useRef } from 'react';
 import '/node_modules/flag-icons/css/flag-icons.min.css';
 import data from '../../../../client/scripts/data';
-import { getCSSVariable, asyncTimeout } from '../../../../client/scripts/helpers.js';
+import {
+	getCSSVariable,
+	asyncTimeout,
+	intersectionObserver
+} from '../../../../client/scripts/helpers.js';
 import { Background } from './Background';
 import { Banner } from './Banner';
 import { HappeningNow } from './HappeningNow';
 import { Events } from './Events';
 import { About } from './About';
+import { Records } from './Records';
 import { Amenities } from './Amenities';
-
-import { CTARegister } from '../../components/CTARegister.jsx';
 
 export const Park = function (props) {
 	const mainRef = useRef(null);
@@ -47,6 +50,11 @@ export const Park = function (props) {
 				</section>
 			</div>
 			<div className="container">
+				<section
+					className={`page-park__park-records animate__animated animate__delay-1s ${animation}`}
+				>
+					<Records park={data.park} />
+				</section>
 				<section className={`page-park__about animate__animated animate__delay-1s ${animation}`}>
 					<About park={data.park} />
 				</section>

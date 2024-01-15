@@ -1,3 +1,13 @@
+@font-face {
+  font-family: 'Rockinline';
+  src: url('./Rockinline.ttf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Bangers';
+  src: url('./Bangers.ttf') format('opentype');
+}
+
 // Reset
 @import '_reset.scss';
 
@@ -21,6 +31,7 @@
 @import '_standings.scss';
 @import '_stream.scss';
 @import '_tabs.scss';
+@import '_leaderboard.scss';
 
 // Sections
 @import '_navbar.scss';
@@ -41,6 +52,12 @@ body {
 }
 
 main {
+}
+
+.uk-modal-dialog {
+  p {
+    line-height: 1.5;
+  }
 }
 
 .uk-button-danger {

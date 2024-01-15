@@ -3,7 +3,8 @@ import { randomInt, intersectionObserver } from '../../../../client/scripts/help
 
 export const About = function ({ park }) {
 	const imageRef = useRef(null);
-	const squareRef = useRef(null);
+	const imageSquareRef = useRef(null);
+	const contentSquareRef = useRef(null);
 	const contentRef = useRef(null);
 	const index = randomInt(0, park.media.length - 1, true);
 	const image = park.media[index];
@@ -26,11 +27,20 @@ export const About = function ({ park }) {
 			{ threshold: 0.75 }
 		);
 
-		const square = squareRef.current;
+		const ImageSquare = imageSquareRef.current;
 		intersectionObserver(
-			square,
+			ImageSquare,
 			(event) => {
-				if (event[0].isIntersecting) square.classList.add('animate__fadeInUp');
+				if (event[0].isIntersecting) ImageSquare.classList.add('animate__fadeInUp');
+			},
+			{ threshold: 0.75 }
+		);
+
+		const contentSquare = contentSquareRef.current;
+		intersectionObserver(
+			contentSquare,
+			(event) => {
+				if (event[0].isIntersecting) contentSquare.classList.add('animate__fadeInUp');
 			},
 			{ threshold: 0.75 }
 		);
@@ -56,7 +66,7 @@ export const About = function ({ park }) {
 			<div className="page-park__about-image uk-visible@m">
 				<img ref={imageRef} className="animate__animated" src={image} />
 				<div
-					ref={squareRef}
+					ref={imageSquareRef}
 					className="page-park__about-image-square animate__animated"
 					style={{
 						backgroundColor: park.theme.secondary
@@ -94,6 +104,16 @@ export const About = function ({ park }) {
 						);
 					})}
 				</div>
+				<div
+					ref={contentSquareRef}
+					className="page-park__about-content-square animate__animated uk-hidden@m"
+					style={{
+						backgroundColor: park.theme.secondary
+					}}
+					style={{
+						background: gradient
+					}}
+				></div>
 			</div>
 		</Fragment>
 	);

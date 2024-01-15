@@ -30,6 +30,23 @@ export const intersectionObserver = function (el, callback, options = {}) {
 	observer.observe(el);
 };
 
+export const classObserver = function (el, classname, on, off) {
+	if (!window) return;
+	if (!el || !classname) return;
+
+	const observer = new MutationObserver(function (event) {
+		if (el.className.indexOf(classname) > -1 && on) on();
+		if (el.className.indexOf(classname) === -1 && off) off();
+	});
+
+	observer.observe(el, {
+		attributes: true,
+		attributeFilter: ['class'],
+		childList: false,
+		characterData: false
+	});
+};
+
 export const handleize = function (str) {
 	return str
 		.toLowerCase()
